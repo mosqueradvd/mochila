@@ -2,11 +2,22 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+### Environment  variables
+
+```
+# Auth0 settings
+AUTH0_CLIENT_ID=
+AUTH0_CLIENT_SECRET=
+AUTH0_REDIRECT_URI=
+AUTH0_POST_LOGOUT_URI=
+# You can generate a cookie secret value with the following command:
+# node -e "console.log(crypto.randomBytes(32).toString('hex'))"
+COOKIE_SECRET=
+```
+
+### Run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 

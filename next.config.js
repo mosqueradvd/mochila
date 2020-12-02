@@ -4,4 +4,10 @@ const withTM = require('next-transpile-modules')([
   '@material-ui/icons'
 ])
 
-module.exports = withTM()
+module.exports = {
+  ...withTM(),
+  i18n: {
+    locales: ['es'],
+    defaultLocale: 'es'
+  }
+}
