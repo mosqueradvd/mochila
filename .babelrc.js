@@ -26,7 +26,7 @@ const plugins = [
       camel2DashComponentName: false,
     },
     "lab",
-  ],
+  ]
 ];
 
 module.exports = {

@@ -18,11 +18,11 @@ const Organizations = () => {
       <h1>Organizaciones</h1>
       <Link href='/organizations/new'>Nueva</Link>
       <ul>
-        {organizations.map(({ id, name }) => {
+        {organizations.map(({ _id, name }) => {
           return (
             <li key={name}>
               <Link
-                href={`/organizations/${id}`}
+                href={`/organizations/${_id}`}
               >
                 {name}
               </Link>

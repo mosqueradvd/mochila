@@ -25,7 +25,7 @@ export const createOrganization = createAsyncThunk('organizations/create', async
   return await response.json()
 })
 
-export const updateOrganization = createAsyncThunk('organizations/update', async (id, data) => {
+export const updateOrganization = createAsyncThunk('organizations/update', async ({ id, data }) => {
   const response = await fetch(`/api/organizations/${id}`, {
     method: 'POST',
     body: JSON.stringify(data)
@@ -74,10 +74,6 @@ const organizationsSlice = createSlice({
     }
   }
 })
-
-export const {
-  setCurrentUser
-} = organizationsSlice.actions
 
 export const getCurrentUser = (state) => state.user
 
