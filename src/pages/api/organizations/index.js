@@ -1,5 +1,5 @@
 import { handleDefault } from 'lib/apiUtils'
-import organizationModel from 'models/organization'
+import * as organizationModel from 'models/organization'
 
 const ALLOWED_METHODS = ['GET', 'POST']
 
