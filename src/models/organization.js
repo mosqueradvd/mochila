@@ -14,9 +14,22 @@ export async function findAll () {
   return collection.find({}).limit(1000).toArray()
 }
 
-export async function create ({ name }) {
+export async function create ({
+  name, identificationNumber, legalRepresentative, identification, phone, email,
+  departament, city, community
+}) {
   const collection = await getCollection()
-  const document = { name }
+  const document = {
+    name,
+    identificationNumber,
+    legalRepresentative,
+    identification,
+    phone,
+    email,
+    departament,
+    city,
+    community
+  }
 
   return await collection.insertOne(document)
 }

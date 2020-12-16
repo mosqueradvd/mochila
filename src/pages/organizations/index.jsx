@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Layout from 'components/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchOrganizations } from '@dux/organizationsSlice'
+
 export { getServerSideProps } from 'lib/ssr'
 
 const Organizations = () => {
