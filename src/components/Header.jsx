@@ -22,6 +22,9 @@ const Header = () => {
                   <Link href='/organizations'> Organizaciones</Link>
                 </li>
                 <li>
+                  <Link href='/projects'> Projects</Link>
+                </li>
+                <li>
                   <Link href='/profile'>{`Perfíl (${user.name})`}</Link>
                 </li>
                 <li>
