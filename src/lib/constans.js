@@ -1299,3 +1299,82 @@ export const LOCATION = [
     ]
   }
 ]
+
+export const PROJECTS_TYPES = [
+  {
+    key: 1,
+    value: 'Infraestructura'
+  },
+  {
+    key: 2,
+    value: 'Ambiente'
+  },
+  {
+    key: 3,
+    value: 'Cultura'
+  },
+  {
+    key: 4,
+    value: 'Derecho propio'
+  },
+  {
+    key: 5,
+    value: 'Deporte'
+  },
+  {
+    key: 6,
+    value: 'Identidad'
+  },
+  {
+    key: 7,
+    value: 'Jóvenes'
+  },
+  {
+    key: 8,
+    value: 'Mujer'
+  },
+  {
+    key: 9,
+    value: 'Víctimas'
+  },
+  {
+    key: 10,
+    value: 'Seguridad alimentaria'
+  },
+  {
+    key: 11,
+    value: 'Adulto mayor'
+  },
+  {
+    key: 12,
+    value: 'Población con discapacidad'
+  },
+
+  {
+    key: 14,
+    value: 'Otro'
+  }
+]
+
+export const ATTACHED_TYPES = [
+  {
+    key: 1,
+    value: 'Ficha MGA y anexos'
+  },
+  {
+    key: 2,
+    value: 'Ficha EBI'
+  },
+  {
+    key: 3,
+    value: 'Certificado de banco de proyectos del municipio'
+  },
+  {
+    key: 3,
+    value: 'Certificado de disponibilidad presupuestal'
+  },
+  {
+    key: 4,
+    value: 'Otros'
+  }
+]

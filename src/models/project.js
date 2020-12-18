@@ -27,7 +27,8 @@ export async function create ({
   registerName,
   registerPhone,
   registerAddress,
-  registerEmail
+  registerEmail,
+  attached
 }) {
   const collection = await getCollection()
   const document = {
@@ -43,7 +44,8 @@ export async function create ({
     registerName,
     registerPhone,
     registerAddress,
-    registerEmail
+    registerEmail,
+    attached
   }
 
   return await collection.insertOne(document)

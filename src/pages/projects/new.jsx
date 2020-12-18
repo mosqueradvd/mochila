@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
 import { useDispatch } from 'react-redux'
 import { createProject } from 'dux/projectsSlice'
-import { typesProjects } from '../../lib/constants.js'
+import { PROJECTS_TYPES, ATTACHED_TYPES } from '../../lib/constans'
 import {
   TextField,
   Card,
@@ -15,11 +15,25 @@ import {
   Container,
   Box,
   Typography,
-  Button
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-
+import { withStyles, makeStyles } from '@material-ui/core/styles'
 import InfoIcon from '@material-ui/icons/Info'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,20 +111,62 @@ const ComponentNewProject = () => {
     }
   )
 
-  const typeProject = typesProjects
+  const typeProject = PROJECTS_TYPES
+  const typesAttached = ATTACHED_TYPES
   const inputLabel = useRef(null)
-  const [labelWidth, setLabelWidth] = useState(0)
+  const [labelWidth] = useState(0)
   const classes = useStyles()
 
-  useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth)
-  }, [])
+  const StyledTabletCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white
+    }
+  }))(TableCell)
 
+  // Modal
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+  // useState para manejar la información cargada en el modal
+  const [attached, setAttached] = useState([])
+  const [itemName, setItemName] = useState('')
+  const [itemType, setItemType] = useState('')
+  // const [idselected, setIdselected] = useState("");
+  const [itemAttached] = useState('url-archivo')
+
+  const addItem = (event) => {
+    event.preventDefault()
+
+    setAttached([
+      ...attached,
+      {
+        attachedName: itemName,
+        attachedType: itemType.value,
+        attachedArchive: itemAttached
+      }
+    ])
+    setItemName('')
+
+    setOpen(false)
+  }
+
+  // closure recuerda el haMmbito donde fue creado, el valor del index de cada elemento
+  const handleDeleteItem = (index) => {
+    return () => {
+      attached.splice(index, 1)
+      setAttached([...attached])
+    }
+  }
   const dispatch = useDispatch()
   const onSubmit = (data) => {
-    console.log('envio de datos: ', data)
     const { value: projectType } = data.projectType
-
     const {
       projectName,
       projectLocation,
@@ -141,7 +197,8 @@ const ComponentNewProject = () => {
           registerName,
           registerPhone,
           registerAddress,
-          registerEmail
+          registerEmail,
+          attached
         }
       )
     )
@@ -476,6 +533,153 @@ const ComponentNewProject = () => {
                     </Typography>
                   )}
                 </Grid>
+                <div className={classes.titles}>
+                  <Typography
+                    color='primary'
+                    component='h1'
+                    variant='h5'
+                    gutterBottom
+                  >
+                    Archivos adjuntos del proyecto
+                  </Typography>
+                </div>
+                <div className={classes.button}>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    startIcon={<CloudUploadIcon />}
+                    onClick={handleClickOpen}
+                  >
+                    adjuntar un documento
+                  </Button>
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby='form-dialog-title'
+                  >
+                    <form onSubmit={addItem}>
+                      <DialogTitle id='form-dialog-title'>
+                        Adjuntar un archivo
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText>
+                          Solo es permitido adjuntar archivos en formato PDF,
+                          Word, Excel, tamaño máximo 100Mb
+                        </DialogContentText>
+                        <TextField
+                          name='attachedName'
+                          id='attachedName'
+                          label='Nombre del archivo adjunto'
+                          autoFocus
+                          value={itemName}
+                          onChange={(e) => setItemName(e.target.value)}
+                          className={classes.TextField}
+                          variant='outlined'
+                          fullWidth
+                        />
+                        <FormControl
+                          className={classes.formControl}
+                          variant='outlined'
+                        >
+                          <InputLabel ref={inputLabel} id='attachedType'>
+                            Tipo de Documento
+                          </InputLabel>
+                          <Controller
+                            as={
+                              <Select labelWidth={labelWidth}>
+                                {typesAttached.map((doc, index) => {
+                                  return (
+                                    <MenuItem key={index} value={doc}>
+                                      {doc.value}
+                                    </MenuItem>
+                                  )
+                                })}
+                              </Select>
+                          }
+                            name='attachedType'
+                            id='attachedType'
+                            variant='outlined'
+                            className={classes.selectInput}
+                            control={control}
+                            defaultValue=''
+                            onClick={(e) => setItemType(e.target.value)}
+                          />
+
+                        </FormControl>
+                        <input
+                        // accept="image/*"
+                          className={classes.input}
+                          id='contained-button-file'
+                          type='file'
+                        />
+                        <label htmlFor='contained-button-file'>
+                          <Button
+                            variant='contained'
+                            color='primary'
+                            component='span'
+                            className={classes.buttonCargar}
+                          >
+                            Cargar archivo
+                          </Button>
+                        </label>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose} color='primary'>
+                          Cancelar
+                        </Button>
+                        <Button
+                          onClick={addItem}
+                          color='primary'
+                          variant='contained'
+                          type='submit'
+                        >
+                          Guardar
+                        </Button>
+                      </DialogActions>
+                    </form>
+                  </Dialog>
+                </div>
+
+                <TableContainer
+                  component={Paper}
+                  elevation={1}
+                  className={classes.tableContainer}
+                >
+                  <Table className={classes.table} aria-label='docs'>
+                    <TableHead>
+                      <TableRow>
+                        <StyledTabletCell align='center'>No.</StyledTabletCell>
+                        <StyledTabletCell align='center'>
+                          Nombre del Archivo
+                        </StyledTabletCell>
+                        <StyledTabletCell align='center'>
+                          Categoría del Archivo
+                        </StyledTabletCell>
+                        <StyledTabletCell align='center'>
+                          Eliminar
+                        </StyledTabletCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {attached.map((files, index) => (
+                        <TableRow key={index}>
+                          <TableCell align='center'>{index + 1}</TableCell>
+                          <TableCell align='center'>
+                            {files.attachedName}
+                          </TableCell>
+                          <TableCell align='center'>
+                            {files.attachedType}
+                          </TableCell>
+                          <TableCell align='center'>
+                            <IconButton onClick={handleDeleteItem(index)}>
+                              <DeleteIcon />
+                            </IconButton>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
 
                 <div className={classes.titles}>
                   <div className={classes.button}>
