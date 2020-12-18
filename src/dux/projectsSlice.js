@@ -37,7 +37,7 @@ export const updateProject = createAsyncThunk('projects/update', async ({ id, da
 const projectsSlice = createSlice({
   name: 'projectsSlice',
   initialState,
-  extrareducer: {
+  extraReducers: {
     [fetchProjects.pending]: (state, action) => {
       state.isLoading = true
     },
@@ -74,5 +74,6 @@ const projectsSlice = createSlice({
     }
   }
 })
+export const getCurrentUser = (state) => state.user
 
 export default projectsSlice.reducer

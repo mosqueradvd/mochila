@@ -8,7 +8,6 @@ export { getServerSideProps } from 'lib/ssr'
 const Projects = () => {
   const dispatch = useDispatch()
   const projects = useSelector(state => state.projects.data)
-
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
@@ -17,14 +16,15 @@ const Projects = () => {
     <Layout pageTitle='Proyectos'>
       <h1>Proyectos</h1>
       <Link href='/projects/new'>Nueva</Link>
+
       <ul>
-        {projects.map(({ _id, name }) => {
+        {projects.map(({ _id, projectName }) => {
           return (
-            <li key={name}>
+            <li key={projectName}>
               <Link
                 href={`/projects/${_id}`}
               >
-                {name}
+                {projectName}
               </Link>
             </li>
           )

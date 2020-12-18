@@ -9,7 +9,6 @@ export { getServerSideProps } from 'lib/ssr'
 const Organizations = () => {
   const dispatch = useDispatch()
   const organizations = useSelector(state => state.organizations.data)
-
   useEffect(() => {
     dispatch(fetchOrganizations())
   }, [dispatch])

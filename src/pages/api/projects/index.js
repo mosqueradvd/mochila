@@ -14,10 +14,10 @@ async function handlePost (req, res) {
   const { body } = req
   const attributes = JSON.parse(body)
   const { insertedId: id } = await projectModel.create(attributes)
-  const projects = await projectModel.get(id)
+  const project = await projectModel.get(id)
 
   // TODO: Send the right status code according the operation result
-  res.status(200).json(projects)
+  res.status(200).json(project)
 }
 
 // TODO: Add authorization using Auth0
