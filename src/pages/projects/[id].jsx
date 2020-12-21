@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
-import { useDispatch } from 'react-redux'
-import { createProject } from 'dux/projectsSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+import { fetchProjectById, updateProject } from 'dux/projectsSlice'
 import { PROJECTS_TYPES, ATTACHED_TYPES } from '../../lib/constans'
 import {
+  CircularProgress,
   TextField,
   Card,
   Grid,
@@ -104,18 +106,41 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Project = () => {
-  const { register, handleSubmit, control, errors } = useForm(
-    {
-      mode: 'onSubmit',
-      reValidateMode: 'onSubmit'
-    }
-  )
+  const { register, handleSubmit, control, errors } = useForm()
+  const router = useRouter()
+  const { id } = router.query
 
+  const inputLabel = useRef(null)
+  const [labelWidth, setLabelWidth] = useState(1)
+
+  const dispatch = useDispatch()
   const typeProject = PROJECTS_TYPES
   const typesAttached = ATTACHED_TYPES
-  const inputLabel = useRef(null)
-  const [labelWidth] = useState(0)
+
   const classes = useStyles()
+
+  const isLoading = useSelector(state => state.projects.isLoading)
+  const project = useSelector(state => state.projects.current)
+  const itemsOld = project?.attached
+  // useState para manejar la información cargada en el modal
+  const [attached, setAttached] = useState([])
+  const [itemName, setItemName] = useState('')
+  const [itemType, setItemType] = useState('')
+  const [itemAttached] = useState('url-archivo')
+
+  useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth)
+  }, [])
+
+  const labelWidthTypeProject = labelWidth + 3
+
+  useEffect(() => {
+    dispatch(fetchProjectById(id))
+  }, [dispatch, id])
+
+  useEffect(() => {
+    setAttached(itemsOld)
+  }, [itemsOld])
 
   const StyledTabletCell = withStyles((theme) => ({
     head: {
@@ -134,16 +159,9 @@ const Project = () => {
   const handleClose = () => {
     setOpen(false)
   }
-  // useState para manejar la información cargada en el modal
-  const [attached, setAttached] = useState([])
-  const [itemName, setItemName] = useState('')
-  const [itemType, setItemType] = useState('')
-  // const [idselected, setIdselected] = useState("");
-  const [itemAttached] = useState('url-archivo')
 
   const addItem = (event) => {
     event.preventDefault()
-
     setAttached([
       ...attached,
       {
@@ -160,48 +178,19 @@ const Project = () => {
   // closure recuerda el haMmbito donde fue creado, el valor del index de cada elemento
   const handleDeleteItem = (index) => {
     return () => {
-      attached.splice(index, 1)
-      setAttached([...attached])
+      const auxAttached = [...attached]
+      auxAttached.splice(index, 1)
+      setAttached(auxAttached)
     }
   }
-  const dispatch = useDispatch()
-  const onSubmit = (data) => {
-    const { value: projectType } = data.projectType
-    const {
-      projectName,
-      projectLocation,
-      projectValueInLetters,
-      projectValueInNumbers,
-      structuringName,
-      structuringPhone,
-      structuringAddress,
-      structuringEmail,
-      registerName,
-      registerPhone,
-      registerAddress,
-      registerEmail
-    } = data
 
-    dispatch(
-      createProject(
-        {
-          projectName,
-          projectType,
-          projectLocation,
-          projectValueInLetters,
-          projectValueInNumbers,
-          structuringName,
-          structuringPhone,
-          structuringAddress,
-          structuringEmail,
-          registerName,
-          registerPhone,
-          registerAddress,
-          registerEmail,
-          attached
-        }
-      )
-    )
+  const onSubmit = (data) => {
+    data = { ...data, attached }
+    dispatch(updateProject({ id, data }))
+    router.push('/projects')
+  }
+  if (isLoading) {
+    return <CircularProgress />
   }
   return (
     <Layout pageTitle='Nuevo proyecto'>
@@ -209,7 +198,7 @@ const Project = () => {
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Box display='flex' justifyContent='center' className={classes.box}>
             <Typography variant='h4' color='primary'>
-              Crear nuevo proyecto
+              Modificar un proyecto
             </Typography>
           </Box>
 
@@ -221,6 +210,7 @@ const Project = () => {
                     name='projectName'
                     id='projectName'
                     label='Nombre del proyecto'
+                    defaultValue={project?.projectName}
                     inputRef={register({ required: true })}
                     className={classes.TextField}
                     variant='outlined'
@@ -241,10 +231,10 @@ const Project = () => {
                     </InputLabel>
                     <Controller
                       as={
-                        <Select labelWidth={labelWidth}>
+                        <Select shrink='true' labelWidth={labelWidthTypeProject}>
                           {typeProject.map((doc, index) => {
                             return (
-                              <MenuItem key={index} value={doc}>
+                              <MenuItem key={index} value={doc.value}>
                                 {doc.value}
                               </MenuItem>
                             )
@@ -257,7 +247,7 @@ const Project = () => {
                       className={classes.selectInput}
                       control={control}
                       rules={{ required: true }}
-                      defaultValue=''
+                      defaultValue={project?.projectType}
                     />
                     {errors.projectType && (
                       <Typography variant='caption' color='error'>
@@ -272,6 +262,7 @@ const Project = () => {
                     name='projectLocation'
                     id='projectLocation'
                     label='Ubicación del proyecto'
+                    defaultValue={project?.projectLocation}
                     inputRef={register({ required: true })}
                     className={classes.TextField}
                     variant='outlined'
@@ -289,6 +280,7 @@ const Project = () => {
                     name='projectValueInLetters'
                     id='projectValueInLetters'
                     label='Valor en letras del proyecto'
+                    defaultValue={project?.projectValueInLetters}
                     inputRef={register({ required: true })}
                     className={classes.TextField}
                     variant='outlined'
@@ -306,6 +298,7 @@ const Project = () => {
                     name='projectValueInNumbers'
                     id='projectValueInNumbers'
                     label='Valor en números del proyecto'
+                    defaultValue={project?.projectValueInNumbers}
                     inputRef={register({ required: true })}
                     className={classes.TextField}
                     variant='outlined'
@@ -333,6 +326,7 @@ const Project = () => {
                     name='structuringName'
                     id='structuringName'
                     label='Nombre del estructurador del proyecto'
+                    defaultValue={project?.structuringName}
                     inputRef={register({ required: true })}
                     className={classes.TextField}
                     variant='outlined'
@@ -350,6 +344,7 @@ const Project = () => {
                     name='structuringPhone'
                     id='structuringPhone'
                     label='Teléfono del estructurador'
+                    defaultValue={project?.structuringPhone}
                     inputRef={register({ required: true })}
                     className={classes.TextField}
                     variant='outlined'
@@ -366,6 +361,7 @@ const Project = () => {
                   <TextField
                     name='structuringAddress'
                     id='structuringAddress'
+                    defaultValue={project?.structuringAddress}
                     label='Dirección del estructurador'
                     inputRef={register({ required: true })}
                     className={classes.TextField}
@@ -384,6 +380,7 @@ const Project = () => {
                     className={classes.TextField}
                     name='structuringEmail'
                     id='structuringEmail'
+                    defaultValue={project?.structuringEmail}
                     label='Email del Estructurador'
                     variant='outlined'
                     inputRef={register({
@@ -438,6 +435,7 @@ const Project = () => {
                   <TextField
                     name='registerName'
                     id='registerName'
+                    defaultValue={project?.registerName}
                     label='Nombre de quien registra el Proyecto'
                     inputRef={register({ required: true })}
                     variant='outlined'
@@ -456,6 +454,7 @@ const Project = () => {
                   <TextField
                     name='registerPhone'
                     id='registerPhone'
+                    defaultValue={project?.registerPhone}
                     label='Teléfono de quien registra'
                     inputRef={register({ required: true })}
                     variant='outlined'
@@ -474,6 +473,7 @@ const Project = () => {
                   <TextField
                     name='registerAddress'
                     id='registerAddress'
+                    defaultValue={project?.registerAddress}
                     label='Dirección de quien registra'
                     inputRef={register({ required: true })}
                     className={classes.TextField}
@@ -493,6 +493,7 @@ const Project = () => {
                     className={classes.TextField}
                     name='registerEmail'
                     id='registerEmail'
+                    defaultValue={project?.registerEmail}
                     label='Email de quien registra'
                     variant='outlined'
                     inputRef={register({
@@ -586,7 +587,7 @@ const Project = () => {
                           </InputLabel>
                           <Controller
                             as={
-                              <Select labelWidth={labelWidth}>
+                              <Select labelWidth={labelWidthTypeProject}>
                                 {typesAttached.map((doc, index) => {
                                   return (
                                     <MenuItem key={index} value={doc}>
@@ -661,7 +662,7 @@ const Project = () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {attached.map((files, index) => (
+                      {attached?.map((files, index) => (
                         <TableRow key={index}>
                           <TableCell align='center'>{index + 1}</TableCell>
                           <TableCell align='center'>

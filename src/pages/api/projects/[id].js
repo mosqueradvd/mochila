@@ -1,5 +1,5 @@
 import { handleDefault } from 'lib/apiUtils'
-import * as projectModel from 'models/projects'
+import * as projectModel from 'models/project'
 
 const ALLOWED_METHODS = ['GET', 'POST', 'DELETE']
 
