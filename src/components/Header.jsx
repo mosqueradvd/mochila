@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
-import { getCurrentUser } from 'dux/userSlice'
+import { getCurrentUser } from '@dux/loginSlice'
 
 const Header = () => {
   const user = useSelector(getCurrentUser)
@@ -23,6 +23,9 @@ const Header = () => {
                 </li>
                 <li>
                   <Link href='/projects'> Projects</Link>
+                </li>
+                <li>
+                  <Link href='/users'> Users</Link>
                 </li>
                 <li>
                   <Link href='/profile'>{`Perfíl (${user.name})`}</Link>

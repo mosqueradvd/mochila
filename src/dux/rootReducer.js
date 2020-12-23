@@ -1,12 +1,14 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import userReducer from './userSlice'
+import loginReducer from './loginSlice'
 import organizationsReducer from './organizationsSlice'
 import projectsReducer from './projectsSlice'
+import usersReducer from './usersSlice'
 
 const rootReducer = combineReducers({
-  user: userReducer,
+  login: loginReducer,
   organizations: organizationsReducer,
-  projects: projectsReducer
+  projects: projectsReducer,
+  users: usersReducer
 })
 
 export default rootReducer

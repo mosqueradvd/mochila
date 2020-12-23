@@ -1,29 +1,29 @@
 import { handleDefault } from 'lib/apiUtils'
-import * as organizationModel from 'models/organization'
+import * as projectModel from 'models/project'
 
 const ALLOWED_METHODS = ['GET', 'POST', 'DELETE']
 
 async function handleGet (req, res) {
   const { query: { id } } = req
-  const organization = await organizationModel.get(id)
+  const project = await projectModel.get(id)
 
   // TODO: Send the right status code according the operation result
-  res.status(200).json(organization)
+  res.status(200).json(project)
 }
 
 async function handlePost (req, res) {
   const { query: { id }, body } = req
   const attributes = JSON.parse(body)
-  await organizationModel.update(id, attributes)
-  const organization = await organizationModel.get(id)
+  await projectModel.update(id, attributes)
+  const project = await projectModel.get(id)
 
   // TODO: Send the right status code according the operation result
-  res.status(200).json(organization)
+  res.status(200).json(project)
 }
 
 async function handleDelete (req, res) {
   const { query: { id } } = req
-  const result = await organizationModel.remove(id)
+  const result = await projectModel.remove(id)
   const success = result.deletedCount === 1
 
   // TODO: Send the right status code according the operation result
@@ -31,7 +31,7 @@ async function handleDelete (req, res) {
 }
 
 // TODO: Add authorization using Auth0
-export default async function organizationsHandler (req, res) {
+export default async function projectsHandler (req, res) {
   const { method } = req
 
   switch (method) {

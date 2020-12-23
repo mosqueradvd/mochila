@@ -6,8 +6,8 @@ const initialState = {
   isAuthenticated: false
 }
 
-const userSlice = createSlice({
-  name: 'userSlice',
+const loginSlice = createSlice({
+  name: 'loginSlice',
   initialState,
   reducers: {
     setCurrentUser (state, { payload: { name, email } }) {
@@ -20,8 +20,8 @@ const userSlice = createSlice({
 
 export const {
   setCurrentUser
-} = userSlice.actions
+} = loginSlice.actions
 
-export const getCurrentUser = (state) => state.user
+export const getCurrentUser = (state) => state.login
 
-export default userSlice.reducer
+export default loginSlice.reducer

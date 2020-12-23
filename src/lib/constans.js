@@ -15,7 +15,7 @@ export const IDENTIFICATION_TYPES = [
 
 export const LOCATION = [
   {
-    id_departamento: 0,
+    id_departamento: '0',
     departamento: 'Amazonas',
     ciudades: ['Leticia', 'Puerto Nari\u00f1o']
   },
@@ -1376,5 +1376,20 @@ export const ATTACHED_TYPES = [
   {
     key: 4,
     value: 'Otros'
+  }
+]
+
+export const ROLES_TYPES = [
+  {
+    key: 'admin',
+    value: 'Administrador Global'
+  },
+  {
+    key: 'manager',
+    value: 'Adminstrador Organización'
+  },
+  {
+    key: 'operator',
+    value: 'Operador'
   }
 ]

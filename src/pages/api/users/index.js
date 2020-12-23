@@ -1,23 +1,23 @@
 import { handleDefault } from 'lib/apiUtils'
-import * as userModel from 'models/project'
+import * as userModel from 'models/user'
 
 const ALLOWED_METHODS = ['GET', 'POST']
 
 async function handleGet (req, res) {
-  const projects = await userModel.findAll()
+  const users = await userModel.findAll()
 
   // TODO: Send the right status code according the operation result
-  res.status(200).json(projects)
+  res.status(200).json(users)
 }
 
 async function handlePost (req, res) {
   const { body } = req
   const attributes = JSON.parse(body)
   const { insertedId: id } = await userModel.create(attributes)
-  const project = await userModel.get(id)
+  const user = await userModel.get(id)
 
   // TODO: Send the right status code according the operation result
-  res.status(200).json(project)
+  res.status(200).json(user)
 }
 
 // TODO: Add authorization using Auth0
