@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Layout from 'components/Layout'
 import { IDENTIFICATION_TYPES, ROLES_TYPES } from 'lib/constans'
 import { useForm, Controller } from 'react-hook-form'
-import { createUser } from '@dux/usersSlice'
+import { fetchUserById, updateUser } from '@dux/usersSlice'
 
 import {
   CircularProgress,
@@ -63,23 +63,25 @@ const useStyles = makeStyles((theme) => ({
 const User = () => {
   const { register, handleSubmit, control, errors } = useForm()
   const router = useRouter()
-
+  const { id } = router.query
   const inputLabel = useRef(null)
   const classes = useStyles()
   const [labelWidth, setLabelWidth] = useState(0)
   const docTypes = IDENTIFICATION_TYPES
   const rolesTypes = ROLES_TYPES
   const isLoading = useSelector(state => state.users.isLoading)
+  const user = useSelector(state => state.users.current)
   const labelWidthTypeProject = labelWidth + 120
   const dispatch = useDispatch()
 
   const onSubmit = (data) => {
-    const {
-      userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol
-    } = data
-    dispatch(createUser({ userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol }))
+    dispatch(updateUser({ id, data }))
     router.push('/users')
   }
+
+  useEffect(() => {
+    dispatch(fetchUserById(id))
+  }, [dispatch, id])
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
@@ -100,7 +102,7 @@ const User = () => {
               gutterBottom
               className={classes.tipography}
             >
-              Registrar usuario
+              Modificar usuario
             </Typography>
           </Box>
 
@@ -112,6 +114,7 @@ const User = () => {
                     className={classes.TextField}
                     id='userName'
                     name='userName'
+                    defaultValue={user?.userName}
                     label='Nombres y apellidos'
                     variant='outlined'
                     inputRef={register({ required: true })}
@@ -151,7 +154,7 @@ const User = () => {
                       control={control}
                       rules={{ required: true }}
                       className={classes.selectInput}
-                      defaultValue=''
+                      defaultValue={user?.userIdentificationType}
                     />
                     {errors.userIdentificationType && (
                       <Typography variant='caption' color='error'>
@@ -167,6 +170,7 @@ const User = () => {
                     className={classes.TextField}
                     id='userIdentification'
                     name='userIdentification'
+                    defaultValue={user?.userIdentification}
                     label='Número de documento'
                     variant='outlined'
                     inputRef={register({ required: true })}
@@ -185,6 +189,7 @@ const User = () => {
                     name='userEmail'
                     className={classes.TextField}
                     id='userEmail'
+                    defaultValue={user?.userEmail}
                     label='Correo Electrónico'
                     variant='outlined'
                     fullWidth
@@ -232,6 +237,7 @@ const User = () => {
                     id='userPhone'
                     name='userPhone'
                     label='Telefono'
+                    defaultValue={user?.userPhone}
                     variant='outlined'
                     inputRef={register({ required: true })}
                     fullWidth
@@ -271,7 +277,7 @@ const User = () => {
                       control={control}
                       rules={{ required: true }}
                       className={classes.selectInput}
-                      defaultValue=''
+                      defaultValue={user?.userRol}
                     />
                     {errors.userRol && (
                       <Typography>
