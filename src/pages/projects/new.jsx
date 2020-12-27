@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
 import { useDispatch } from 'react-redux'
