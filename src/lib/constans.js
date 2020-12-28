@@ -1,17 +1,4 @@
-export const IDENTIFICATION_TYPES = [
-  {
-    key: 'CC',
-    value: 'Cédula de Ciudadanía'
-  },
-  {
-    key: 'TI',
-    value: 'Tarjeta de Identidad'
-  },
-  {
-    key: 'CE',
-    value: 'Cedula de Extranjería'
-  }
-]
+export { default as IDENTIFICATION_TYPES } from 'seeds/identificationTypes.json'
 
 export const LOCATION = [
   {

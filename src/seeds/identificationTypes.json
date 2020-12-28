@@ -1,0 +1,14 @@
+[
+  {
+    "key": "CC",
+    "value": "Cédula de Ciudadanía"
+  },
+  {
+    "key": "TI",
+    "value": "Tarjeta de Identidad"
+  },
+  {
+    "key": "CE",
+    "value": "Cedula de Extranjería"
+  }
+]
