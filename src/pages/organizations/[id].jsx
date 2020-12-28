@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from 'components/Layout'
 import { useRouter } from 'next/router'
-import { IDENTIFICATION_TYPES, LOCATION } from 'lib/constans'
+import { IDENTIFICATION_TYPES, DEPARTAMENTS, CITIES } from 'lib/constans'
 import { fetchOrganizationById, updateOrganization } from 'dux/organizationsSlice'
 import {
   CircularProgress,
@@ -88,25 +88,27 @@ const Organization = () => {
   const [labelWidth, setLabelWidth] = useState(0)
   const docTypes = IDENTIFICATION_TYPES
 
-  const labelWidthDept = labelWidth - 38
-  const labelWidthTown = labelWidth - 70
+  const labelWidthDept = labelWidth + 30
+  const labelWidthTown = labelWidth + 80
 
-  const departments = LOCATION
+  const departments = DEPARTAMENTS
+  const cities = CITIES
   const [departamentId, setDepartamentId] = useState('')
   function onDepartamentChanged () {
     const getvalueDep = getValues('departament')
-
     setDepartamentId(getvalueDep.id_departamento)
   }
+
+  useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth)
+  }, [])
 
   useEffect(() => {
     dispatch(fetchOrganizationById(id))
   }, [dispatch, id])
 
-  // TODO: Handle backend errors and response status to redirect after
-  // success create
   const onSubmit = data => {
-    const { departamento: departament } = data.departament
+    const { nombre: departament } = data.departament
     const { value: identificationType } = data.identificationType
 
     const {
@@ -207,10 +209,10 @@ const Organization = () => {
                     </InputLabel>
                     <Controller
                       as={
-                        <Select labelWidth={labelWidth}>
+                        <Select labelWidth={labelWidthTown}>
                           {docTypes.map((doc, index) => {
                             return (
-                              <MenuItem key={index} value={doc}>
+                              <MenuItem key={index} value={doc.value}>
                                 {doc.value}
                               </MenuItem>
                             )
@@ -219,6 +221,7 @@ const Organization = () => {
                     }
                       name='identificationType'
                       id='identificationType'
+                      defaultValue={organization?.identificationType}
                       variant='outlined'
                       className={classes.selectInput}
                       control={control}
@@ -322,13 +325,19 @@ const Organization = () => {
                     <Controller
                       as={
                         <Select shrink='true' labelWidth={labelWidthDept}>
-                          {departments.map((dept, index) => {
-                            return (
-                              <MenuItem key={index} value={dept}>
-                                {dept.departamento}
-                              </MenuItem>
-                            )
-                          })}
+                          {
+                          departments
+                            .filter(
+                              (departament) =>
+                                departament.id_pais === '170'
+                            ).map((dept, index) => {
+                              return (
+                                <MenuItem key={index} value={dept}>
+                                  {dept.nombre}
+                                </MenuItem>
+                              )
+                            })
+                          }
                         </Select>
                     }
                       name='departament'
@@ -336,7 +345,6 @@ const Organization = () => {
                       variant='outlined'
                       className={classes.selectInput}
                       control={control}
-                      defaultValue=''
                       rules={{ required: true }}
                       onClick={onDepartamentChanged}
                     />
@@ -355,16 +363,15 @@ const Organization = () => {
                     </InputLabel>
                     <Controller
                       as={
-                        <Select labelWidth={labelWidthTown}>
-                          {departments
+                        <Select labelWidth={labelWidthDept}>
+                          {cities
                             .filter(
-                              (departament) =>
-                                departament.id_departamento === Number(departamentId)
-                            )[0]
-                            .ciudades.map((ciudad, index) => {
+                              (city) =>
+                                city.id_departamento === departamentId
+                            ).map((ciudad, index) => {
                               return (
-                                <MenuItem key={index} value={ciudad}>
-                                  {ciudad}
+                                <MenuItem key={index} value={ciudad.nombre}>
+                                  {ciudad.nombre}
                                 </MenuItem>
                               )
                             })}
@@ -376,7 +383,6 @@ const Organization = () => {
                       rules={{ required: true }}
                       className={classes.selectInput}
                       control={control}
-                      defaultValue=''
                     />
                     {errors.city && (
                       <Typography variant='caption' color='error'>

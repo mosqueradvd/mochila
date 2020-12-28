@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
 import { useDispatch, useSelector } from 'react-redux'
-import { IDENTIFICATION_TYPES, LOCATION } from 'lib/constans'
+import { IDENTIFICATION_TYPES, DEPARTAMENTS, CITIES } from 'lib/constans'
 import { createOrganization } from 'dux/organizationsSlice'
 import {
   CircularProgress,
@@ -93,30 +93,23 @@ const Organization = () => {
   const labelWidthTown = labelWidth - 70
   const isLoading = useSelector(state => state.organizations.isLoading)
 
-  const departments = LOCATION
+  const departments = DEPARTAMENTS
+  const cities = CITIES
   const [departamentId, setDepartamentId] = useState('')
   function onDepartamentChanged () {
     const getvalueDep = getValues('departament')
-
     setDepartamentId(getvalueDep.id_departamento)
   }
 
-  // TODO: Handle backend errors and response status to redirect after
-  // success create
   const onSubmit = data => {
-    // console.log('DATA', data)
-    const { departamento: departament } = data.departament
+    const { nombre: departament } = data.departament
     const { value: identificationType } = data.identificationType
-    const { value: identificationTypeUSer } = data.identificationTypeUser
 
     const {
       name, identificationNumber, legalRepresentative, identification, phone, email,
-      city, community, namesUser, identificationUser, phoneUser, emailUser, passwordUser
+      city, community
     } = data
 
-    console.log(name, identificationNumber, legalRepresentative, identification, phone, email, departament,
-      city, community, namesUser, identificationTypeUSer, identificationUser, phoneUser, emailUser, passwordUser
-    )
     dispatch(createOrganization({
       name,
       identificationNumber,
@@ -329,13 +322,19 @@ const Organization = () => {
                     <Controller
                       as={
                         <Select shrink='true' labelWidth={labelWidthDept}>
-                          {departments.map((dept, index) => {
-                            return (
-                              <MenuItem key={index} value={dept}>
-                                {dept.departamento}
-                              </MenuItem>
-                            )
-                          })}
+                          {
+                          departments
+                            .filter(
+                              (departament) =>
+                                departament.id_pais === '170'
+                            ).map((dept, index) => {
+                              return (
+                                <MenuItem key={index} value={dept}>
+                                  {dept.nombre}
+                                </MenuItem>
+                              )
+                            })
+                          }
                         </Select>
                     }
                       name='departament'
@@ -363,15 +362,14 @@ const Organization = () => {
                     <Controller
                       as={
                         <Select labelWidth={labelWidthTown}>
-                          {departments
+                          {cities
                             .filter(
-                              (departament) =>
-                                departament.id_departamento === Number(departamentId)
-                            )[0]
-                            .ciudades.map((ciudad, index) => {
+                              (city) =>
+                                city.id_departamento === departamentId
+                            ).map((ciudad, index) => {
                               return (
-                                <MenuItem key={index} value={ciudad}>
-                                  {ciudad}
+                                <MenuItem key={index} value={ciudad.nombre}>
+                                  {ciudad.nombre}
                                 </MenuItem>
                               )
                             })}
@@ -551,24 +549,6 @@ const Organization = () => {
                         className={classes.errorIcon}
                       />
                       {errors.emailUser.message}
-                    </Typography>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6} md={6}>
-                  <TextField
-                    className={classes.TextField}
-                    name='passwordUser'
-                    label='Contraseña'
-                    id='passwordUser'
-                    type='password'
-                    variant='outlined'
-                    fullWidth
-                    inputRef={register({ required: true })}
-                  />
-                  {errors.passwordUser && (
-                    <Typography variant='caption' color='error'>
-                      <InfoIcon color='error' fontSize='small' />
-                      Campo obligatorio
                     </Typography>
                   )}
                 </Grid>
