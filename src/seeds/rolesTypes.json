@@ -1,0 +1,14 @@
+[
+  {
+    "key": "admin",
+    "value": "Administrador Global"
+  },
+  {
+    "key": "manager",
+    "value": "Adminstrador Organización"
+  },
+  {
+    "key": "operator",
+    "value": "Operador"
+  }
+]

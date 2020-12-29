@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
 import { useDispatch } from 'react-redux'
 import { createProject } from 'dux/projectsSlice'
-import { PROJECTS_TYPES, ATTACHED_TYPES } from '../../lib/constans'
+import { PROJECTS_TYPES, ATTACHMENT_TYPES } from '../../lib/constans'
 import {
   TextField,
   Card,
@@ -112,7 +112,7 @@ const Project = () => {
   )
 
   const typeProject = PROJECTS_TYPES
-  const typesAttached = ATTACHED_TYPES
+  const typesAttached = ATTACHMENT_TYPES
   const inputLabel = useRef(null)
   const [labelWidth] = useState(0)
   const classes = useStyles()
