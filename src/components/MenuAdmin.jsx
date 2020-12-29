@@ -18,13 +18,16 @@ import BorderColorIcon from '@material-ui/icons/BorderColor'
 const MenuAdmin = () => {
   return (
     <List component='nav'>
-      <ListItem button>
-        <ListItemIcon>
-          <HomeIcon />
-        </ListItemIcon>
-        <ListItemText>Inicio</ListItemText>
-      </ListItem>
-      <Link href='/users'>
+      <Link href='/admin'>
+        <ListItem button>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText>Inicio</ListItemText>
+        </ListItem>
+      </Link>
+
+      <Link href='/admin/organization/new'>
         <ListItem button>
           <ListItemIcon>
             <CreateIcon />
@@ -33,12 +36,15 @@ const MenuAdmin = () => {
         </ListItem>
       </Link>
 
-      <ListItem button href='/organizations'>
-        <ListItemIcon>
-          <BorderColorIcon />
-        </ListItemIcon>
-        <ListItemText>Modificar organización</ListItemText>
-      </ListItem>
+      <Link href='/admin/organization/list'>
+        <ListItem button>
+          <ListItemIcon>
+            <BorderColorIcon />
+          </ListItemIcon>
+          <ListItemText>Modificar organización</ListItemText>
+        </ListItem>
+      </Link>
+
       <ListItem button>
         <ListItemIcon>
           <ListIcon />
