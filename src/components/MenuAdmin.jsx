@@ -44,19 +44,23 @@ const MenuAdmin = () => {
           <ListItemText>Modificar organización</ListItemText>
         </ListItem>
       </Link>
+      <Link href='/admin/user/'>
+        <ListItem button>
+          <ListItemIcon>
+            <ListIcon />
+          </ListItemIcon>
+          <ListItemText>Listar usuarios</ListItemText>
+        </ListItem>
+      </Link>
+      <Link href='/admin/user/edit'>
+        <ListItem button>
+          <ListItemIcon>
+            <PeopleSharpIcon />
+          </ListItemIcon>
+          <ListItemText>Modificar usuarios</ListItemText>
+        </ListItem>
+      </Link>
 
-      <ListItem button>
-        <ListItemIcon>
-          <ListIcon />
-        </ListItemIcon>
-        <ListItemText>Listar usuarios</ListItemText>
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <PeopleSharpIcon />
-        </ListItemIcon>
-        <ListItemText>Modificar usuarios</ListItemText>
-      </ListItem>
       <ListItem button>
         <ListItemIcon>
           <HowToRegSharpIcon />
