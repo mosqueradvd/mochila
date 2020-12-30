@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import MenuAdmin from './MenuAdmin'
+import MenuManager from './MenuManager'
 
 const drawerWidth = 240
 
@@ -33,6 +34,7 @@ const Drawers = ({ variant, open, onClose }) => {
       <div className={classes.toolbar} />
       <Divider />
       <MenuAdmin />
+      <MenuManager />
     </Drawer>
   )
 }
