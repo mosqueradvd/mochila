@@ -40,13 +40,15 @@ const MenuManager = () => {
           <ListItemText>Crear usuarios</ListItemText>
         </ListItem>
       </Link>
+      <Link href='/manager/user'>
+        <ListItem button>
+          <ListItemIcon>
+            <ListIcon />
+          </ListItemIcon>
+          <ListItemText>Listar usuarios</ListItemText>
+        </ListItem>
+      </Link>
 
-      <ListItem button>
-        <ListItemIcon>
-          <ListIcon />
-        </ListItemIcon>
-        <ListItemText>Listar usuarios</ListItemText>
-      </ListItem>
       <ListItem button>
         <ListItemIcon>
           <PeopleSharpIcon />

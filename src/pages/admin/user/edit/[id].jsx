@@ -76,7 +76,7 @@ const User = () => {
 
   const onSubmit = (data) => {
     dispatch(updateUser({ id, data }))
-    router.push('/users')
+    router.push('/admin')
   }
 
   useEffect(() => {
