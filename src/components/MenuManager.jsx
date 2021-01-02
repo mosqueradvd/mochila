@@ -65,12 +65,14 @@ const MenuManager = () => {
       <Typography variant='h6' color='primary'>
         Proyectos
       </Typography>
-      <ListItem button>
-        <ListItemIcon>
-          <FolderOpenIcon />
-        </ListItemIcon>
-        <ListItemText>Crear proyecto</ListItemText>
-      </ListItem>
+      <Link href='/manager/project/new'>
+        <ListItem button>
+          <ListItemIcon>
+            <FolderOpenIcon />
+          </ListItemIcon>
+          <ListItemText>Crear proyecto</ListItemText>
+        </ListItem>
+      </Link>
       <ListItem button>
         <ListItemIcon>
           <FormatListNumberedIcon />
