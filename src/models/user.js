@@ -15,11 +15,11 @@ export async function findAll () {
 }
 
 export async function create ({
-  userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol
+  userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus
 }) {
   const collection = await getCollection()
   const document = {
-    userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol
+    userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus
   }
 
   return await collection.insertOne(document)
@@ -35,6 +35,14 @@ export async function update (id, attributes) {
   const collection = await getCollection()
   const filter = { _id: ObjectId(id) }
   const updateDocument = { $set: { ...attributes } }
+
+  return await collection.updateOne(filter, updateDocument)
+}
+
+export async function updateUserStatus (id, attributes) {
+  const collection = await getCollection()
+  const filter = { _id: ObjectId(id) }
+  const updateDocument = { $set: { userStatus: attributes } }
 
   return await collection.updateOne(filter, updateDocument)
 }

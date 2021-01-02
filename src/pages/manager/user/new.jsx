@@ -72,12 +72,13 @@ const User = () => {
   const isLoading = useSelector(state => state.users.isLoading)
   const labelWidthTypeProject = labelWidth + 120
   const dispatch = useDispatch()
+  const userStatus = true
 
   const onSubmit = (data) => {
     const {
       userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol
     } = data
-    dispatch(createUser({ userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol }))
+    dispatch(createUser({ userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus }))
     router.push('/manager')
   }
 

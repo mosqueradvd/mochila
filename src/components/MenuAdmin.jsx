@@ -60,13 +60,15 @@ const MenuAdmin = () => {
           <ListItemText>Modificar usuarios</ListItemText>
         </ListItem>
       </Link>
+      <Link href='/admin/user/enable-disable'>
+        <ListItem button>
+          <ListItemIcon>
+            <HowToRegSharpIcon />
+          </ListItemIcon>
+          <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
+        </ListItem>
+      </Link>
 
-      <ListItem button>
-        <ListItemIcon>
-          <HowToRegSharpIcon />
-        </ListItemIcon>
-        <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
-      </ListItem>
       <Link href='/api/logout'>
         <ListItem button>
           <ListItemIcon>

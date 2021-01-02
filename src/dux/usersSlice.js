@@ -34,6 +34,15 @@ export const updateUser = createAsyncThunk('users/update', async ({ id, data }) 
   return await response.json()
 })
 
+export const updateUserStatus = createAsyncThunk('users/updateUserStatus', async ({ id, data }) => {
+  const response = await fetch(`/api/users/status/${id}`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+
+  return await response.json()
+})
+
 const usersSlice = createSlice({
   name: 'usersSlice',
   initialState,
@@ -63,6 +72,19 @@ const usersSlice = createSlice({
       state.isLoading = true
     },
     [updateUser.fulfilled]: (state, action) => {
+      const { id, ...rest } = action.payload
+      const index = state.data.findIndex((user) => user.id === id)
+
+      if (index >= 0) {
+        state.data[index] = { id, ...rest }
+      }
+
+      state.isLoading = false
+    },
+    [updateUserStatus.pending]: (state, action) => {
+      state.isLoading = true
+    },
+    [updateUserStatus.fulfilled]: (state, action) => {
       const { id, ...rest } = action.payload
       const index = state.data.findIndex((user) => user.id === id)
 
