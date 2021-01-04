@@ -91,12 +91,14 @@ const MenuManager = () => {
         </ListItemIcon>
         <ListItemText>Modificar proyecto</ListItemText>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <LibraryAddCheckIcon />
-        </ListItemIcon>
-        <ListItemText>Habilitar/deshabilitar</ListItemText>
-      </ListItem>
+      <Link href='/manager/project/enable-disable'>
+        <ListItem button>
+          <ListItemIcon>
+            <LibraryAddCheckIcon />
+          </ListItemIcon>
+          <ListItemText>Habilitar/deshabilitar</ListItemText>
+        </ListItem>
+      </Link>
       <ListItem button>
         <ListItemIcon>
           <CardMembershipIcon />

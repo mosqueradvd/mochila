@@ -34,6 +34,15 @@ export const updateProject = createAsyncThunk('projects/update', async ({ id, da
   return await response.json()
 })
 
+export const updateProjectStatus = createAsyncThunk('projects/updateProjectStatus', async ({ id, data }) => {
+  const response = await fetch(`/api/projects/status/${id}`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+
+  return await response.json()
+})
+
 const projectsSlice = createSlice({
   name: 'projectsSlice',
   initialState,
@@ -63,6 +72,19 @@ const projectsSlice = createSlice({
       state.isLoading = true
     },
     [updateProject.fulfilled]: (state, action) => {
+      const { id, ...rest } = action.payload
+      const index = state.data.findIndex((project) => project.id === id)
+
+      if (index >= 0) {
+        state.data[index] = { id, ...rest }
+      }
+
+      state.isLoading = false
+    },
+    [updateProjectStatus.pending]: (state, action) => {
+      state.isLoading = true
+    },
+    [updateProjectStatus.fulfilled]: (state, action) => {
       const { id, ...rest } = action.payload
       const index = state.data.findIndex((project) => project.id === id)
 

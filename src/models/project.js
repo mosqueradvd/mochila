@@ -28,6 +28,7 @@ export async function create ({
   registerPhone,
   registerAddress,
   registerEmail,
+  projectStatus,
   attached
 }) {
   const collection = await getCollection()
@@ -45,6 +46,7 @@ export async function create ({
     registerPhone,
     registerAddress,
     registerEmail,
+    projectStatus,
     attached
   }
 
@@ -61,6 +63,14 @@ export async function update (id, attributes) {
   const collection = await getCollection()
   const filter = { _id: ObjectId(id) }
   const updateDocument = { $set: { ...attributes } }
+
+  return await collection.updateOne(filter, updateDocument)
+}
+
+export async function updateProjectStatus (id, attributes) {
+  const collection = await getCollection()
+  const filter = { _id: ObjectId(id) }
+  const updateDocument = { $set: { projectStatus: attributes } }
 
   return await collection.updateOne(filter, updateDocument)
 }

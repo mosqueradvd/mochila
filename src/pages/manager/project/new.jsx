@@ -113,6 +113,7 @@ const Project = () => {
   const [labelWidth] = useState(0)
   const labelWidthTypeProject = labelWidth + 140
   const classes = useStyles()
+  const projectStatus = true
 
   const StyledTabletCell = withStyles((theme) => ({
     head: {
@@ -157,7 +158,7 @@ const Project = () => {
       setAttached([...attached])
     }
   }
-  
+
   const dispatch = useDispatch()
   const onSubmit = (data) => {
     const { value: projectType } = data.projectType
@@ -192,6 +193,7 @@ const Project = () => {
           registerPhone,
           registerAddress,
           registerEmail,
+          projectStatus,
           attached
         }
       )
