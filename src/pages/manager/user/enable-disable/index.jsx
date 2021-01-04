@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function ComponentListEnableDisableUsersclient () {
+export default function ListUsers () {
   const dispatch = useDispatch()
   const classes = useStyles()
   const [order, setOrder] = useState('asc')
@@ -221,7 +221,7 @@ export default function ComponentListEnableDisableUsersclient () {
                         </TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/admin/user/enable-disable/${row._id}`}
+                            href={`/manager/user/enable-disable/${row._id}`}
                           >
                             <CheckCircleOutlineIcon color='primary' />
                           </Link>

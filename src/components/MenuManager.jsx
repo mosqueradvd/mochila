@@ -55,12 +55,15 @@ const MenuManager = () => {
         </ListItemIcon>
         <ListItemText>Modificar usuarios</ListItemText>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <HowToRegSharpIcon />
-        </ListItemIcon>
-        <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
-      </ListItem>
+      <Link href='/manager/user/enable-disable'>
+        <ListItem button>
+          <ListItemIcon>
+            <HowToRegSharpIcon />
+          </ListItemIcon>
+          <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
+        </ListItem>
+      </Link>
+
       <Divider />
       <Typography variant='h6' color='primary'>
         Proyectos
