@@ -76,12 +76,15 @@ const MenuManager = () => {
           <ListItemText>Crear proyecto</ListItemText>
         </ListItem>
       </Link>
-      <ListItem button>
-        <ListItemIcon>
-          <FormatListNumberedIcon />
-        </ListItemIcon>
-        <ListItemText>Listar proyecto</ListItemText>
-      </ListItem>
+      <Link href='/manager/project'>
+        <ListItem button>
+          <ListItemIcon>
+            <FormatListNumberedIcon />
+          </ListItemIcon>
+          <ListItemText>Listar proyecto</ListItemText>
+        </ListItem>
+      </Link>
+
       <ListItem button>
         <ListItemIcon>
           <MenuBookIcon />
