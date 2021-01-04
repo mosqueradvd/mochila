@@ -48,7 +48,7 @@ const MenuManager = () => {
           <ListItemText>Listar usuarios</ListItemText>
         </ListItem>
       </Link>
-     
+
       <Link href='/manager/user/edit'>
         <ListItem button>
           <ListItemIcon>
@@ -57,20 +57,7 @@ const MenuManager = () => {
           <ListItemText>Modificar usuarios</ListItemText>
         </ListItem>
       </Link>
-      <ListItem button>
-        <ListItemIcon>
-          <HowToRegSharpIcon />
-        </ListItemIcon>
-        <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
-      </ListItem>
 
-
-      <ListItem button>
-        <ListItemIcon>
-          <PeopleSharpIcon />
-        </ListItemIcon>
-        <ListItemText>Modificar usuarios</ListItemText>
-      </ListItem>
       <Link href='/manager/user/enable-disable'>
         <ListItem button>
           <ListItemIcon>
@@ -79,7 +66,6 @@ const MenuManager = () => {
           <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
         </ListItem>
       </Link>
-
 
       <Divider />
       <Typography variant='h6' color='primary'>
@@ -93,26 +79,6 @@ const MenuManager = () => {
           <ListItemText>Crear proyecto</ListItemText>
         </ListItem>
       </Link>
-      <ListItem button>
-        <ListItemIcon>
-          <FormatListNumberedIcon />
-        </ListItemIcon>
-        <ListItemText>Listar proyecto</ListItemText>
-      </ListItem>
-      <Link href='/manager/project/edit'>
-        <ListItem button>
-          <ListItemIcon>
-            <MenuBookIcon />
-          </ListItemIcon>
-          <ListItemText>Modificar proyecto</ListItemText>
-        </ListItem>
-      </Link>
-      <ListItem button>
-        <ListItemIcon>
-          <LibraryAddCheckIcon />
-        </ListItemIcon>
-        <ListItemText>Habilitar/deshabilitar</ListItemText>
-      </ListItem>
       <Link href='/manager/project'>
         <ListItem button>
           <ListItemIcon>
@@ -121,12 +87,15 @@ const MenuManager = () => {
           <ListItemText>Listar proyecto</ListItemText>
         </ListItem>
       </Link>
-      <ListItem button>
-        <ListItemIcon>
-          <MenuBookIcon />
-        </ListItemIcon>
-        <ListItemText>Modificar proyecto</ListItemText>
-      </ListItem>
+
+      <Link href='/manager/project/edit'>
+        <ListItem button>
+          <ListItemIcon>
+            <MenuBookIcon />
+          </ListItemIcon>
+          <ListItemText>Modificar proyecto</ListItemText>
+        </ListItem>
+      </Link>
       <Link href='/manager/project/enable-disable'>
         <ListItem button>
           <ListItemIcon>
