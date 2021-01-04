@@ -79,7 +79,7 @@ const DisableEnableUser = () => {
         data
       })
     )
-    router.push('/admin')
+    router.push('/manager')
   }
 
   if (isLoading) {
