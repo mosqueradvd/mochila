@@ -93,6 +93,26 @@ const MenuManager = () => {
           <ListItemText>Crear proyecto</ListItemText>
         </ListItem>
       </Link>
+      <ListItem button>
+        <ListItemIcon>
+          <FormatListNumberedIcon />
+        </ListItemIcon>
+        <ListItemText>Listar proyecto</ListItemText>
+      </ListItem>
+      <Link href='/manager/project/edit'>
+        <ListItem button>
+          <ListItemIcon>
+            <MenuBookIcon />
+          </ListItemIcon>
+          <ListItemText>Modificar proyecto</ListItemText>
+        </ListItem>
+      </Link>
+      <ListItem button>
+        <ListItemIcon>
+          <LibraryAddCheckIcon />
+        </ListItemIcon>
+        <ListItemText>Habilitar/deshabilitar</ListItemText>
+      </ListItem>
       <Link href='/manager/project'>
         <ListItem button>
           <ListItemIcon>
@@ -101,7 +121,6 @@ const MenuManager = () => {
           <ListItemText>Listar proyecto</ListItemText>
         </ListItem>
       </Link>
-
       <ListItem button>
         <ListItemIcon>
           <MenuBookIcon />
