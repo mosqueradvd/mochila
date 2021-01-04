@@ -48,6 +48,22 @@ const MenuManager = () => {
           <ListItemText>Listar usuarios</ListItemText>
         </ListItem>
       </Link>
+     
+      <Link href='/manager/user/edit'>
+        <ListItem button>
+          <ListItemIcon>
+            <PeopleSharpIcon />
+          </ListItemIcon>
+          <ListItemText>Modificar usuarios</ListItemText>
+        </ListItem>
+      </Link>
+      <ListItem button>
+        <ListItemIcon>
+          <HowToRegSharpIcon />
+        </ListItemIcon>
+        <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
+      </ListItem>
+
 
       <ListItem button>
         <ListItemIcon>
@@ -63,6 +79,7 @@ const MenuManager = () => {
           <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
         </ListItem>
       </Link>
+
 
       <Divider />
       <Typography variant='h6' color='primary'>
