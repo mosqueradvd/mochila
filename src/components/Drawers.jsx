@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
@@ -37,6 +38,12 @@ const Drawers = ({ variant, open, onClose }) => {
       <MenuManager />
     </Drawer>
   )
+}
+
+Drawers.propTypes = {
+  onClose: PropTypes.func,
+  open: PropTypes.boolean,
+  variant: PropTypes.string
 }
 
 export default Drawers

@@ -1,5 +1,5 @@
 export { default as IDENTIFICATION_TYPES } from 'seeds/identificationTypes.json'
-export { default as DEPARTAMENTS } from 'seeds/departaments.json'
+export { default as DEPARTMENTS } from 'seeds/departments.json'
 export { default as PROJECTS_TYPES } from 'seeds/projectsTypes.json'
 export { default as ATTACHMENT_TYPES } from 'seeds/attachmentTypes.json'
 export { default as ROLES_TYPES } from 'seeds/rolesTypes.json'

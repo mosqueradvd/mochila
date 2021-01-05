@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { makeStyles } from '@material-ui/core/styles'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
@@ -85,6 +86,10 @@ const Header = ({ actionOpen }) => {
       <div className={classes.offset} />
     </header>
   )
+}
+
+Header.propTypes = {
+  actionOpen: PropTypes.func.isRequired
 }
 
 export default Header

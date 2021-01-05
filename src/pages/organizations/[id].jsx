@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from 'components/Layout'
 import { useRouter } from 'next/router'
-import { IDENTIFICATION_TYPES, DEPARTAMENTS, CITIES } from 'lib/constans'
+import { IDENTIFICATION_TYPES, DEPARTMENTS, CITIES } from 'lib/constans'
 import { fetchOrganizationById, updateOrganization } from 'dux/organizationsSlice'
 import {
   CircularProgress,
@@ -91,7 +91,7 @@ const Organization = () => {
   const labelWidthDept = labelWidth + 30
   const labelWidthTown = labelWidth + 80
 
-  const departments = DEPARTAMENTS
+  const departments = DEPARTMENTS
   const cities = CITIES
   const [departamentId, setDepartamentId] = useState('')
   function onDepartamentChanged () {
