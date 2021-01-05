@@ -6,7 +6,7 @@ import Drawer from '@material-ui/core/Drawer'
 import MenuAdmin from './MenuAdmin'
 import MenuManager from './MenuManager'
 
-const drawerWidth = 240
+const drawerWidth = 250
 
 const styles = makeStyles((theme) => ({
   drawer: {

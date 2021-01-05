@@ -2,12 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core'
+
 import MenuIcon from '@material-ui/icons/Menu'
 import { useSelector } from 'react-redux'
 import { getCurrentUser } from '@dux/loginSlice'
 
-const drawerWidth = 240
+const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -30,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth
     }
-  },
-  offset: theme.mixins.toolbar
+  }
+
 }))
 
 const Header = ({ actionOpen }) => {
@@ -41,32 +42,21 @@ const Header = ({ actionOpen }) => {
     <header>
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <MenuIcon
+          <IconButton
             aria-label='Menu'
             className={classes.menuButton}
             onClick={() => actionOpen()}
-          />
+          >
+            <MenuIcon />
+          </IconButton>
+
           <Typography variant='h6' color='initial' className={classes.title}>
             Banco de proyectos
           </Typography>
           <ul>
-            <li>
-              <Link href='/'>
-                <a>Inicio</a>
-              </Link>
-            </li>
             {user.isAuthenticated
               ? (
                 <>
-                  <li>
-                    <Link href='/organizations'> Organizaciones</Link>
-                  </li>
-                  <li>
-                    <Link href='/projects'> Projects</Link>
-                  </li>
-                  <li>
-                    <Link href='/users'> Users</Link>
-                  </li>
                   <li>
                     <Link href='/profile'>{`Perfíl (${user.name})`}</Link>
                   </li>
@@ -83,7 +73,7 @@ const Header = ({ actionOpen }) => {
           </ul>
         </Toolbar>
       </AppBar>
-      <div className={classes.offset} />
+
     </header>
   )
 }

@@ -16,7 +16,7 @@ const styles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(10),
+    paddingTop: theme.spacing(5),
     textAlign: 'center'
   },
   toolbar: theme.mixins.toolbar,
@@ -41,14 +41,14 @@ const Layout = ({ pageTitle, user, children }) => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header user={user} />
+        <Header user={user} actionOpen={actionOpen} />
         <Hidden xsDown>
           <Drawers variant='permanent' open />
         </Hidden>
         <Hidden smUp>
           <Drawers variant='temporary' open={open} onClose={actionOpen} />
         </Hidden>
-        <main>
+        <main className={classes.content}>
           <div className={classes.toolbar} />
           <div className='container'>{children}</div>
         </main>
