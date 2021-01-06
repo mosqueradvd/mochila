@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, IconButton, Button } from '@material-ui/core'
 
 import MenuIcon from '@material-ui/icons/Menu'
 import { useSelector } from 'react-redux'
@@ -57,18 +57,18 @@ const Header = ({ actionOpen }) => {
             {user.isAuthenticated
               ? (
                 <>
-                  <li>
-                    <Link href='/profile'>{`Perfíl (${user.name})`}</Link>
-                  </li>
-                  <li>
+                  {/* <li>
                     <a href='/api/logout'>Salir</a>
-                  </li>
+                  </li> */}
+                  <Link href='/api/logout'>
+                    <Button variant='contained' color='secondary'>
+                      Salir
+                    </Button>
+                  </Link>
                 </>
                 )
               : (
-                <li>
-                  <Link href='/api/login'>Ingresar</Link>
-                </li>
+                  null
                 )}
           </ul>
         </Toolbar>
