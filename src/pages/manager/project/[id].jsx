@@ -4,7 +4,6 @@ import Layout from 'components/Layout'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchProjectById } from 'dux/projectsSlice'
 import {
-  CircularProgress,
   Card,
   Container,
   Typography,
@@ -24,6 +23,7 @@ import {
   createMuiTheme,
   ThemeProvider
 } from '@material-ui/core/styles'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const theme = createMuiTheme()
 
@@ -77,6 +77,12 @@ const useStyles = makeStyles((theme) => ({
   box: {
     marginBottom: theme.spacing(5),
     textAlign: 'center'
+  },
+  skeleton: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
@@ -100,7 +106,19 @@ const UserInfo = () => {
     dispatch(fetchProjectById(id))
   }, [dispatch, id])
   if (isLoading) {
-    return <CircularProgress />
+    return (
+      <div className={classes.skeleton}>
+        <Skeleton animation={false} width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' variant='rect' width={350} height={200} />
+      </div>
+    )
   }
 
   return (

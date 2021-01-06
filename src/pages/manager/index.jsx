@@ -13,6 +13,7 @@ import {
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { fetchProjects } from '@dux/projectsSlice'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,17 +53,39 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       marginTop: theme.spacing(2)
     }
+  },
+  skeleton: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
 const Dashboard = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const isLoading = useSelector(state => state.projects.isLoading)
   const projects = useSelector(state => state.projects.data)
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
 
+  if (isLoading) {
+    return (
+      <div className={classes.skeleton}>
+        <Skeleton animation={false} width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' variant='rect' width={350} height={200} />
+      </div>
+    )
+  }
   return (
     <Layout pageTitle='dashboard'>
       <Container className={classes.container}>

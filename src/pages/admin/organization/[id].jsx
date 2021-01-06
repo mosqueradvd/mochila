@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import { IDENTIFICATION_TYPES, DEPARTMENTS, CITIES } from 'lib/constans'
 import { fetchOrganizationById, updateOrganization } from 'dux/organizationsSlice'
 import {
-  CircularProgress,
   TextField,
   Button,
   Container,
@@ -21,7 +20,7 @@ import {
 } from '@material-ui/core'
 import { Info as InfoIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
-
+import Skeleton from '@material-ui/lab/Skeleton'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -72,6 +71,12 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(2)
+  },
+  skeleton: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
@@ -122,7 +127,20 @@ const Organization = () => {
   }
 
   if (isLoading) {
-    return <CircularProgress />
+    return (
+      <div className={classes.skeleton}>
+        <Skeleton animation={false} width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' variant='rect' width={350} height={200} />
+      </div>
+
+    )
   }
 
   return (

@@ -36,7 +36,7 @@ const MenuAdmin = () => {
         </ListItem>
       </Link>
 
-      <Link href='/admin/organization/list'>
+      <Link href='/admin/organization'>
         <ListItem button>
           <ListItemIcon>
             <BorderColorIcon />

@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import {
-  Card, Typography, Grid, Box, Container,
-  CircularProgress
+  Card, Typography, Grid, Box, Container
 } from '@material-ui/core'
 import { fetchUserById } from '@dux/usersSlice'
 import {
@@ -12,6 +11,7 @@ import {
   ThemeProvider
 } from '@material-ui/core/styles'
 import Layout from '@components/Layout'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const theme = createMuiTheme()
 
@@ -40,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
+  },
+  skeleton: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
@@ -57,7 +63,19 @@ const ComponentUserInfo = () => {
     dispatch(fetchUserById(id))
   }, [dispatch, id])
   if (isLoading) {
-    return <CircularProgress />
+    return (
+      <div className={classes.skeleton}>
+        <Skeleton animation={false} width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' variant='rect' width={350} height={200} />
+      </div>
+    )
   }
   return (
     <Layout pageTitle='información del usuarios'>

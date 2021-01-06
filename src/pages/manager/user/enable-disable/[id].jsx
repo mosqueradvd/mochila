@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { fetchUserById, updateUserStatus } from '@dux/usersSlice'
 import Layout from 'components/Layout'
 import {
-  CircularProgress,
   Card,
   Typography,
   Grid,
@@ -17,6 +16,7 @@ import {
   ThemeProvider,
   makeStyles
 } from '@material-ui/core/styles'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const theme = createMuiTheme()
 
@@ -50,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '2.5em',
     display: 'flex',
     justifyContent: 'center'
+  },
+  skeleton: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
@@ -83,7 +89,19 @@ const DisableEnableUser = () => {
   }
 
   if (isLoading) {
-    return <CircularProgress />
+    return (
+      <div className={classes.skeleton}>
+        <Skeleton animation={false} width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' variant='rect' width={350} height={200} />
+      </div>
+    )
   }
   return (
     <Layout pageTitle='habilitar - deshabilitar usuario'>

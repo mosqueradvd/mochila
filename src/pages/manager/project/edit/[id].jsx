@@ -7,7 +7,6 @@ import { updateProject, fetchProjectById } from 'dux/projectsSlice'
 import { withStyles, makeStyles } from '@material-ui/core/styles'
 import { PROJECTS_TYPES, ATTACHMENT_TYPES } from 'lib/constans'
 import {
-  CircularProgress,
   Typography,
   Container,
   Box,
@@ -36,6 +35,7 @@ import {
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,6 +90,12 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonCargar: {
     marginTop: theme.spacing(2)
+  },
+  skeleton: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
@@ -175,7 +181,19 @@ const Project = () => {
     router.push('/manager')
   }
   if (isLoading) {
-    return <CircularProgress />
+    return (
+      <div className={classes.skeleton}>
+        <Skeleton animation={false} width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='pulse' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' width={350} height={30} />
+        <Skeleton animation='wave' variant='rect' width={350} height={200} />
+      </div>
+    )
   }
   return (
     <Layout pageTitle='Nuevo proyecto'>
