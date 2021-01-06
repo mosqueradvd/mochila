@@ -2,12 +2,31 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import Drawers from './Drawers'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/core/'
 import Hidden from '@material-ui/core/Hidden'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Header from './Header'
-import theme from '../theme'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#372B59'
+    },
+    secondary: {
+      main: '#21A1EC'
+    },
+    error: {
+      main: '#972022'
+    },
+    warning: {
+      main: '#E7992D'
+    },
+    success: {
+      main: '#287833'
+    }
+  }
+})
 
 const styles = makeStyles((theme) => ({
   root: {

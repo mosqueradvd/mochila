@@ -19,23 +19,9 @@ import {
 } from '@material-ui/core'
 import {
   withStyles,
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider
+  makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
-
-const theme = createMuiTheme()
-
-theme.typography.h5 = {
-  fontSize: '2.2rem',
-  '@media (max-width:360px)': {
-    fontSize: '2rem'
-  },
-  [theme.breakpoints.up('md')]: {
-    fontSize: '1.4rem'
-  }
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,23 +127,21 @@ const UserInfo = () => {
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6} md={6}>
-                <ThemeProvider theme={theme}>
-                  <Typography
-                    variant='h7'
-                    color='primary'
-                    gutterBottom
-                    className={classes.typography}
-                  >
-                    Nombre del proyecto:
-                  </Typography>
-                  <Typography
-                    variant='h7'
-                    color='initial'
-                    className={classes.userInfo}
-                  >
-                    {' '}{project?.projectName}
-                  </Typography>
-                </ThemeProvider>
+                <Typography
+                  variant='h7'
+                  color='primary'
+                  gutterBottom
+                  className={classes.typography}
+                >
+                  Nombre del proyecto:
+                </Typography>
+                <Typography
+                  variant='h7'
+                  color='initial'
+                  className={classes.userInfo}
+                >
+                  {' '}{project?.projectName}
+                </Typography>
               </Grid>
 
               <Grid item xs={12} sm={6} md={6}>

@@ -6,14 +6,10 @@ import {
 } from '@material-ui/core'
 import { fetchUserById } from '@dux/usersSlice'
 import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider
+  makeStyles
 } from '@material-ui/core/styles'
 import Layout from '@components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
-
-const theme = createMuiTheme()
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,18 +91,16 @@ const UserInfo = () => {
             </Box>
             <Grid container spacing={2}>
               <Grid item xs={6} sm={6} md={6}>
-                <ThemeProvider theme={theme}>
-                  <Typography
-                    color='primary'
-                    gutterBottom
-                    className={classes.typography}
-                  >
-                    Nombre
-                  </Typography>
-                  <Typography color='initial' className={classes.userInfo}>
-                    {user?.userName}
-                  </Typography>
-                </ThemeProvider>
+                <Typography
+                  color='primary'
+                  gutterBottom
+                  className={classes.typography}
+                >
+                  Nombre
+                </Typography>
+                <Typography color='initial' className={classes.userInfo}>
+                  {user?.userName}
+                </Typography>
               </Grid>
 
               <Grid item xs={6} sm={6} md={6}>

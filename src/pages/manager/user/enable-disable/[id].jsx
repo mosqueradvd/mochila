@@ -12,13 +12,9 @@ import {
   Button
 } from '@material-ui/core'
 import {
-  createMuiTheme,
-  ThemeProvider,
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
-
-const theme = createMuiTheme()
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -120,18 +116,16 @@ const DisableEnableUser = () => {
             </Box>
             <Grid container spacing={2}>
               <Grid item xs={6} sm={6} md={6}>
-                <ThemeProvider theme={theme}>
-                  <Typography
-                    color='primary'
-                    gutterBottom
-                    className={classes.typography}
-                  >
-                    Nombre
-                  </Typography>
-                  <Typography color='initial' className={classes.userInfo}>
-                    {user?.userName}
-                  </Typography>
-                </ThemeProvider>
+                <Typography
+                  color='primary'
+                  gutterBottom
+                  className={classes.typography}
+                >
+                  Nombre
+                </Typography>
+                <Typography color='initial' className={classes.userInfo}>
+                  {user?.userName}
+                </Typography>
               </Grid>
 
               <Grid item xs={6} sm={6} md={6}>
