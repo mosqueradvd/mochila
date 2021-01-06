@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from 'components/Layout'
 import {
@@ -115,7 +116,12 @@ const Dashboard = () => {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size='small'>Ver más</Button>
+                      <Link
+                        href={`/manager/project/${row._id}`}
+                      >
+                        <Button size='small'>Ver más</Button>
+                      </Link>
+
                     </CardActions>
                   </Card>
                 </Grid>
