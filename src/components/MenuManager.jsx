@@ -27,7 +27,7 @@ const MenuManager = () => {
       <Link href='/manager'>
         <ListItem button>
           <ListItemIcon>
-            <HomeIcon />
+            <HomeIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Inicio</ListItemText>
         </ListItem>
@@ -35,7 +35,7 @@ const MenuManager = () => {
       <Link href='/manager/user/new'>
         <ListItem button>
           <ListItemIcon>
-            <CreateIcon />
+            <CreateIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Crear usuarios</ListItemText>
         </ListItem>
@@ -43,7 +43,7 @@ const MenuManager = () => {
       <Link href='/manager/user'>
         <ListItem button>
           <ListItemIcon>
-            <ListIcon />
+            <ListIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Listar usuarios</ListItemText>
         </ListItem>
@@ -52,7 +52,7 @@ const MenuManager = () => {
       <Link href='/manager/user/edit'>
         <ListItem button>
           <ListItemIcon>
-            <PeopleSharpIcon />
+            <PeopleSharpIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Modificar usuarios</ListItemText>
         </ListItem>
@@ -61,7 +61,7 @@ const MenuManager = () => {
       <Link href='/manager/user/enable-disable'>
         <ListItem button>
           <ListItemIcon>
-            <HowToRegSharpIcon />
+            <HowToRegSharpIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
         </ListItem>
@@ -74,7 +74,7 @@ const MenuManager = () => {
       <Link href='/manager/project/new'>
         <ListItem button>
           <ListItemIcon>
-            <FolderOpenIcon />
+            <FolderOpenIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Crear proyecto</ListItemText>
         </ListItem>
@@ -82,7 +82,7 @@ const MenuManager = () => {
       <Link href='/manager/project'>
         <ListItem button>
           <ListItemIcon>
-            <FormatListNumberedIcon />
+            <FormatListNumberedIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Listar proyecto</ListItemText>
         </ListItem>
@@ -91,7 +91,7 @@ const MenuManager = () => {
       <Link href='/manager/project/edit'>
         <ListItem button>
           <ListItemIcon>
-            <MenuBookIcon />
+            <MenuBookIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Modificar proyecto</ListItemText>
         </ListItem>
@@ -99,26 +99,26 @@ const MenuManager = () => {
       <Link href='/manager/project/enable-disable'>
         <ListItem button>
           <ListItemIcon>
-            <LibraryAddCheckIcon />
+            <LibraryAddCheckIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Habilitar/deshabilitar</ListItemText>
         </ListItem>
       </Link>
       <ListItem button>
         <ListItemIcon>
-          <CardMembershipIcon />
+          <CardMembershipIcon color='primary' />
         </ListItemIcon>
         <ListItemText>Generar certificado</ListItemText>
       </ListItem>
       <ListItem button>
         <ListItemIcon>
-          <WallpaperIcon />
+          <WallpaperIcon color='primary' />
         </ListItemIcon>
         <ListItemText>Subir hoja membrete</ListItemText>
       </ListItem>
       <ListItem button>
         <ListItemIcon>
-          <LockSharpIcon />
+          <LockSharpIcon color='primary' />
         </ListItemIcon>
         <ListItemText>Cerrar sesión</ListItemText>
       </ListItem>

@@ -21,7 +21,7 @@ const MenuAdmin = () => {
       <Link href='/admin'>
         <ListItem button>
           <ListItemIcon>
-            <HomeIcon />
+            <HomeIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Inicio</ListItemText>
         </ListItem>
@@ -30,7 +30,7 @@ const MenuAdmin = () => {
       <Link href='/admin/organization/new'>
         <ListItem button>
           <ListItemIcon>
-            <CreateIcon />
+            <CreateIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Crear organización</ListItemText>
         </ListItem>
@@ -39,7 +39,7 @@ const MenuAdmin = () => {
       <Link href='/admin/organization'>
         <ListItem button>
           <ListItemIcon>
-            <BorderColorIcon />
+            <BorderColorIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Modificar organización</ListItemText>
         </ListItem>
@@ -47,7 +47,7 @@ const MenuAdmin = () => {
       <Link href='/admin/user/'>
         <ListItem button>
           <ListItemIcon>
-            <ListIcon />
+            <ListIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Listar usuarios</ListItemText>
         </ListItem>
@@ -55,7 +55,7 @@ const MenuAdmin = () => {
       <Link href='/admin/user/edit'>
         <ListItem button>
           <ListItemIcon>
-            <PeopleSharpIcon />
+            <PeopleSharpIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Modificar usuarios</ListItemText>
         </ListItem>
@@ -63,7 +63,7 @@ const MenuAdmin = () => {
       <Link href='/admin/user/enable-disable'>
         <ListItem button>
           <ListItemIcon>
-            <HowToRegSharpIcon />
+            <HowToRegSharpIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
         </ListItem>
@@ -72,7 +72,7 @@ const MenuAdmin = () => {
       <Link href='/api/logout'>
         <ListItem button>
           <ListItemIcon>
-            <LockSharpIcon />
+            <LockSharpIcon color='primary' />
           </ListItemIcon>
           <ListItemText>Cerrar sesión</ListItemText>
         </ListItem>

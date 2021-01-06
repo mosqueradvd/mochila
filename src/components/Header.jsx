@@ -57,12 +57,9 @@ const Header = ({ actionOpen }) => {
             {user.isAuthenticated
               ? (
                 <>
-                  {/* <li>
-                    <a href='/api/logout'>Salir</a>
-                  </li> */}
                   <Link href='/api/logout'>
                     <Button variant='contained' color='secondary'>
-                      Salir
+                      Cerrar sesion
                     </Button>
                   </Link>
                 </>
