@@ -67,6 +67,7 @@ const Dashboard = () => {
   const dispatch = useDispatch()
   const isLoading = useSelector(state => state.projects.isLoading)
   const projects = useSelector(state => state.projects.data)
+
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
@@ -84,6 +85,19 @@ const Dashboard = () => {
         <Skeleton animation='wave' width={350} height={30} />
         <Skeleton animation='wave' variant='rect' width={350} height={200} />
       </div>
+    )
+  }
+  if (Object.keys(projects).length === 0) {
+    return (
+      <Layout pageTitle='dashboard'>
+        <Container className={classes.container}>
+          <Box className={classes.box}>
+            <Typography variant='h4' color='primary' component='h1'>
+              Aún no exiten proyectos que mostar
+            </Typography>
+          </Box>
+        </Container>
+      </Layout>
     )
   }
   return (
