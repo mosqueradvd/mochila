@@ -49,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2)
   },
   container: {
-    backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },

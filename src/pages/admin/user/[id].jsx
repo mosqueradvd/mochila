@@ -22,9 +22,6 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     marginBottom: theme.spacing(2)
   },
-  userInfo: {
-    color: '#818181'
-  },
   fixmargin: {
     marginRight: '20px'
   },
@@ -33,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   container: {
-    backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },
@@ -97,7 +93,7 @@ const ComponentUserInfo = () => {
                 >
                   Nombre
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   {user?.userName}
                 </Typography>
               </Grid>
@@ -110,7 +106,7 @@ const ComponentUserInfo = () => {
                 >
                   Organización
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   Organizacion
                 </Typography>
               </Grid>
@@ -123,7 +119,7 @@ const ComponentUserInfo = () => {
                 >
                   Tipo de Documento
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   {user?.userIdentificationType}
                 </Typography>
               </Grid>
@@ -136,7 +132,7 @@ const ComponentUserInfo = () => {
                 >
                   Número
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   {user?.userIdentification}
                 </Typography>
               </Grid>
@@ -149,7 +145,7 @@ const ComponentUserInfo = () => {
                 >
                   Correo Electrónico
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   {user?.userEmail}
                 </Typography>
               </Grid>
@@ -162,7 +158,7 @@ const ComponentUserInfo = () => {
                 >
                   Celular
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   {user?.userPhone}
                 </Typography>
               </Grid>
@@ -175,7 +171,7 @@ const ComponentUserInfo = () => {
                 >
                   Estado
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   Estado activo
                 </Typography>
               </Grid>
@@ -188,7 +184,7 @@ const ComponentUserInfo = () => {
                 >
                   Rol
                 </Typography>
-                <Typography color='initial' className={classes.userInfo}>
+                <Typography color='initial'>
                   {user?.userRol}
                 </Typography>
               </Grid>

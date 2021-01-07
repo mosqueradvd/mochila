@@ -77,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center'
   },
   container: {
-    backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },

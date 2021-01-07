@@ -99,7 +99,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   container: {
-    backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },

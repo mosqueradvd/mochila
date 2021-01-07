@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   container: {
-    backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },
