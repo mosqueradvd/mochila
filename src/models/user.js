@@ -14,6 +14,12 @@ export async function findAll () {
   return collection.find({}).limit(1000).toArray()
 }
 
+export async function findByEmail (userEmail) {
+  const collection = await getCollection()
+
+  return collection.findOne({ userEmail })
+}
+
 export async function create ({
   userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus
 }) {

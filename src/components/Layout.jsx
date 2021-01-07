@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/'
 import Hidden from '@material-ui/core/Hidden'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Header from './Header'
+import useUser from 'hooks/useUser'
 
 const theme = createMuiTheme({
   palette: {
@@ -45,12 +46,14 @@ const styles = makeStyles((theme) => ({
 }))
 const DEFAULT_TITLE = 'Mochila Proyectos'
 
-const Layout = ({ pageTitle, user, children }) => {
+const Layout = ({ pageTitle, children }) => {
   const classes = styles()
+  const user = useUser()
   const [open, setOpen] = useState(false)
   const actionOpen = () => {
     setOpen(!open)
   }
+
   return (
 
     <div className={classes.root}>
@@ -60,13 +63,17 @@ const Layout = ({ pageTitle, user, children }) => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header user={user} actionOpen={actionOpen} />
-        <Hidden xsDown>
-          <Drawers variant='permanent' open />
-        </Hidden>
-        <Hidden smUp>
-          <Drawers variant='temporary' open={open} onClose={actionOpen} />
-        </Hidden>
+        {user.isAuthenticated && (
+          <>
+            <Header user={user} actionOpen={actionOpen} />
+            <Hidden xsDown>
+              <Drawers variant='permanent' open />
+            </Hidden>
+            <Hidden smUp>
+              <Drawers variant='temporary' open={open} onClose={actionOpen} />
+            </Hidden>
+          </>
+        )}
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <div className='container'>{children}</div>
@@ -78,8 +85,7 @@ const Layout = ({ pageTitle, user, children }) => {
 
 Layout.propTypes = {
   pageTitle: PropTypes.string,
-  children: PropTypes.node,
-  user: PropTypes.object
+  children: PropTypes.node
 }
 
 export default Layout

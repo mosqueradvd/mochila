@@ -8,7 +8,6 @@ import {
   Divider
 } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
-import CreateIcon from '@material-ui/icons/Create'
 import ListIcon from '@material-ui/icons/List'
 import PeopleSharpIcon from '@material-ui/icons/PeopleSharp'
 import HowToRegSharpIcon from '@material-ui/icons/HowToRegSharp'
@@ -26,22 +25,12 @@ const MenuAdmin = () => {
           <ListItemText>Inicio</ListItemText>
         </ListItem>
       </Link>
-
-      <Link href='/admin/organization/new'>
-        <ListItem button>
-          <ListItemIcon>
-            <CreateIcon color='primary' />
-          </ListItemIcon>
-          <ListItemText>Crear organización</ListItemText>
-        </ListItem>
-      </Link>
-
       <Link href='/admin/organization'>
         <ListItem button>
           <ListItemIcon>
             <BorderColorIcon color='primary' />
           </ListItemIcon>
-          <ListItemText>Modificar organización</ListItemText>
+          <ListItemText>Organizaciónes</ListItemText>
         </ListItem>
       </Link>
       <Link href='/admin/user/'>

@@ -17,9 +17,10 @@ import {
   Box,
   Typography,
   TableRow,
-  Container
+  Container,
+  Button
 } from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search'
+import { Edit as EditIcon } from '@material-ui/icons'
 import Skeleton from '@material-ui/lab/Skeleton'
 
 function descendingComparator (a, b, orderBy) {
@@ -193,10 +194,16 @@ const ComponentListOrganizations = () => {
   return (
     <Layout pageTitle='modificar organizaciones'>
       <Container className={classes.container}>
-        <Box display='flex' justifyContent='center' className={classes.box}>
+        <Box display='flex' justifyContent='space-between' className={classes.box}>
           <Typography variant='h4' color='primary'>
-            Listar organizaciones
+            Organizaciones
           </Typography>
+          <Button
+            variant='contained'
+            color='primary'
+          >
+            Crear Organización
+          </Button>
         </Box>
 
         <Paper className={classes.paper}>
@@ -242,7 +249,7 @@ const ComponentListOrganizations = () => {
                           <Link
                             href={`/admin/organization/${row._id}`}
                           >
-                            <SearchIcon />
+                            <EditIcon />
                           </Link>
                         </TableCell>
                       </TableRow>

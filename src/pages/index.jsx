@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2)
   }
 }))
+
 const Home = () => {
   const classes = useStyles()
 

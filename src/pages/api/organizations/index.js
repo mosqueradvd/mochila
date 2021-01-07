@@ -1,5 +1,6 @@
 import { handleDefault } from 'lib/apiUtils'
 import * as organizationModel from 'models/organization'
+import * as userModel from 'models/user'
 
 const ALLOWED_METHODS = ['GET', 'POST']
 
@@ -12,9 +13,11 @@ async function handleGet (req, res) {
 
 async function handlePost (req, res) {
   const { body } = req
-  const attributes = JSON.parse(body)
-  const { insertedId: id } = await organizationModel.create(attributes)
-  const organization = await organizationModel.get(id)
+  let { organization, owner } = JSON.parse(body)
+  const { insertedId: organizationId } = await organizationModel.create(organization)
+  await userModel.create({ ...owner, organizationId })
+
+  organization = await organizationModel.get(organizationId)
 
   // TODO: Send the right status code according the operation result
   res.status(200).json(organization)

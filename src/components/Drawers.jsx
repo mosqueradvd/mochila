@@ -42,7 +42,7 @@ const Drawers = ({ variant, open, onClose }) => {
 
 Drawers.propTypes = {
   onClose: PropTypes.func,
-  open: PropTypes.boolean,
+  open: PropTypes.bool,
   variant: PropTypes.string
 }
 
