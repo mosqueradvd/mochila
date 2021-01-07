@@ -54,277 +54,277 @@
     "nombre": "CESAR"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "10",
     "codigo_departamento": "23",
     "id_pais": "170",
     "nombre": "CORDOBA"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "11",
     "codigo_departamento": "25",
     "id_pais": "170",
     "nombre": "CUNDINAMARCA"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "12",
     "codigo_departamento": "27",
     "id_pais": "170",
     "nombre": "CHOCO"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "13",
     "codigo_departamento": "41",
     "id_pais": "170",
     "nombre": "HUILA"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "14",
     "codigo_departamento": "44",
     "id_pais": "170",
     "nombre": "LA GUAJIRA"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "15",
     "codigo_departamento": "47",
     "id_pais": "170",
     "nombre": "MAGDALENA"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "16",
     "codigo_departamento": "50",
     "id_pais": "170",
     "nombre": "META"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "17",
     "codigo_departamento": "52",
     "id_pais": "170",
     "nombre": "NARIÑO"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "18",
     "codigo_departamento": "54",
     "id_pais": "170",
     "nombre": "NORTE DE SANTANDER"
   },
   {
-    "id_departamento": "1",
+    "id_departamento": "19",
     "codigo_departamento": "63",
     "id_pais": "170",
     "nombre": "QUINDO"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "20",
     "codigo_departamento": "66",
     "id_pais": "170",
     "nombre": "RISARALDA"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "21",
     "codigo_departamento": "68",
     "id_pais": "170",
     "nombre": "SANTANDER"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "22",
     "codigo_departamento": "70",
     "id_pais": "170",
     "nombre": "SUCRE"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "23",
     "codigo_departamento": "73",
     "id_pais": "170",
     "nombre": "TOLIMA"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "24",
     "codigo_departamento": "76",
     "id_pais": "170",
     "nombre": "VALLE"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "25",
     "codigo_departamento": "795",
     "id_pais": "218",
     "nombre": "GALAPAGOS"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "26",
     "codigo_departamento": "796",
     "id_pais": "218",
     "nombre": "AZUAY"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "27",
     "codigo_departamento": "797",
     "id_pais": "218",
     "nombre": "BOLIVAR"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "28",
     "codigo_departamento": "798",
     "id_pais": "218",
     "nombre": "CANAR"
   },
   {
-    "id_departamento": "2",
+    "id_departamento": "29",
     "codigo_departamento": "799",
     "id_pais": "218",
     "nombre": "CARCHI"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "30",
     "codigo_departamento": "800",
     "id_pais": "218",
     "nombre": "CHIMBORAZO"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "31",
     "codigo_departamento": "801",
     "id_pais": "218",
     "nombre": "COTOPAXI"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "32",
     "codigo_departamento": "802",
     "id_pais": "218",
     "nombre": "EL ORO"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "33",
     "codigo_departamento": "803",
     "id_pais": "218",
     "nombre": "ESMERALDAS"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "34",
     "codigo_departamento": "804",
     "id_pais": "218",
     "nombre": "GUAYAS"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "35",
     "codigo_departamento": "805",
     "id_pais": "218",
     "nombre": "IMBABURA"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "36",
     "codigo_departamento": "806",
     "id_pais": "218",
     "nombre": "LOJA"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "37",
     "codigo_departamento": "807",
     "id_pais": "218",
     "nombre": "LOS RIOS"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "38",
     "codigo_departamento": "808",
     "id_pais": "218",
     "nombre": "MANABI"
   },
   {
-    "id_departamento": "3",
+    "id_departamento": "39",
     "codigo_departamento": "809",
     "id_pais": "218",
     "nombre": "MORONA-SANTIAGO"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "40",
     "codigo_departamento": "81",
     "id_pais": "170",
     "nombre": "ARAUCA"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "41",
     "codigo_departamento": "810",
     "id_pais": "218",
     "nombre": "PASTAZA"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "42",
     "codigo_departamento": "811",
     "id_pais": "218",
     "nombre": "PICHINCHA"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "43",
     "codigo_departamento": "812",
     "id_pais": "218",
     "nombre": "TUNGURAHUA"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "44",
     "codigo_departamento": "813",
     "id_pais": "218",
     "nombre": "ZAMORA-CHINCHIPE"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "45",
     "codigo_departamento": "814",
     "id_pais": "218",
     "nombre": "SUCUMBIOS"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "46",
     "codigo_departamento": "815",
     "id_pais": "218",
     "nombre": "NAPO"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "47",
     "codigo_departamento": "816",
     "id_pais": "218",
     "nombre": "ORELLANA"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "48",
     "codigo_departamento": "85",
     "id_pais": "170",
     "nombre": "CASANARE"
   },
   {
-    "id_departamento": "4",
+    "id_departamento": "49",
     "codigo_departamento": "86",
     "id_pais": "170",
     "nombre": "PUTUMAYO"
   },
   {
-    "id_departamento": "5",
+    "id_departamento": "50",
     "codigo_departamento": "88",
     "id_pais": "170",
     "nombre": "SAN ANDRES"
   },
   {
-    "id_departamento": "5",
+    "id_departamento": "51",
     "codigo_departamento": "91",
     "id_pais": "170",
     "nombre": "AMAZONAS"
   },
   {
-    "id_departamento": "5",
+    "id_departamento": "52",
     "codigo_departamento": "94",
     "id_pais": "170",
     "nombre": "GUAINIA"
   },
   {
-    "id_departamento": "5",
+    "id_departamento": "53",
     "codigo_departamento": "95",
     "id_pais": "170",
     "nombre": "GUAVIARE"
   },
   {
-    "id_departamento": "5",
+    "id_departamento": "54",
     "codigo_departamento": "97",
     "id_pais": "170",
     "nombre": "VAUPES"
   },
   {
-    "id_departamento": "5",
+    "id_departamento": "55",
     "codigo_departamento": "99",
     "id_pais": "170",
     "nombre": "VICHADA"

@@ -424,7 +424,6 @@ const Organization = () => {
                     </Typography>
                   )}
                 </Grid>
-
                 <Grid container spacing={2}>
                   <div className={classes.adminData}>
                     <div className={classes.titles}>
