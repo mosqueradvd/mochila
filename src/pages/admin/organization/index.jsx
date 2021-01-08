@@ -20,7 +20,7 @@ import {
   Container,
   Button
 } from '@material-ui/core'
-import { Edit as EditIcon } from '@material-ui/icons'
+import { Search as SearchIcon, Edit as EditIcon } from '@material-ui/icons'
 import Skeleton from '@material-ui/lab/Skeleton'
 
 function descendingComparator (a, b, orderBy) {
@@ -53,7 +53,8 @@ const headCells = [
   { id: 'id_organizacion', numeric: true, label: 'Número' },
   { id: 'representante_legal', numeric: false, label: 'Representante legal' },
   { id: 'nombre', numeric: false, label: 'Organización' },
-  { id: 'ver', numeric: false, label: 'Ver' }
+  { id: 'ver', numeric: false, label: 'Ver' },
+  { id: 'modificar', numeric: false, label: 'Modificar' }
 ]
 
 function EnhancedTableHead (props) {
@@ -198,12 +199,15 @@ const ComponentListOrganizations = () => {
           <Typography variant='h4' color='primary'>
             Organizaciones
           </Typography>
-          <Button
-            variant='contained'
-            color='primary'
-          >
-            Crear Organización
-          </Button>
+          <Link href='/admin/organization/new'>
+            <Button
+              variant='contained'
+              color='primary'
+            >
+              Crear Organización
+            </Button>
+          </Link>
+
         </Box>
 
         <Paper className={classes.paper}>
@@ -246,11 +250,24 @@ const ComponentListOrganizations = () => {
                         </TableCell>
                         <TableCell align='left'>{row.name}</TableCell>
                         <TableCell align='left'>
-                          <Link
-                            href={`/admin/organization/${row._id}`}
-                          >
-                            <EditIcon />
-                          </Link>
+                          <Button>
+                            <Link
+                              href={`/admin/organization/${row._id}`}
+                            >
+                              <SearchIcon />
+                            </Link>
+                          </Button>
+
+                        </TableCell>
+                        <TableCell align='left'>
+                          <Button>
+                            <Link
+                              href={`/admin/organization/edit/${row._id}`}
+                            >
+                              <EditIcon />
+                            </Link>
+                          </Button>
+
                         </TableCell>
                       </TableRow>
                     )

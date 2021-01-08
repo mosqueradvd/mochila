@@ -27,7 +27,7 @@ const MenuAdmin = () => {
           <ListItemIcon>
             <BorderColorIcon color='primary' />
           </ListItemIcon>
-          <ListItemText>Organizaciónes</ListItemText>
+          <ListItemText>Organizaciones</ListItemText>
         </ListItem>
       </Link>
       <Link href='/admin/user/'>
