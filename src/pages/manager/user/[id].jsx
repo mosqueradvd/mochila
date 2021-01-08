@@ -176,7 +176,7 @@ const UserInfo = () => {
                   Estado
                 </Typography>
                 <Typography color='initial' className={classes.userInfo}>
-                  Estado activo
+                  {user?.userStatus === true ? 'Activo' : 'Inactivo'}
                 </Typography>
               </Grid>
 

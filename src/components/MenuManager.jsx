@@ -4,15 +4,11 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Divider,
-  Typography
+  ListItemText
 } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
-import CreateIcon from '@material-ui/icons/Create'
-import ListIcon from '@material-ui/icons/List'
+
 import PeopleSharpIcon from '@material-ui/icons/PeopleSharp'
-import HowToRegSharpIcon from '@material-ui/icons/HowToRegSharp'
 import FolderOpenIcon from '@material-ui/icons/FolderOpen'
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
@@ -32,45 +28,14 @@ const MenuManager = () => {
           <ListItemText>Inicio</ListItemText>
         </ListItem>
       </Link>
-      <Link href='/manager/user/new'>
-        <ListItem button>
-          <ListItemIcon>
-            <CreateIcon color='primary' />
-          </ListItemIcon>
-          <ListItemText>Crear usuarios</ListItemText>
-        </ListItem>
-      </Link>
       <Link href='/manager/user'>
-        <ListItem button>
-          <ListItemIcon>
-            <ListIcon color='primary' />
-          </ListItemIcon>
-          <ListItemText>Listar usuarios</ListItemText>
-        </ListItem>
-      </Link>
-
-      <Link href='/manager/user/edit'>
         <ListItem button>
           <ListItemIcon>
             <PeopleSharpIcon color='primary' />
           </ListItemIcon>
-          <ListItemText>Modificar usuarios</ListItemText>
+          <ListItemText>Usuarios</ListItemText>
         </ListItem>
       </Link>
-
-      <Link href='/manager/user/enable-disable'>
-        <ListItem button>
-          <ListItemIcon>
-            <HowToRegSharpIcon color='primary' />
-          </ListItemIcon>
-          <ListItemText>Habilitar/Deshabilitar usuarios</ListItemText>
-        </ListItem>
-      </Link>
-
-      <Divider />
-      <Typography variant='h6' color='primary'>
-        Proyectos
-      </Typography>
       <Link href='/manager/project/new'>
         <ListItem button>
           <ListItemIcon>
