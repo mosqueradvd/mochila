@@ -17,9 +17,13 @@ import {
   Box,
   Typography,
   TableRow,
-  Container
+  Container,
+  Button
 } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
+import MenuBookIcon from '@material-ui/icons/MenuBook'
+import LibraryAddCheckIcon from '@material-ui/icons/LibraryAddCheck'
+import CardMembershipIcon from '@material-ui/icons/CardMembership'
 import Skeleton from '@material-ui/lab/Skeleton'
 
 function descendingComparator (a, b, orderBy) {
@@ -54,7 +58,10 @@ const headCells = [
   { id: 'type_project', numeric: false, label: 'Tipo de proyecto' },
   { id: 'qoute_numbers_project', numeric: false, label: 'Valor del proyecto' },
   { id: 'structuring_name', numeric: false, label: 'Formulado por' },
-  { id: 'ver', numeric: false, label: 'Ver' }
+  { id: 'ver', numeric: false, label: 'Ver' },
+  { id: 'modificar', numeric: false, label: 'Modificar' },
+  { id: 'habilitar', numeric: false, label: 'Habilitar/Deshabilitar' },
+  { id: 'certificado', numeric: false, label: 'Certificado' }
 ]
 
 function EnhancedTableHead (props) {
@@ -191,10 +198,18 @@ export default function ListProjects () {
   return (
     <Layout pageTitle='listar usuarios'>
       <Container className={classes.container}>
-        <Box display='flex' justifyContent='center' className={classes.box}>
+        <Box display='flex' justifyContent='space-between' className={classes.box}>
           <Typography variant='h4' color='primary'>
             Listar proyectos
           </Typography>
+          <Link href='/manager/project/new'>
+            <Button
+              variant='contained'
+              color='primary'
+            >
+              Crear proyecto
+            </Button>
+          </Link>
         </Box>
 
         <Paper className={classes.paper}>
@@ -242,7 +257,36 @@ export default function ListProjects () {
                           <Link
                             href={`/manager/project/${row._id}`}
                           >
-                            <SearchIcon />
+                            <Button>
+                              <SearchIcon />
+                            </Button>
+                          </Link>
+                        </TableCell>
+                        <TableCell align='left'>
+                          <Link
+                            href={`/manager/project/edit/${row._id}`}
+                          >
+                            <Button>
+                              <MenuBookIcon />
+                            </Button>
+                          </Link>
+                        </TableCell>
+                        <TableCell align='left'>
+                          <Link
+                            href={`/manager/project/enable-disable/${row._id}`}
+                          >
+                            <Button>
+                              <LibraryAddCheckIcon />
+                            </Button>
+                          </Link>
+                        </TableCell>
+                        <TableCell align='left'>
+                          <Link
+                            href={`/manager/project/certificate/${row._id}`}
+                          >
+                            <Button>
+                              <CardMembershipIcon />
+                            </Button>
                           </Link>
                         </TableCell>
                       </TableRow>

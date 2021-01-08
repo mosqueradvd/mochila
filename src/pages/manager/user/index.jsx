@@ -203,7 +203,7 @@ const ListUsers = () => {
               variant='contained'
               color='primary'
             >
-              Crear Usuario
+              Crear usuario
             </Button>
           </Link>
 
