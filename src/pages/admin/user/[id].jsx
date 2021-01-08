@@ -172,7 +172,7 @@ const ComponentUserInfo = () => {
                   Estado
                 </Typography>
                 <Typography color='initial'>
-                  Estado activo
+                  {user?.userStatus === true ? 'Activo' : 'Inactivo'}
                 </Typography>
               </Grid>
 

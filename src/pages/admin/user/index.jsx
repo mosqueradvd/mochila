@@ -17,9 +17,12 @@ import {
   Box,
   Typography,
   TableRow,
-  Container
+  Container,
+  Button
 } from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search'
+import { Search as SearchIcon, Edit as EditIcon } from '@material-ui/icons'
+import HowToRegSharpIcon from '@material-ui/icons/HowToRegSharp'
+
 import Skeleton from '@material-ui/lab/Skeleton'
 
 function descendingComparator (a, b, orderBy) {
@@ -53,7 +56,9 @@ const headCells = [
   { id: 'nombres_apellidos', numeric: false, label: 'Nombres y apellidos' },
   { id: 'id_organizacion', numeric: true, label: 'Organización' },
   { id: 'id_tipo_usuario', numeric: true, label: 'Rol' },
-  { id: 'ver', numeric: false, label: 'Ver' }
+  { id: 'ver', numeric: false, label: 'Ver' },
+  { id: 'modificar', numeric: false, label: 'Modificar' },
+  { id: 'habilitar', numeric: false, label: 'Habilitar/Deshabilitar' }
 ]
 
 function EnhancedTableHead (props) {
@@ -190,7 +195,7 @@ const ComponentListUsers = () => {
   return (
     <Layout pageTitle='listar usuarios'>
       <Container className={classes.container}>
-        <Box display='flex' justifyContent='center' className={classes.box}>
+        <Box display='flex' justifyContent='space-between' className={classes.box}>
           <Typography variant='h4' color='primary'>
             Listar usuarios
           </Typography>
@@ -240,7 +245,28 @@ const ComponentListUsers = () => {
                           <Link
                             href={`/admin/user/${row._id}`}
                           >
-                            <SearchIcon />
+                            <Button>
+                              <SearchIcon />
+                            </Button>
+
+                          </Link>
+                        </TableCell>
+                        <TableCell align='left'>
+                          <Link
+                            href={`/admin/user/edit/${row._id}`}
+                          >
+                            <Button>
+                              <EditIcon />
+                            </Button>
+                          </Link>
+                        </TableCell>
+                        <TableCell align='left'>
+                          <Link
+                            href={`/admin/user/enable-disable/${row._id}`}
+                          >
+                            <Button>
+                              <HowToRegSharpIcon />
+                            </Button>
                           </Link>
                         </TableCell>
                       </TableRow>
@@ -248,7 +274,7 @@ const ComponentListUsers = () => {
                   })}
                 {emptyRows > 0 && (
                   <TableRow>
-                    <TableCell colSpan={6} />
+                    <TableCell colSpan={7} />
                   </TableRow>
                 )}
               </TableBody>
