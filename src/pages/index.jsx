@@ -19,6 +19,7 @@ import ImageIcon from '@material-ui/icons/Image'
 import WorkIcon from '@material-ui/icons/Work'
 import CardMembershipIcon from '@material-ui/icons/CardMembership'
 import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices'
+import useUser from 'hooks/useUser'
 
 export { getServerSideProps } from 'lib/ssr'
 
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles()
+  const { isAuthenticated } = useUser()
 
   return (
     <Layout>
@@ -110,17 +112,17 @@ const Home = () => {
               </List>
             </div>
             <div>
-              <Link href='/api/login'>
-                <Button variant='outlined' color='primary' href='#outlined-buttons'>
-                  Ingresar
-                </Button>
-              </Link>
-
+              {!isAuthenticated && (
+                <Link href='/api/login'>
+                  <Button variant='outlined' color='primary' href='#outlined-buttons'>
+                    Ingresar
+                  </Button>
+                </Link>
+              )}
             </div>
           </Grid>
         </Grid>
       </Container>
-
     </Layout>
   )
 }
