@@ -107,7 +107,7 @@ const ComponentUserInfo = () => {
                   Organización
                 </Typography>
                 <Typography color='initial'>
-                  Organizacion
+                  {user?.userOrganization}
                 </Typography>
               </Grid>
 

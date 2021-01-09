@@ -111,7 +111,7 @@ const UserInfo = () => {
                   Organización
                 </Typography>
                 <Typography color='initial' className={classes.userInfo}>
-                  Organizacion
+                  {user?.userOrganization}
                 </Typography>
               </Grid>
 

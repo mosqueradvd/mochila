@@ -21,11 +21,11 @@ export async function findByEmail (userEmail) {
 }
 
 export async function create ({
-  userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus
+  userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus, userOrganization
 }) {
   const collection = await getCollection()
   const document = {
-    userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus
+    userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus, userOrganization
   }
 
   return await collection.insertOne(document)

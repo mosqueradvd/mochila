@@ -136,7 +136,7 @@ const DisableEnableUser = () => {
                   Organización
                 </Typography>
                 <Typography color='initial' className={classes.userInfo}>
-                  organización
+                  {user?.userOrganization}
                 </Typography>
               </Grid>
 

@@ -199,6 +199,14 @@ const ComponentListUsers = () => {
           <Typography variant='h4' color='primary'>
             Listar usuarios
           </Typography>
+          <Link href='/admin/user/new'>
+            <Button
+              variant='contained'
+              color='primary'
+            >
+              Crear usuario
+            </Button>
+          </Link>
         </Box>
 
         <Paper className={classes.paper}>
