@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       display: 'none'
-    }
+    },
+    color: 'white'
   },
   title: {
     flexGrow: 1
