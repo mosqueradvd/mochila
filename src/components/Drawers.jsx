@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import MenuAdmin from './MenuAdmin'
 import MenuManager from './MenuManager'
+import MenuOperator from './MenuOperator'
 
 const drawerWidth = 250
 
@@ -36,6 +37,7 @@ const Drawers = ({ variant, open, onClose }) => {
       <Divider />
       <MenuAdmin />
       <MenuManager />
+      <MenuOperator />
     </Drawer>
   )
 }
