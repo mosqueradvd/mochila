@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import Layout from 'components/Layout'
 import { IDENTIFICATION_TYPES, ROLES_TYPES } from 'lib/constans'
 import { useForm, Controller } from 'react-hook-form'
-import { fetchUserById, updateUser } from '@dux/usersSlice'
+import { fetchUserById, updateUser } from 'dux/usersSlice'
+import { fetchOrganizations } from 'dux/organizationsSlice'
 import {
   Grid,
   FormControl,
@@ -86,6 +87,10 @@ const User = () => {
 
   useEffect(() => {
     dispatch(fetchUserById(id))
+  }, [dispatch, id])
+
+  useEffect(() => {
+    dispatch(fetchOrganizations())
   }, [dispatch, id])
 
   useEffect(() => {

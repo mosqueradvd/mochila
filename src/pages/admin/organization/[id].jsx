@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   Card,
   Typography,
   Grid,
   Box,
-  Container
+  Container,
+  Button
 } from '@material-ui/core'
 import { fetchOrganizationById } from '@dux/organizationsSlice'
 import { makeStyles } from '@material-ui/core/styles'
@@ -14,9 +16,6 @@ import Layout from '@components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
   card: {
     textAlign: 'initial',
     padding: theme.spacing(3)
@@ -24,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     marginBottom: theme.spacing(2)
   },
-  fixmargin: {
-    marginRight: '20px'
-  },
   box: {
-    marginBottom: theme.spacing(5),
-    textAlign: 'center'
+    marginBottom: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column'
+    }
   },
   container: {
     marginBottom: theme.spacing(3),
@@ -71,149 +71,156 @@ const Info = () => {
   return (
     <Layout pageTitle='información del usuarios'>
       <Container className={classes.container}>
-        <div className={classes.root}>
-          <Card raised className={classes.card}>
-            <Box className={classes.box}>
+        <Box className={classes.box}>
+          <Typography
+            variant='h4'
+            color='primary'
+            gutterBottom
+            className={classes.tipography}
+          >
+            Información de la organización
+          </Typography>
+          <Link href={`/admin/organization/edit/${id}`}>
+            <Button
+              variant='contained'
+              color='primary'
+            >
+              Editar
+            </Button>
+          </Link>
+        </Box>
+        <Card raised className={classes.card}>
+
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={6} md={6}>
               <Typography
-                variant='h4'
                 color='primary'
                 gutterBottom
-                className={classes.tipography}
+                className={classes.typography}
               >
-                Información de la organización
+                Nombre de la Organización
               </Typography>
-            </Box>
-            <Grid container spacing={2}>
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Nombre de la Organización
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.name}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  NIT o Documento
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.identificationNumber}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Nombre del Representante Legal
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.legalRepresentative}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Tipo de Documento
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.identificationType}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Número de Documento
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.identification}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Número de Celular
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.phone}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Correo Electrónico
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.email}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Departamento
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.departament}
-                </Typography>
-              </Grid>
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Municipio
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.city}
-                </Typography>
-              </Grid>
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Resguardo y/o Cabildo
-                </Typography>
-                <Typography color='initial'>
-                  {organization?.community}
-                </Typography>
-              </Grid>
+              <Typography color='initial'>
+                {organization?.name}
+              </Typography>
             </Grid>
-          </Card>
-        </div>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                NIT o Documento
+              </Typography>
+              <Typography color='initial'>
+                {organization?.identificationNumber}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Nombre del Representante Legal
+              </Typography>
+              <Typography color='initial'>
+                {organization?.legalRepresentative}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Tipo de Documento
+              </Typography>
+              <Typography color='initial'>
+                {organization?.identificationType}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Número de Documento
+              </Typography>
+              <Typography color='initial'>
+                {organization?.identification}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Número de Celular
+              </Typography>
+              <Typography color='initial'>
+                {organization?.phone}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Correo Electrónico
+              </Typography>
+              <Typography color='initial'>
+                {organization?.email}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Departamento
+              </Typography>
+              <Typography color='initial'>
+                {organization?.departament}
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Municipio
+              </Typography>
+              <Typography color='initial'>
+                {organization?.city}
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Resguardo y/o Cabildo
+              </Typography>
+              <Typography color='initial'>
+                {organization?.community}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Card>
       </Container>
     </Layout>
   )
