@@ -38,19 +38,12 @@ import InfoIcon from '@material-ui/icons/Info'
 import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
   card: {
     padding: theme.spacing(5),
     textAling: 'initial'
   },
   box: {
     marginBottom: theme.spacing(2)
-  },
-  container: {
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2)
   },
   textField: {
     marginTop: theme.spacing(1)
@@ -66,17 +59,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  checkWrapper: {
-    width: '100%',
-    margin: theme.spacing(2),
-    display: 'flex'
-  },
   tableContainer: {
     marginTop: theme.spacing(2)
-  },
-  table: {
-    minWidth: 700,
-    borderRadius: '9px'
   },
   selectInput: {
     minWidth: 100
@@ -610,7 +594,6 @@ const Project = () => {
 
                         </FormControl>
                         <input
-                        // accept="image/*"
                           className={classes.input}
                           id='contained-button-file'
                           type='file'
@@ -648,7 +631,7 @@ const Project = () => {
                   elevation={1}
                   className={classes.tableContainer}
                 >
-                  <Table className={classes.table} aria-label='docs'>
+                  <Table aria-label='docs'>
                     <TableHead>
                       <TableRow>
                         <StyledTabletCell align='center'>No.</StyledTabletCell>

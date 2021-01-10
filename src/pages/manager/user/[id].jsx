@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import {
-  Card, Typography, Grid, Box, Container
+  Card, Typography, Grid, Box, Container, Button
 } from '@material-ui/core'
 import { fetchUserById } from '@dux/usersSlice'
 import {
@@ -12,9 +13,6 @@ import Layout from '@components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
   card: {
     textAlign: 'initial',
     padding: theme.spacing(3)
@@ -22,15 +20,13 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     marginBottom: theme.spacing(2)
   },
-  userInfo: {
-    color: '#818181'
-  },
-  fixmargin: {
-    marginRight: '20px'
-  },
   box: {
-    marginBottom: theme.spacing(5),
-    textAlign: 'center'
+    marginBottom: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column'
+    }
   },
   container: {
     marginBottom: theme.spacing(3),
@@ -76,125 +72,131 @@ const UserInfo = () => {
   return (
     <Layout pageTitle='información del usuarios'>
       <Container className={classes.container}>
-        <div className={classes.root}>
-          <Card raised className={classes.card}>
-            <Box className={classes.box}>
+        <Box className={classes.box}>
+          <Typography
+            variant='h4'
+            color='primary'
+            gutterBottom
+            className={classes.tipography}
+          >
+            Información del usuario
+          </Typography>
+          <Link href={`/manager/user/edit/${id}`}>
+            <Button
+              variant='contained'
+              color='primary'
+            >
+              Editar
+            </Button>
+          </Link>
+        </Box>
+        <Card raised className={classes.card}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h4'
                 color='primary'
                 gutterBottom
-                className={classes.tipography}
+                className={classes.typography}
               >
-                Información del usuario
+                Nombre
               </Typography>
-            </Box>
-            <Grid container spacing={2}>
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Nombre
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userName}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Organización
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userOrganization}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Tipo de Documento
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userIdentificationType}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Número
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userIdentification}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Correo Electrónico
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userEmail}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Celular
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userPhone}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Estado
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userStatus === true ? 'Activo' : 'Inactivo'}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Rol
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userRol}
-                </Typography>
-              </Grid>
+              <Typography color='initial'>
+                {user?.userName}
+              </Typography>
             </Grid>
-          </Card>
-        </div>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Organización
+              </Typography>
+              <Typography color='initial'>
+                {user?.userOrganization}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Tipo de Documento
+              </Typography>
+              <Typography color='initial'>
+                {user?.userIdentificationType}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Número
+              </Typography>
+              <Typography color='initial'>
+                {user?.userIdentification}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Correo Electrónico
+              </Typography>
+              <Typography color='initial'>
+                {user?.userEmail}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Celular
+              </Typography>
+              <Typography color='initial' className={classes.userInfo}>
+                {user?.userPhone}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Estado
+              </Typography>
+              <Typography color='initial' className={classes.userInfo}>
+                {user?.userStatus === true ? 'Activo' : 'Inactivo'}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Rol
+              </Typography>
+              <Typography color='initial' className={classes.userInfo}>
+                {user?.userRol}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Card>
       </Container>
     </Layout>
   )
