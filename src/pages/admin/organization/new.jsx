@@ -94,13 +94,7 @@ const Organization = () => {
 
   const onSubmit = data => {
     const { nombre: departament } = data.departament
-    const { key: identificationType } = data.identificationType
-
-    const {
-      name, identificationNumber, legalRepresentative, identification, phone, email,
-      city, community
-    } = data
-
+    const { name, identificationNumber, identificationType, legalRepresentative, identification, phone, email, city, community } = data
     dispatch(createOrganization({
       name,
       identificationNumber,
@@ -216,7 +210,7 @@ const Organization = () => {
                         <Select shrink='true' labelWidth={labelWidthTown}>
                           {docTypes.map((doc, index) => {
                             return (
-                              <MenuItem key={index} value={doc}>
+                              <MenuItem key={index} value={doc.key}>
                                 {doc.value}
                               </MenuItem>
                             )

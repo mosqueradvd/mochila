@@ -15,21 +15,16 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getIdentificationTypeById, getRolesTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
   card: {
     textAlign: 'initial',
     padding: theme.spacing(3)
   },
   typography: {
     marginBottom: theme.spacing(2)
-  },
-  userInfo: {
-    color: '#818181'
   },
   box: {
     marginBottom: theme.spacing(5),
@@ -77,8 +72,9 @@ const DisableEnableUser = () => {
         id,
         data
       })
-    )
-    router.push('/admin')
+    ).then(() => {
+      router.push('/admin')
+    })
   }
 
   if (isLoading) {
@@ -99,136 +95,134 @@ const DisableEnableUser = () => {
   return (
     <Layout pageTitle='habilitar - deshabilitar usuario'>
       <Container className={classes.container}>
-        <div className={classes.root}>
-          <Card raised className={classes.card}>
-            <Box className={classes.box}>
+        <Card raised className={classes.card}>
+          <Box className={classes.box}>
+            <Typography
+              variant='h4'
+              color='primary'
+              gutterBottom
+              className={classes.tipography}
+            >
+              Habilitar o deshabilitar un usuario
+            </Typography>
+          </Box>
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={6} md={6}>
               <Typography
-                variant='h4'
                 color='primary'
                 gutterBottom
-                className={classes.tipography}
+                className={classes.typography}
               >
-                Habilitar o deshabilitar un usuario
+                Nombre
               </Typography>
-            </Box>
-            <Grid container spacing={2}>
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Nombre
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userName}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Organización
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  organización
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Tipo de Documento
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userIdentificationType}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Número
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userIdentification}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Correo Electrónico
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userEmail}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Celular
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userPhone}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Estado
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userStatus === true ? 'Activo' : 'Inactivo'}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Rol
-                </Typography>
-                <Typography color='initial' className={classes.userInfo}>
-                  {user?.userRol}
-                </Typography>
-              </Grid>
+              <Typography color='initial'>
+                {user?.userName}
+              </Typography>
             </Grid>
-            <div className={classes.button}>
-              <Button
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
                 color='primary'
-                variant='contained'
-                fullWidth
-                type='submit'
-                onClick={handleState}
+                gutterBottom
+                className={classes.typography}
               >
-                {user?.userStatus === true ? 'Deshabilitar' : 'habilitar'}
-              </Button>
-            </div>
-          </Card>
-        </div>
+                Organización
+              </Typography>
+              <Typography color='initial'>
+                organización
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Tipo de Documento
+              </Typography>
+              <Typography color='initial'>
+                {getIdentificationTypeById(user?.userIdentificationType)?.value}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Número
+              </Typography>
+              <Typography color='initial'>
+                {user?.userIdentification}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Correo Electrónico
+              </Typography>
+              <Typography color='initial'>
+                {user?.userEmail}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Celular
+              </Typography>
+              <Typography color='initial'>
+                {user?.userPhone}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Estado
+              </Typography>
+              <Typography color='initial'>
+                {user?.userStatus === true ? 'Activo' : 'Inactivo'}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} sm={6} md={6}>
+              <Typography
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Rol
+              </Typography>
+              <Typography color='initial'>
+                {getRolesTypeById(user?.userRol)?.value}
+              </Typography>
+            </Grid>
+          </Grid>
+          <div className={classes.button}>
+            <Button
+              color='primary'
+              variant='contained'
+              fullWidth
+              type='submit'
+              onClick={handleState}
+            >
+              {user?.userStatus === true ? 'Deshabilitar' : 'habilitar'}
+            </Button>
+          </div>
+        </Card>
       </Container>
     </Layout>
   )

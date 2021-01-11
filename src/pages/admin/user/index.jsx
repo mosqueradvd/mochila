@@ -23,6 +23,7 @@ import {
 import { Search as SearchIcon, Edit as EditIcon } from '@material-ui/icons'
 import HowToRegSharpIcon from '@material-ui/icons/HowToRegSharp'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getRolesTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 function descendingComparator (a, b, orderBy) {
@@ -240,7 +241,7 @@ const ComponentListUsers = () => {
                           {row.userName}
                         </TableCell>
                         <TableCell align='left'>organizacion</TableCell>
-                        <TableCell align='left'>{row.userRol}</TableCell>
+                        <TableCell align='left'>{getRolesTypeById(row.userRol)?.value}</TableCell>
                         <TableCell align='left'>
                           <Link
                             href={`/admin/user/${row._id}`}

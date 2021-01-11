@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core/styles'
 import Layout from '@components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getIdentificationTypeById, getRolesTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +55,7 @@ const ComponentUserInfo = () => {
   useEffect(() => {
     dispatch(fetchUserById(id))
   }, [dispatch, id])
+
   if (isLoading) {
     return (
       <div className={classes.skeleton}>
@@ -69,6 +71,7 @@ const ComponentUserInfo = () => {
       </div>
     )
   }
+
   return (
     <Layout pageTitle='información del usuario'>
       <Container className={classes.container}>
@@ -128,7 +131,7 @@ const ComponentUserInfo = () => {
                 Tipo de Documento
               </Typography>
               <Typography color='initial'>
-                {user?.userIdentificationType}
+                {getIdentificationTypeById(user?.userIdentificationType)?.value}
               </Typography>
             </Grid>
 
@@ -192,9 +195,7 @@ const ComponentUserInfo = () => {
               >
                 Rol
               </Typography>
-              <Typography color='initial'>
-                {user?.userRol}
-              </Typography>
+              <Typography color='initial'>{getRolesTypeById(user?.userRol)?.value}</Typography>
             </Grid>
           </Grid>
         </Card>
