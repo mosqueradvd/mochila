@@ -14,6 +14,7 @@ import { fetchOrganizationById } from '@dux/organizationsSlice'
 import { makeStyles } from '@material-ui/core/styles'
 import Layout from '@components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getIdentificationTypeById } from 'lib/helpers'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -140,7 +141,7 @@ const Info = () => {
                 Tipo de Documento
               </Typography>
               <Typography color='initial'>
-                {organization?.identificationType}
+                {getIdentificationTypeById(organization?.identificationType)?.value}
               </Typography>
             </Grid>
 

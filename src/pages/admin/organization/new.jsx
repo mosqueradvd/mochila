@@ -107,7 +107,7 @@ const Organization = () => {
 
   const onSubmit = data => {
     const { nombre: departament } = data.departament
-    const { value: identificationType } = data.identificationType
+    const { key: identificationType } = data.identificationType
 
     const {
       name, identificationNumber, legalRepresentative, identification, phone, email,
@@ -125,8 +125,9 @@ const Organization = () => {
       departament,
       city,
       community
-    }))
-    router.push('/admin')
+    })).then(() => {
+      router.push('/admin')
+    })
   }
 
   if (isLoading) {
@@ -234,7 +235,7 @@ const Organization = () => {
                             )
                           })}
                         </Select>
-                    }
+                      }
                       name='identificationType'
                       id='identificationType'
                       variant='outlined'
