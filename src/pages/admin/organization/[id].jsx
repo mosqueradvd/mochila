@@ -10,9 +10,9 @@ import {
   Container,
   Button
 } from '@material-ui/core'
-import { fetchOrganizationById } from '@dux/organizationsSlice'
+import { fetchOrganizationById } from 'dux/organizationsSlice'
 import { makeStyles } from '@material-ui/core/styles'
-import Layout from '@components/Layout'
+import Layout from 'components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
 import { getIdentificationTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'

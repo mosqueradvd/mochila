@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import { fetchUserById, updateUserStatus } from '@dux/usersSlice'
+import { fetchUserById, updateUserStatus } from 'dux/usersSlice'
 import Layout from 'components/Layout'
 import {
   Card,

@@ -5,11 +5,11 @@ import { useRouter } from 'next/router'
 import {
   Card, Typography, Grid, Box, Container, Button
 } from '@material-ui/core'
-import { fetchUserById } from '@dux/usersSlice'
+import { fetchUserById } from 'dux/usersSlice'
 import {
   makeStyles
 } from '@material-ui/core/styles'
-import Layout from '@components/Layout'
+import Layout from 'components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
 export { getServerSideProps } from 'lib/ssr'
 

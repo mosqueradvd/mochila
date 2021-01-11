@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchOrganizations } from '@dux/organizationsSlice'
+import { fetchOrganizations } from 'dux/organizationsSlice'
 import Layout from 'components/Layout'
 import { IDENTIFICATION_TYPES, ROLES_TYPES } from 'lib/constans'
 import { useForm, Controller } from 'react-hook-form'
-import { createUser } from '@dux/usersSlice'
+import { createUser } from 'dux/usersSlice'
 import {
   Grid,
   FormControl,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from 'components/Layout'
-import { fetchUsers } from '@dux/usersSlice'
+import { fetchUsers } from 'dux/usersSlice'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import {

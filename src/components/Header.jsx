@@ -6,7 +6,7 @@ import { AppBar, Toolbar, Typography, IconButton, Button } from '@material-ui/co
 
 import MenuIcon from '@material-ui/icons/Menu'
 import { useSelector } from 'react-redux'
-import { getCurrentUser } from '@dux/loginSlice'
+import { getCurrentUser } from 'dux/loginSlice'
 
 const drawerWidth = 250
 

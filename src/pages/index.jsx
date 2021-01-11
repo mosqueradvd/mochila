@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '@components/Layout'
+import Layout from 'components/Layout'
 import { makeStyles } from '@material-ui/core/styles'
 import Homepage from '../static/homepage'
 import Link from 'next/link'

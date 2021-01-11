@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import Layout from '@components/Layout'
+import Layout from 'components/Layout'
 import { fetchOrganizations } from 'dux/organizationsSlice'
 import Skeleton from '@material-ui/lab/Skeleton'
 export { getServerSideProps } from 'lib/ssr'

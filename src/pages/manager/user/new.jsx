@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Layout from 'components/Layout'
 import { IDENTIFICATION_TYPES, ROLES_TYPES } from 'lib/constans'
 import { useForm, Controller } from 'react-hook-form'
-import { createUser } from '@dux/usersSlice'
+import { createUser } from 'dux/usersSlice'
 import {
   Grid,
   FormControl,

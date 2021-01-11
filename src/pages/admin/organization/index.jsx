@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from 'components/Layout'
-import { fetchOrganizations } from '@dux/organizationsSlice'
+import { fetchOrganizations } from 'dux/organizationsSlice'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import {

@@ -1,4 +1,4 @@
-import { setCurrentUser } from '@dux/loginSlice'
+import { setCurrentUser } from 'dux/loginSlice'
 import { initializeStore } from 'dux/store'
 import { getCurrentUser } from './auth0'
 import * as userModel from 'models/user'

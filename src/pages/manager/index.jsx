@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
-import { fetchProjects } from '@dux/projectsSlice'
+import { fetchProjects } from 'dux/projectsSlice'
 import Skeleton from '@material-ui/lab/Skeleton'
 export { getServerSideProps } from 'lib/ssr'
 
