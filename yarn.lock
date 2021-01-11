@@ -3170,6 +3170,11 @@ eslint-plugin-import@^2.22.1:
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
+eslint-plugin-mui-unused-classes@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mui-unused-classes/-/eslint-plugin-mui-unused-classes-1.0.3.tgz#5601c17ac6094b36452117fe84792eeaaddc23a8"
+  integrity sha512-hsvoxxcL189LSyUyBvak+tK7XHKvoAiUBQpnCRyx6hLf4FTE+WWNtE9cRwcUwZvdh+E/wLHGp9JpNveQcQpUTw==
+
 eslint-plugin-node@^11.1.0:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-node/-/eslint-plugin-node-11.1.0.tgz#c95544416ee4ada26740a30474eefc5402dc671d"
