@@ -82,7 +82,7 @@ const Info = () => {
           >
             Información de la organización
           </Typography>
-          <Link href={`/admin/organization/edit/${id}`}>
+          <Link href={`/admin/organization/edit/${id}`} shallow>
             <Button
               variant='contained'
               color='primary'

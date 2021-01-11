@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import * as API from 'apiClient/organizations'
 
 const initialState = {
   data: [],
@@ -6,33 +7,10 @@ const initialState = {
   isLoading: false
 }
 
-export const fetchOrganizations = createAsyncThunk('organizations/fetchAll', async () => {
-  const response = await fetch('/api/organizations')
-  return await response.json()
-})
-
-export const fetchOrganizationById = createAsyncThunk('organizations/fetchById', async (id) => {
-  const response = await fetch(`/api/organizations/${id}`)
-  return await response.json()
-})
-
-export const createOrganization = createAsyncThunk('organizations/create', async (data) => {
-  const response = await fetch('/api/organizations', {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
-
-export const updateOrganization = createAsyncThunk('organizations/update', async ({ id, data }) => {
-  const response = await fetch(`/api/organizations/${id}`, {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
+export const fetchOrganizations = createAsyncThunk('organizations/all', () => API.getAll())
+export const fetchOrganizationById = createAsyncThunk('organizations/id', (id) => API.getOne(id))
+export const createOrganization = createAsyncThunk('organizations/create', (data) => API.create(data))
+export const updateOrganization = createAsyncThunk('organizations/update', ({ id, data }) => API.update({ id, data }))
 
 const organizationsSlice = createSlice({
   name: 'organizationsSlice',
@@ -74,7 +52,5 @@ const organizationsSlice = createSlice({
     }
   }
 })
-
-export const getCurrentUser = (state) => state.user
 
 export default organizationsSlice.reducer

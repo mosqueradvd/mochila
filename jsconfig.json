@@ -3,13 +3,13 @@
     "jsx": "react",
     "baseUrl": "./src",
     "paths": {
-      "@components/*": [
+      "components/*": [
         "./components/*"
       ],
-      "@lib/*": [
+      "lib/*": [
         "./lib/*"
       ],
-      "@dux/*": [
+      "dux/*": [
         "./dux/*"
       ]
     }

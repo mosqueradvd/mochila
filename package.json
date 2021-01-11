@@ -16,16 +16,21 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@reduxjs/toolkit": "^1.5.0",
+    "aws-sdk": "^2.824.0",
+    "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "humps": "^2.0.1",
     "mongodb": "^3.6.3",
     "next": "10.0.1",
     "next-transpile-modules": "^4.1.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-dropzone": "^11.2.4",
     "react-hook-form": "^6.12.2",
-    "react-redux": "^7.2.2"
+    "react-redux": "^7.2.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

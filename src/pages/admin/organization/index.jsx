@@ -244,7 +244,8 @@ const ComponentListOrganizations = () => {
                         <TableCell align='left'>
                           <Button>
                             <Link
-                              href={`/admin/organization/${row._id}`}
+                              href={`/admin/organization/${row.id}`}
+                              shallow
                             >
                               <SearchIcon />
                             </Link>
@@ -254,7 +255,8 @@ const ComponentListOrganizations = () => {
                         <TableCell align='left'>
                           <Button>
                             <Link
-                              href={`/admin/organization/edit/${row._id}`}
+                              href={`/admin/organization/edit/${row.id}`}
+                              shallow
                             >
                               <EditIcon />
                             </Link>
