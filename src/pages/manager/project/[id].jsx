@@ -24,6 +24,7 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   container: {

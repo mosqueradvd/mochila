@@ -36,6 +36,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -44,9 +45,6 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(2)
-  },
-  textField: {
-    marginTop: theme.spacing(1)
   },
   formControl: {
     minWidth: '100%',
@@ -64,9 +62,6 @@ const useStyles = makeStyles((theme) => ({
   },
   selectInput: {
     minWidth: 100
-  },
-  downloadFile: {
-    cursor: 'pointer'
   },
   input: {
     display: 'none'

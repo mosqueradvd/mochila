@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { fetchProjects } from '@dux/projectsSlice'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,14 +27,6 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 275,
     maxWidth: 300,
     marginLeft: theme.spacing(4)
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)'
-  },
-  title: {
-    fontSize: 14
   },
   pos: {
     marginBottom: 12
@@ -48,11 +41,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
-  },
-  pagination: {
-    '& > *': {
-      marginTop: theme.spacing(2)
-    }
   },
   skeleton: {
     marginTop: theme.spacing(3),

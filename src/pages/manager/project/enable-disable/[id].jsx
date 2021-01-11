@@ -23,6 +23,7 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,13 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
   userInfo: {
     color: '#818181'
-  },
-  fixmargin: {
-    marginRight: '20px'
-  },
-  checkWrapper: {
-    width: '100%',
-    margin: theme.spacing(1)
   },
   titles: {
     width: '100%',

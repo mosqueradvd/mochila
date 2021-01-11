@@ -39,10 +39,7 @@ const styles = makeStyles((theme) => ({
     paddingTop: theme.spacing(5),
     textAlign: 'center'
   },
-  toolbar: theme.mixins.toolbar,
-  mainTitle: {
-    marginBottom: '1.5em'
-  }
+  toolbar: theme.mixins.toolbar
 }))
 const DEFAULT_TITLE = 'Mochila Proyectos'
 

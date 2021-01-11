@@ -25,6 +25,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook'
 import LibraryAddCheckIcon from '@material-ui/icons/LibraryAddCheck'
 import CardMembershipIcon from '@material-ui/icons/CardMembership'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 function descendingComparator (a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -102,9 +103,6 @@ EnhancedTableHead.propTypes = {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%'
-  },
   container: {
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
@@ -129,11 +127,6 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(1)
-  },
-  search: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(6),
-    maxWidth: 400
   },
   skeleton: {
     marginTop: theme.spacing(3),

@@ -30,9 +30,6 @@ const useStyles = makeStyles((theme) => ({
   userInfo: {
     color: '#818181'
   },
-  fixmargin: {
-    marginRight: '20px'
-  },
   box: {
     marginBottom: theme.spacing(5),
     textAlign: 'center'

@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core/styles'
 import Layout from '@components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   card: {

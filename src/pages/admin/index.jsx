@@ -15,11 +15,6 @@ import Skeleton from '@material-ui/lab/Skeleton'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
-  tipography: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '2em'
-    }
-  },
   container: {
     backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),

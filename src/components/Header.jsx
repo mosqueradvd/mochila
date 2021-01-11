@@ -21,12 +21,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1
   },
-  subtitle: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.only('xs')]: {
-      display: 'none'
-    }
-  },
   appBar: {
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,

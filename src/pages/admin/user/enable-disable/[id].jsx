@@ -15,6 +15,7 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
   userInfo: {
     color: '#818181'
-  },
-  fixmargin: {
-    marginRight: '20px'
   },
   box: {
     marginBottom: theme.spacing(5),

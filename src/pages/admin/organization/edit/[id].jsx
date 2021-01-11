@@ -31,10 +31,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'initial'
   },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(2)
-  },
   formControl: {
     minWidth: '100%',
     marginTop: theme.spacing(1)
@@ -46,15 +42,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: theme.spacing(2),
     marginLeft: theme.spacing(1)
-  },
-  adminData: {
-    display: 'flex',
-    flexGrow: 1
-  },
-  adminButton: {
-    flexGrow: 1,
-    marginTop: theme.spacing(1),
-    padding: theme.spacing(1)
   },
   TextField: {
     marginTop: theme.spacing(1)

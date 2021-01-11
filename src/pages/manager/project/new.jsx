@@ -35,6 +35,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles'
 import InfoIcon from '@material-ui/icons/Info'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
+export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,15 +60,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     marginLeft: theme.spacing(1)
   },
-  adminData: {
-    display: 'flex',
-    flexGrow: 1
-  },
-  adminButton: {
-    flexGrow: 1,
-    marginTop: theme.spacing(1),
-    padding: theme.spacing(1)
-  },
   TextField: {
     marginTop: theme.spacing(1)
   },
@@ -82,10 +74,6 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(2)
-  },
-  checkWrapper: {
-    width: '100%',
-    margin: theme.spacing(2)
   },
   tableContainer: {
     marginTop: theme.spacing(2)
