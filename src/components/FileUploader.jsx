@@ -44,7 +44,6 @@ const FileUploader = ({ error, filePrefix, onChange }) => {
         file,
         onProgress: setProgress
       })
-      setProgress(0)
       onChange(fileUrl)
     },
 

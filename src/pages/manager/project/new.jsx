@@ -35,6 +35,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles'
 import InfoIcon from '@material-ui/icons/Info'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
+import FileUploader from 'components/FileUploader'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -84,10 +85,6 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     display: 'none'
-  },
-
-  buttonCargar: {
-    marginTop: theme.spacing(2)
   }
 }))
 
@@ -121,7 +118,7 @@ const Project = () => {
   const [attached, setAttached] = useState([])
   const [itemName, setItemName] = useState('')
   const [itemType, setItemType] = useState('')
-  const [itemAttached] = useState('url-archivo')
+  const [itemAttached, setItemAttachment] = useState()
 
   const addItem = (event) => {
     event.preventDefault()
@@ -134,8 +131,9 @@ const Project = () => {
         attachedArchive: itemAttached
       }
     ])
-    setItemName('')
 
+    setItemName('')
+    setItemAttachment('')
     setOpen(false)
   }
 
@@ -591,16 +589,7 @@ const Project = () => {
                           id='contained-button-file'
                           type='file'
                         />
-                        <label htmlFor='contained-button-file'>
-                          <Button
-                            variant='contained'
-                            color='primary'
-                            component='span'
-                            className={classes.buttonCargar}
-                          >
-                            Cargar archivo
-                          </Button>
-                        </label>
+                        <FileUploader filePrefix='test' onChange={(file) => { setItemAttachment(file) }} />
                       </DialogContent>
                       <DialogActions>
                         <Button onClick={handleClose} color='primary'>
