@@ -11,7 +11,6 @@ export async function getServerSideProps ({ req, res }) {
 
   if (user) {
     const userFromDB = await userModel.findByEmail(user.email)
-    console.log(userFromDB)
 
     if (userFromDB) {
       const { userEmail, userName, userRol, userStatus, organizationId = null } = userFromDB

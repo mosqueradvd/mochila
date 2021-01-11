@@ -22,6 +22,7 @@ import {
 } from '@material-ui/core'
 import { Search as SearchIcon, Edit as EditIcon } from '@material-ui/icons'
 import Skeleton from '@material-ui/lab/Skeleton'
+export { getServerSideProps } from 'lib/ssr'
 
 function descendingComparator (a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -147,7 +148,6 @@ const ComponentListOrganizations = () => {
     dispatch(fetchOrganizations())
   }, [dispatch])
 
-  console.log('organization', organizations)
   const classes = useStyles()
   const [order, setOrder] = useState('asc')
   const [orderBy, setOrderBy] = useState('calories')
