@@ -8,7 +8,7 @@ const axiosConfig = {
     data => humps.camelizeKeys(data)
   ],
   transformRequest: [
-    data => humps.decamelizeKeys(data),
+    data => humps.camelizeKeys(data),
     ...axios.defaults.transformRequest
   ]
 }

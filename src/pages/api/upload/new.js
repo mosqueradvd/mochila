@@ -8,7 +8,7 @@ AWS.config.update({ accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SECRET_
 AWS.config.update({ region: AWS_S3_UPLOADS_REGION })
 const signedUrlExpireSeconds = 60 * 5
 
-export default async function me (req, res) {
+export default async function handler (req, res) {
   try {
     const { query: { fileName, contentType } } = req
     const uploadId = uuidv4()
