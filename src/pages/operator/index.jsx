@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from 'components/Layout'
+import DownloadPDF from 'components/DownloadPDF'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects } from 'dux/projectsSlice'
 import PropTypes from 'prop-types'
@@ -19,7 +20,6 @@ import {
   Container,
   Button
 } from '@material-ui/core'
-import CardMembershipIcon from '@material-ui/icons/CardMembership'
 import Skeleton from '@material-ui/lab/Skeleton'
 export { getServerSideProps } from 'lib/ssr'
 
@@ -234,7 +234,12 @@ export default function ListProjects () {
 
                         <TableCell align='left'>
                           <Button>
-                            <CardMembershipIcon />
+                            <DownloadPDF
+                              projectName={row.projectName}
+                              projectLocation={row.projectLocation}
+                              projectValueInLetters={row.projectValueInLetters}
+                              projectValueInNumbers={row.projectValueInNumbers}
+                            />
                           </Button>
                         </TableCell>
                       </TableRow>

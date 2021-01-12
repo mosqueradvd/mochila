@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Layout from 'components/Layout'
+import DownloadPDF from 'components/DownloadPDF'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects } from 'dux/projectsSlice'
 import PropTypes from 'prop-types'
@@ -23,7 +24,6 @@ import {
 import SearchIcon from '@material-ui/icons/Search'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
 import LibraryAddCheckIcon from '@material-ui/icons/LibraryAddCheck'
-import CardMembershipIcon from '@material-ui/icons/CardMembership'
 import Skeleton from '@material-ui/lab/Skeleton'
 import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
@@ -275,13 +275,14 @@ export default function ListProjects () {
                           </Link>
                         </TableCell>
                         <TableCell align='left'>
-                          <Link
-                            href={`/manager/project/certificate/${row._id}`}
-                          >
-                            <Button>
-                              <CardMembershipIcon />
-                            </Button>
-                          </Link>
+                          <Button>
+                            <DownloadPDF
+                              projectName={row.projectName}
+                              projectLocation={row.projectLocation}
+                              projectValueInLetters={row.projectValueInLetters}
+                              projectValueInNumbers={row.projectValueInNumbers}
+                            />
+                          </Button>
                         </TableCell>
                       </TableRow>
                     )
