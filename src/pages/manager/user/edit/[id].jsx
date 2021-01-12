@@ -22,12 +22,10 @@ import {
 import InfoIcon from '@material-ui/icons/Info'
 import { makeStyles } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getIdentificationTypeById, getRolesTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
   card: {
     padding: theme.spacing(2),
     textAlign: 'initial'
@@ -81,7 +79,7 @@ const User = () => {
 
   const onSubmit = (data) => {
     dispatch(updateUser({ id, data }))
-    router.push('/admin')
+    router.push('/manager')
   }
 
   useEffect(() => {
@@ -111,213 +109,211 @@ const User = () => {
     <Layout pageTitle='Nuevo usuario'>
       <Container className={classes.container}>
         <CssBaseline />
-        <div className={classes.root}>
-          <Box display='flex' justifyContent='center' className={classes.box}>
-            <Typography
-              variant='h4'
-              color='primary'
-              gutterBottom
-              className={classes.tipography}
-            >
-              Modificar usuario
-            </Typography>
-          </Box>
-          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-            <Card raised className={classes.card}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={6}>
-                  <TextField
-                    className={classes.TextField}
-                    id='userName'
-                    name='userName'
-                    defaultValue={user?.userName}
-                    label='Nombres y apellidos'
+        <Box display='flex' justifyContent='center' className={classes.box}>
+          <Typography
+            variant='h4'
+            color='primary'
+            gutterBottom
+            className={classes.tipography}
+          >
+            Modificar usuario
+          </Typography>
+        </Box>
+        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+          <Card raised className={classes.card}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6} md={6}>
+                <TextField
+                  className={classes.TextField}
+                  id='userName'
+                  name='userName'
+                  defaultValue={user?.userName}
+                  label='Nombres y apellidos'
+                  variant='outlined'
+                  inputRef={register({ required: true })}
+                  fullWidth
+                />
+                {errors.userName && (
+                  <Typography>
+                    <InfoIcon color='error' fontSize='small' />
+                    Campo obligatorio
+                  </Typography>
+                )}
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={6}>
+                <FormControl
+                  className={classes.formControl}
+                  variant='outlined'
+                >
+                  <InputLabel ref={inputLabel} id='userIdentificationType'>
+                    Tipo de documento
+                  </InputLabel>
+                  <Controller
+                    as={
+                      <Select shrink='true' labelWidth={labelWidthTypeProject}>
+                        {docTypes.map((doc, index) => {
+                          return (
+                            <MenuItem key={index} value={doc.key}>
+                              {doc.value}
+                            </MenuItem>
+                          )
+                        })}
+                      </Select>
+                    }
+                    id='userIdentificationType'
+                    name='userIdentificationType'
                     variant='outlined'
-                    inputRef={register({ required: true })}
-                    fullWidth
+                    control={control}
+                    rules={{ required: true }}
+                    className={classes.selectInput}
+                    defaultValue={getIdentificationTypeById(user?.userIdentificationType)?.key}
                   />
-                  {errors.userName && (
-                    <Typography>
+                  {errors.userIdentificationType && (
+                    <Typography variant='caption' color='error'>
                       <InfoIcon color='error' fontSize='small' />
                       Campo obligatorio
                     </Typography>
                   )}
-                </Grid>
+                </FormControl>
+              </Grid>
 
-                <Grid item xs={12} sm={6} md={6}>
-                  <FormControl
-                    className={classes.formControl}
-                    variant='outlined'
+              <Grid item xs={12} sm={6} md={6}>
+                <TextField
+                  className={classes.TextField}
+                  id='userIdentification'
+                  name='userIdentification'
+                  defaultValue={user?.userIdentification}
+                  label='Número de documento'
+                  variant='outlined'
+                  inputRef={register({ required: true })}
+                  fullWidth
+                />
+                {errors.userIdentification && (
+                  <Typography>
+                    <InfoIcon color='error' fontSize='small' />
+                    Campo obligatorio
+                  </Typography>
+                )}
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={6}>
+                <TextField
+                  name='userEmail'
+                  className={classes.TextField}
+                  id='userEmail'
+                  defaultValue={user?.userEmail}
+                  label='Correo Electrónico'
+                  variant='outlined'
+                  fullWidth
+                  inputRef={register({
+                    required: 'Campo obligatorio',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'Formato de correo inválido'
+                    }
+                  })}
+                />
+                {errors.userEmail && (
+                  <Typography
+                    variant='caption'
+                    color='error'
+                    className={classes.errorField}
                   >
-                    <InputLabel ref={inputLabel} id='userIdentificationType'>
-                      Tipo de documento
-                    </InputLabel>
-                    <Controller
-                      as={
-                        <Select shrink='true' labelWidth={labelWidthTypeProject}>
-                          {docTypes.map((doc, index) => {
+                    <InfoIcon
+                      color='error'
+                      fontSize='small'
+                      className={classes.errorIcon}
+                    />
+                    {errors.userEmail.message}
+                  </Typography>
+                )}
+                {errors.userEmail === ' ' && (
+                  <Typography
+                    variant='caption'
+                    color='error'
+                    className={classes.errorField}
+                  >
+                    <InfoIcon
+                      color='error'
+                      fontSize='small'
+                      className={classes.errorIcon}
+                    />
+                    {errors.userEmail.message}
+                  </Typography>
+                )}
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={6}>
+                <TextField
+                  className={classes.TextField}
+                  id='userPhone'
+                  name='userPhone'
+                  label='Telefono'
+                  defaultValue={user?.userPhone}
+                  variant='outlined'
+                  inputRef={register({ required: true })}
+                  fullWidth
+                />
+                {errors.userPhone && (
+                  <Typography>
+                    <InfoIcon color='error' fontSize='small' />
+                    Campo obligatorio
+                  </Typography>
+                )}
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={6}>
+                <FormControl
+                  className={classes.formControl}
+                  variant='outlined'
+                >
+                  <InputLabel ref={inputLabel} id='userRol'>
+                    Rol
+                  </InputLabel>
+                  <Controller
+                    as={
+                      <Select labelWidth={labelWidth}>
+                        {rolesTypes.filter((role) => role.key !== 'admin')
+                          .map((role, index) => {
                             return (
-                              <MenuItem key={index} value={doc.value}>
-                                {doc.value}
+                              <MenuItem key={index} value={role.key}>
+                                {role.value}
                               </MenuItem>
                             )
                           })}
-                        </Select>
-                      }
-                      id='userIdentificationType'
-                      name='userIdentificationType'
-                      variant='outlined'
-                      control={control}
-                      rules={{ required: true }}
-                      className={classes.selectInput}
-                      defaultValue={user?.userIdentificationType}
-                    />
-                    {errors.userIdentificationType && (
-                      <Typography variant='caption' color='error'>
-                        <InfoIcon color='error' fontSize='small' />
-                        Campo obligatorio
-                      </Typography>
-                    )}
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} sm={6} md={6}>
-                  <TextField
-                    className={classes.TextField}
-                    id='userIdentification'
-                    name='userIdentification'
-                    defaultValue={user?.userIdentification}
-                    label='Número de documento'
+                      </Select>
+                    }
+                    id='userRol'
+                    name='userRol'
                     variant='outlined'
-                    inputRef={register({ required: true })}
-                    fullWidth
+                    control={control}
+                    rules={{ required: true }}
+                    className={classes.selectInput}
+                    defaultValue={getRolesTypeById(user?.userRol)?.key}
                   />
-                  {errors.userIdentification && (
+                  {errors.userRol && (
                     <Typography>
                       <InfoIcon color='error' fontSize='small' />
                       Campo obligatorio
                     </Typography>
                   )}
-                </Grid>
-
-                <Grid item xs={12} sm={6} md={6}>
-                  <TextField
-                    name='userEmail'
-                    className={classes.TextField}
-                    id='userEmail'
-                    defaultValue={user?.userEmail}
-                    label='Correo Electrónico'
-                    variant='outlined'
-                    fullWidth
-                    inputRef={register({
-                      required: 'Campo obligatorio',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Formato de correo inválido'
-                      }
-                    })}
-                  />
-                  {errors.userEmail && (
-                    <Typography
-                      variant='caption'
-                      color='error'
-                      className={classes.errorField}
-                    >
-                      <InfoIcon
-                        color='error'
-                        fontSize='small'
-                        className={classes.errorIcon}
-                      />
-                      {errors.userEmail.message}
-                    </Typography>
-                  )}
-                  {errors.userEmail === ' ' && (
-                    <Typography
-                      variant='caption'
-                      color='error'
-                      className={classes.errorField}
-                    >
-                      <InfoIcon
-                        color='error'
-                        fontSize='small'
-                        className={classes.errorIcon}
-                      />
-                      {errors.userEmail.message}
-                    </Typography>
-                  )}
-                </Grid>
-
-                <Grid item xs={12} sm={6} md={6}>
-                  <TextField
-                    className={classes.TextField}
-                    id='userPhone'
-                    name='userPhone'
-                    label='Telefono'
-                    defaultValue={user?.userPhone}
-                    variant='outlined'
-                    inputRef={register({ required: true })}
-                    fullWidth
-                  />
-                  {errors.userPhone && (
-                    <Typography>
-                      <InfoIcon color='error' fontSize='small' />
-                      Campo obligatorio
-                    </Typography>
-                  )}
-                </Grid>
-
-                <Grid item xs={12} sm={6} md={6}>
-                  <FormControl
-                    className={classes.formControl}
-                    variant='outlined'
-                  >
-                    <InputLabel ref={inputLabel} id='userRol'>
-                      Rol
-                    </InputLabel>
-                    <Controller
-                      as={
-                        <Select labelWidth={labelWidth}>
-                          {rolesTypes.filter((role) => role.key !== 'admin')
-                            .map((role, index) => {
-                              return (
-                                <MenuItem key={index} value={role.value}>
-                                  {role.value}
-                                </MenuItem>
-                              )
-                            })}
-                        </Select>
-                      }
-                      id='userRol'
-                      name='userRol'
-                      variant='outlined'
-                      control={control}
-                      rules={{ required: true }}
-                      className={classes.selectInput}
-                      defaultValue={user?.userRol}
-                    />
-                    {errors.userRol && (
-                      <Typography>
-                        <InfoIcon color='error' fontSize='small' />
-                        Campo obligatorio
-                      </Typography>
-                    )}
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} sm={6} md={6} />
+                </FormControl>
               </Grid>
-              <Button
-                variant='contained'
-                color='primary'
-                fullWidth
-                type='submit'
-                className={classes.btnSubmit}
-              >
-                Guardar
-              </Button>
-            </Card>
-          </form>
-        </div>
+
+              <Grid item xs={12} sm={6} md={6} />
+            </Grid>
+            <Button
+              variant='contained'
+              color='primary'
+              fullWidth
+              type='submit'
+              className={classes.btnSubmit}
+            >
+              Guardar
+            </Button>
+          </Card>
+        </form>
       </Container>
     </Layout>
   )

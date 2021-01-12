@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core/styles'
 import Layout from 'components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getIdentificationTypeById, getRolesTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -128,7 +129,7 @@ const UserInfo = () => {
                 Tipo de Documento
               </Typography>
               <Typography color='initial'>
-                {user?.userIdentificationType}
+                {getIdentificationTypeById(user?.userIdentificationType)?.value}
               </Typography>
             </Grid>
 
@@ -193,7 +194,7 @@ const UserInfo = () => {
                 Rol
               </Typography>
               <Typography color='initial' className={classes.userInfo}>
-                {user?.userRol}
+                {getRolesTypeById(user?.userRol)?.value}
               </Typography>
             </Grid>
           </Grid>

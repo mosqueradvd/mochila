@@ -195,7 +195,9 @@ const ComponentUserInfo = () => {
               >
                 Rol
               </Typography>
-              <Typography color='initial'>{getRolesTypeById(user?.userRol)?.value}</Typography>
+              <Typography color='initial'>
+                {getRolesTypeById(user?.userRol)?.value}
+              </Typography>
             </Grid>
           </Grid>
         </Card>
