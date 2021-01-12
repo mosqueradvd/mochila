@@ -24,7 +24,7 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
-import { getProjectTypesById } from 'lib/helpers'
+import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -389,7 +389,7 @@ const UserInfo = () => {
                       <TableCell align='center'>{index + 1}</TableCell>
                       <TableCell align='center'>{files.attachedName}</TableCell>
                       <TableCell align='center'>
-                        {files.attachedType}
+                        {getAttachmentTypeById(files.attachedType)?.value}
                       </TableCell>
                       <TableCell
                         align='center'

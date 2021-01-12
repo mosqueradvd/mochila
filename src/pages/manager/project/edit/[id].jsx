@@ -36,7 +36,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
 import Skeleton from '@material-ui/lab/Skeleton'
-import { getProjectTypesById } from 'lib/helpers'
+import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -79,6 +79,12 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     display: 'none'
+  },
+  skeleton: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
@@ -655,7 +661,7 @@ const Project = () => {
                             {files.attachedName}
                           </TableCell>
                           <TableCell align='center'>
-                            {files.attachedType}
+                            {getAttachmentTypeById(files.attachedType)?.value}
                           </TableCell>
                           <TableCell align='center'>
                             <IconButton onClick={handleDeleteItem(index)}>

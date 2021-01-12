@@ -36,6 +36,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import FileUploader from 'components/FileUploader'
+import { getAttachmentTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -120,7 +121,7 @@ const Project = () => {
       ...attached,
       {
         attachedName: itemName,
-        attachedType: itemType.value,
+        attachedType: itemType,
         attachedArchive: itemAttached
       }
     ])
@@ -560,7 +561,7 @@ const Project = () => {
                             <Select shrink='true' labelWidth={labelWidthTypeProject}>
                               {typesAttached.map((doc, index) => {
                                 return (
-                                  <MenuItem key={index} value={doc}>
+                                  <MenuItem key={index} value={doc.key}>
                                     {doc.value}
                                   </MenuItem>
                                 )
@@ -629,7 +630,7 @@ const Project = () => {
                           {files.attachedName}
                         </TableCell>
                         <TableCell align='center'>
-                          {files.attachedType}
+                          {getAttachmentTypeById(files.attachedType)?.value}
                         </TableCell>
                         <TableCell align='center'>
                           <IconButton onClick={handleDeleteItem(index)}>
