@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { fetchProjects } from 'dux/projectsSlice'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -110,7 +111,7 @@ const Dashboard = () => {
                         {row?.projectLocation}
                       </Typography>
                       <Typography variant='h6' component='h2'>
-                        {row?.projectType}
+                        {getProjectTypesById(row?.projectType)?.value}
                       </Typography>
                       <Typography className={classes.pos} color='textSecondary'>
                         {row?.projectValueInNumbers}

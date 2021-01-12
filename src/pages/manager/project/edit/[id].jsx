@@ -37,6 +37,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
 import Skeleton from '@material-ui/lab/Skeleton'
 import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
+import FileUploader from 'components/FileUploader'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -77,9 +78,6 @@ const useStyles = makeStyles((theme) => ({
   tableContainer: {
     marginTop: theme.spacing(2)
   },
-  input: {
-    display: 'none'
-  },
   skeleton: {
     marginTop: theme.spacing(3),
     display: 'flex',
@@ -108,7 +106,7 @@ const Project = () => {
   const [attached, setAttached] = useState([])
   const [itemName, setItemName] = useState('')
   const [itemType, setItemType] = useState('')
-  const [itemAttached] = useState('url-archivo')
+  const [itemAttached, setItemAttachment] = useState('url-archivo')
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
@@ -146,11 +144,12 @@ const Project = () => {
       ...attached,
       {
         attachedName: itemName,
-        attachedType: itemType.value,
+        attachedType: itemType,
         attachedArchive: itemAttached
       }
     ])
     setItemName('')
+    setItemAttachment('')
     setOpen(false)
   }
 
@@ -583,7 +582,7 @@ const Project = () => {
                               <Select labelWidth={labelWidthTypeProject}>
                                 {typesAttached.map((doc, index) => {
                                   return (
-                                    <MenuItem key={index} value={doc}>
+                                    <MenuItem key={index} value={doc.key}>
                                       {doc.value}
                                     </MenuItem>
                                   )
@@ -598,23 +597,8 @@ const Project = () => {
                             defaultValue=''
                             onClick={(e) => setItemType(e.target.value)}
                           />
-
                         </FormControl>
-                        <input
-                          className={classes.input}
-                          id='contained-button-file'
-                          type='file'
-                        />
-                        <label htmlFor='contained-button-file'>
-                          <Button
-                            variant='contained'
-                            color='primary'
-                            component='span'
-                            className={classes.buttonCargar}
-                          >
-                            Cargar archivo
-                          </Button>
-                        </label>
+                        <FileUploader filePrefix='test' onChange={(file) => { setItemAttachment(file) }} />
                       </DialogContent>
                       <DialogActions>
                         <Button onClick={handleClose} color='primary'>

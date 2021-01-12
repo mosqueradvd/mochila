@@ -76,9 +76,6 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     marginTop: theme.spacing(2)
-  },
-  input: {
-    display: 'none'
   }
 }))
 
@@ -577,12 +574,6 @@ const Project = () => {
                           onClick={(e) => setItemType(e.target.value)}
                         />
                       </FormControl>
-                      <input
-                        // accept="image/*"
-                        className={classes.input}
-                        id='contained-button-file'
-                        type='file'
-                      />
                       <FileUploader filePrefix='test' onChange={(file) => { setItemAttachment(file) }} />
                     </DialogContent>
                     <DialogActions>
