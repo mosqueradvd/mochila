@@ -36,44 +36,49 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
   card: {
     padding: theme.spacing(5),
-    textAling: 'initial'
+    textAlign: 'initial'
   },
-  box: {
-    marginBottom: theme.spacing(2)
+  form: {
+    width: '100%'
   },
   formControl: {
     minWidth: '100%',
     marginTop: theme.spacing(1)
   },
+  selectInput: {
+    minWidth: 100
+  },
   titles: {
     width: '100%',
     marginTop: theme.spacing(2),
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(1)
+  },
+  TextField: {
+    marginTop: theme.spacing(1)
+  },
+  button: {
+    marginTop: '2.5em',
     display: 'flex',
-    flexDirection: 'column'
+    justifyContent: 'center'
+  },
+  container: {
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2)
+  },
+  box: {
+    marginBottom: theme.spacing(2)
   },
   tableContainer: {
     marginTop: theme.spacing(2)
   },
-  selectInput: {
-    minWidth: 100
-  },
   input: {
     display: 'none'
-  },
-  buttonCargar: {
-    marginTop: theme.spacing(2)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -140,7 +145,6 @@ const Project = () => {
       }
     ])
     setItemName('')
-
     setOpen(false)
   }
 
@@ -156,7 +160,9 @@ const Project = () => {
   const onSubmit = (data) => {
     data = { ...data, attached }
     dispatch(updateProject({ id, data }))
-    router.push('/manager')
+      .then(() => {
+        router.push('/manager')
+      })
   }
   if (isLoading) {
     return (
@@ -179,7 +185,7 @@ const Project = () => {
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Box display='flex' justifyContent='center' className={classes.box}>
             <Typography variant='h4' color='primary'>
-              Modificar un proyecto
+              Modificar un proyecto.
             </Typography>
           </Box>
 
@@ -215,20 +221,20 @@ const Project = () => {
                         <Select shrink='true' labelWidth={labelWidthTypeProject}>
                           {typeProject.map((doc, index) => {
                             return (
-                              <MenuItem key={index} value={doc.value}>
+                              <MenuItem key={index} value={doc.key}>
                                 {doc.value}
                               </MenuItem>
                             )
                           })}
                         </Select>
-                  }
+                      }
                       name='projectType'
                       id='projectType'
                       variant='outlined'
                       className={classes.selectInput}
                       control={control}
                       rules={{ required: true }}
-                      defaultValue={project?.projectType}
+                      defaultValue={getProjectTypesById(project?.projectType)?.key}
                     />
                     {errors.projectType && (
                       <Typography variant='caption' color='error'>
@@ -577,7 +583,7 @@ const Project = () => {
                                   )
                                 })}
                               </Select>
-                          }
+                            }
                             name='attachedType'
                             id='attachedType'
                             variant='outlined'

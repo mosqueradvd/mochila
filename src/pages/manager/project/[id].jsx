@@ -24,6 +24,7 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -153,7 +154,7 @@ const UserInfo = () => {
                 variant='h7'
                 color='initial'
               >
-                {' '}{project?.projectType}
+                {' '}{getProjectTypesById(project?.projectType)?.value}
               </Typography>
             </Grid>
 

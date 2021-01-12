@@ -25,6 +25,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook'
 import LibraryAddCheckIcon from '@material-ui/icons/LibraryAddCheck'
 import CardMembershipIcon from '@material-ui/icons/CardMembership'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 function descendingComparator (a, b, orderBy) {
@@ -241,7 +242,7 @@ export default function ListProjects () {
                           {index + 1}
                         </TableCell>
                         <TableCell align='left'>{row.projectName}</TableCell>
-                        <TableCell align='left'>{row.projectType}</TableCell>
+                        <TableCell align='left'>{getProjectTypesById(row.projectType)?.value}</TableCell>
                         <TableCell align='left'>
                           {row.projectValueInNumbers}
                         </TableCell>

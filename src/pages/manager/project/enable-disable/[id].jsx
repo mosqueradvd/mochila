@@ -23,14 +23,11 @@ import {
   makeStyles
 } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
   container: {
-    backgroundColor: '#F8F9FC',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },
@@ -40,9 +37,6 @@ const useStyles = makeStyles((theme) => ({
   },
   typography: {
     marginBottom: theme.spacing(2)
-  },
-  userInfo: {
-    color: '#818181'
   },
   titles: {
     width: '100%',
@@ -128,345 +122,329 @@ const UserInfo = () => {
   return (
     <Layout>
       <Container className={classes.container}>
-        <div className={classes.root}>
-          <Card raised className={classes.card}>
-            <Box className={classes.box}>
-              <Typography
-                variant='h4'
-                color='primary'
-                component='h1'
-                className={classes.tipography}
-              >
-                Habilitar o deshabilitar un proyecto
-              </Typography>
-            </Box>
-            <Typography variant='h5' color='primary' gutterBottom>
-              Datos del Proyecto
+        <Card raised className={classes.card}>
+          <Box className={classes.box}>
+            <Typography
+              variant='h4'
+              color='primary'
+              component='h1'
+              className={classes.tipography}
+            >
+              Habilitar o deshabilitar un proyecto
             </Typography>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Nombre del proyecto:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.projectName}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Tipo de Proyecto:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.projectType}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Ubicación del Proyecto:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.projectLocation}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Valor en letras del Proyecto:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.projectValueInLetters}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Valor en Números del Proyecto:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}$ {' '}{project?.projectValueInNumbers}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Estado:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{' '}{project?.projectStatus === true ? 'Activo' : 'Inactivo'}
-                </Typography>
-              </Grid>
-
-              <div className={classes.titles}>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Datos del estructurador del proyecto
-                </Typography>
-              </div>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Nombre del estructurador:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.structuringName}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Teléfono del estructurador:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.structuringPhone}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Dirección del estructurador:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.structuringAddress}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Email del estructurador:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.structuringEmail}
-                </Typography>
-              </Grid>
-
-              <div className={classes.titles}>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Datos de quien registró el proyecto
-                </Typography>
-              </div>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Nombre de quien registra el proyecto:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.registerName}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Teléfono de quien registra:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.registerPhone}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Dirección de quien registra:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.registerAddress}
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography
-                  variant='h7'
-                  color='primary'
-                  gutterBottom
-                  className={classes.typography}
-                >
-                  Email de quien registra:
-                </Typography>
-                <Typography
-                  variant='h7'
-                  color='initial'
-                  className={classes.userInfo}
-                >
-                  {' '}{project?.registerEmail}
-                </Typography>
-              </Grid>
-
-              <div className={classes.titles}>
-                <Typography variant='h5' color='primary' gutterBottom>
-                  Archivos adjuntos del proyecto
-                </Typography>
-              </div>
-
-              <TableContainer
-                component={Paper}
-                elevation={1}
-                className={classes.tableContainer}
-              >
-                <Table className={classes.table} aria-label='docs'>
-                  <TableHead>
-                    <TableRow>
-                      <StyledTabletCell align='center'>#</StyledTabletCell>
-                      <StyledTabletCell align='center'>
-                        Nombre del Archivo
-                      </StyledTabletCell>
-                      <StyledTabletCell align='center'>
-                        Categoría del Archivo
-                      </StyledTabletCell>
-                      <StyledTabletCell align='center'>
-                        Descargar
-                      </StyledTabletCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {attached?.map((files, index) => (
-                      <TableRow key={index}>
-                        <TableCell align='center'>{index + 1}</TableCell>
-                        <TableCell align='center'>{files.attachedName}</TableCell>
-                        <TableCell align='center'>
-                          {files.attachedType}
-                        </TableCell>
-                        <TableCell
-                          align='center'
-                          className={classes.downloadFile}
-                        >
-                          boton para descargar
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Grid>
-            <div className={classes.button}>
-              <Button
+          </Box>
+          <Typography variant='h5' color='primary' gutterBottom>
+            Datos del Proyecto
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
                 color='primary'
-                variant='contained'
-                fullWidth
-                type='submit'
-                onClick={handleState}
+                gutterBottom
+                className={classes.typography}
               >
-                {estado === true ? 'Deshabilitar' : 'habilitar'}
-              </Button>
+                Nombre del proyecto:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.projectName}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Tipo de Proyecto:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{getProjectTypesById(project?.projectType)?.value}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Ubicación del Proyecto:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.projectLocation}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Valor en letras del Proyecto:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.projectValueInLetters}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Valor en Números del Proyecto:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}$ {' '}{project?.projectValueInNumbers}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Estado:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{' '}{project?.projectStatus === true ? 'Activo' : 'Inactivo'}
+              </Typography>
+            </Grid>
+
+            <div className={classes.titles}>
+              <Typography variant='h5' color='primary' gutterBottom>
+                Datos del estructurador del proyecto
+              </Typography>
             </div>
-          </Card>
-        </div>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Nombre del estructurador:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.structuringName}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Teléfono del estructurador:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.structuringPhone}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Dirección del estructurador:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.structuringAddress}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Email del estructurador:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.structuringEmail}
+              </Typography>
+            </Grid>
+
+            <div className={classes.titles}>
+              <Typography variant='h5' color='primary' gutterBottom>
+                Datos de quien registró el proyecto
+              </Typography>
+            </div>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Nombre de quien registra el proyecto:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.registerName}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Teléfono de quien registra:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.registerPhone}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Dirección de quien registra:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.registerAddress}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6}>
+              <Typography
+                variant='h7'
+                color='primary'
+                gutterBottom
+                className={classes.typography}
+              >
+                Email de quien registra:
+              </Typography>
+              <Typography
+                variant='h7'
+                color='initial'
+              >
+                {' '}{project?.registerEmail}
+              </Typography>
+            </Grid>
+
+            <div className={classes.titles}>
+              <Typography variant='h5' color='primary' gutterBottom>
+                Archivos adjuntos del proyecto
+              </Typography>
+            </div>
+
+            <TableContainer
+              component={Paper}
+              elevation={1}
+              className={classes.tableContainer}
+            >
+              <Table className={classes.table} aria-label='docs'>
+                <TableHead>
+                  <TableRow>
+                    <StyledTabletCell align='center'>#</StyledTabletCell>
+                    <StyledTabletCell align='center'>
+                      Nombre del Archivo
+                    </StyledTabletCell>
+                    <StyledTabletCell align='center'>
+                      Categoría del Archivo
+                    </StyledTabletCell>
+                    <StyledTabletCell align='center'>
+                      Descargar
+                    </StyledTabletCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {attached?.map((files, index) => (
+                    <TableRow key={index}>
+                      <TableCell align='center'>{index + 1}</TableCell>
+                      <TableCell align='center'>{files.attachedName}</TableCell>
+                      <TableCell align='center'>
+                        {files.attachedType}
+                      </TableCell>
+                      <TableCell
+                        align='center'
+                        className={classes.downloadFile}
+                      >
+                        boton para descargar
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
+          <div className={classes.button}>
+            <Button
+              color='primary'
+              variant='contained'
+              fullWidth
+              type='submit'
+              onClick={handleState}
+            >
+              {estado === true ? 'Deshabilitar' : 'habilitar'}
+            </Button>
+          </div>
+        </Card>
       </Container>
     </Layout>
   )
