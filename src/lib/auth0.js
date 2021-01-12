@@ -1,4 +1,5 @@
 import { initAuth0 } from '@auth0/nextjs-auth0'
+import { findByEmail } from 'models/user'
 import {
   AUTH0_DOMAIN,
   AUTH0_CLIENT_ID,
@@ -7,7 +8,6 @@ import {
   AUTH0_POST_LOGOUT_URI,
   COOKIE_SECRET
 } from './config'
-
 const AUTH0_SCOPE = 'openid profile email'
 
 export const auth0 = initAuth0({
@@ -34,5 +34,16 @@ export function getSession (req) {
 
 export async function getCurrentUser (req) {
   const session = await getSession(req)
-  return session?.user || null
+  const user = session?.user
+
+  if (user) {
+    const dbUser = await findByEmail(user.email)
+
+    if (dbUser) {
+      const { userEmail, userName, userRol, userStatus, organizationId = null } = dbUser
+      return { userEmail, userName, userRol, userStatus, organizationId }
+    }
+  }
+
+  return null
 }
