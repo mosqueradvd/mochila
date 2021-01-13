@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import {
-  Divider,
   List,
   ListItem,
   ListItemIcon,
@@ -13,7 +12,6 @@ import CardMembershipIcon from '@material-ui/icons/CardMembership'
 const MenuOperator = () => {
   return (
     <List component='nav'>
-      <Divider />
       <Link href='/operator'>
         <ListItem button>
           <ListItemIcon>

@@ -25,7 +25,6 @@ const styles = makeStyles((theme) => ({
 const Drawers = ({ variant, open, onClose }) => {
   const classes = styles()
   const { userRole } = useUser()
-
   return (
     <Drawer
       className={classes.drawer}
@@ -41,7 +40,7 @@ const Drawers = ({ variant, open, onClose }) => {
       <Divider />
       {isAdmin(userRole) && <MenuAdmin />}
       {(isAdmin(userRole) || isManager(userRole)) && <MenuManager />}
-      {(isAdmin(userRole) || isManager(userRole) || isOperator(userRole)) && <MenuOperator />}
+      {(isAdmin(userRole) || isOperator(userRole)) && <MenuOperator />}
     </Drawer>
   )
 }
