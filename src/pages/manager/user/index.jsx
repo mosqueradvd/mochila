@@ -242,7 +242,7 @@ const ListUsers = () => {
                           {row.userName}
                         </TableCell>
                         <TableCell align='left'>organizacion</TableCell>
-                        <TableCell align='left'>{getRolesTypeById(row.userRol)?.value}</TableCell>
+                        <TableCell align='left'>{getRolesTypeById(row.userRole)?.value}</TableCell>
                         <TableCell align='left'>
                           <Link
                             href={`/manager/user/${row.id}`}

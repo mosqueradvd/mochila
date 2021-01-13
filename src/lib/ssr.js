@@ -9,8 +9,8 @@ export async function getServerSideProps ({ req, res }) {
   const { dispatch } = reduxStore
 
   if (user) {
-    const { userEmail, userName, userRol, userStatus, organizationId = null } = user
-    dispatch(setCurrentUser({ userEmail, userName, userRol, userStatus, organizationId }))
+    const { userEmail, userName, userRole = 'operator', userStatus = null, organizationId = null } = user
+    dispatch(setCurrentUser({ userEmail, userName, userRole, userStatus, organizationId }))
   }
 
   return { props: { initialReduxState: reduxStore.getState() } }

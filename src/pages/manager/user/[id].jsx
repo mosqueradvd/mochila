@@ -194,7 +194,7 @@ const UserInfo = () => {
                 Rol
               </Typography>
               <Typography color='initial' className={classes.userInfo}>
-                {getRolesTypeById(user?.userRol)?.value}
+                {getRolesTypeById(user?.userRole)?.value}
               </Typography>
             </Grid>
           </Grid>

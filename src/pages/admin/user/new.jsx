@@ -80,7 +80,7 @@ const User = () => {
 
   const onSubmit = (data) => {
     const {
-      userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userOrganization
+      userName, userIdentification, userIdentificationType, userPhone, userEmail, userRole, userOrganization
     } = data
     dispatch(createUser({
       userName,
@@ -88,7 +88,7 @@ const User = () => {
       userIdentificationType,
       userPhone,
       userEmail,
-      userRol,
+      userRole,
       userStatus,
       userOrganization
     })).then(() => {
@@ -279,7 +279,7 @@ const User = () => {
                   className={classes.formControl}
                   variant='outlined'
                 >
-                  <InputLabel ref={inputLabel} id='userRol'>
+                  <InputLabel ref={inputLabel} id='userRole'>
                     Rol
                   </InputLabel>
                   <Controller
@@ -295,15 +295,15 @@ const User = () => {
                           })}
                       </Select>
                     }
-                    id='userRol'
-                    name='userRol'
+                    id='userRole'
+                    name='userRole'
                     variant='outlined'
                     control={control}
                     rules={{ required: true }}
                     className={classes.selectInput}
                     defaultValue=''
                   />
-                  {errors.userRol && (
+                  {errors.userRole && (
                     <Typography>
                       <InfoIcon color='error' fontSize='small' />
                       Campo obligatorio

@@ -4,7 +4,7 @@ const initialState = {
   userName: null,
   userEmail: null,
   organizationId: null,
-  userRol: null,
+  userRole: null,
   isAuthenticated: false
 }
 
@@ -12,11 +12,11 @@ const loginSlice = createSlice({
   name: 'loginSlice',
   initialState,
   reducers: {
-    setCurrentUser (state, { payload: { userName, userEmail, organizationId, userRol } }) {
+    setCurrentUser (state, { payload: { userName, userEmail, organizationId, userRole } }) {
       state.userName = userName
       state.userEmail = userName
       state.organizationId = organizationId
-      state.userRol = userRol
+      state.userRole = userRole
       state.isAuthenticated = true
     }
   }

@@ -6,6 +6,8 @@ import Drawer from '@material-ui/core/Drawer'
 import MenuAdmin from './MenuAdmin'
 import MenuManager from './MenuManager'
 import MenuOperator from './MenuOperator'
+import { isAdmin, isManager, isOperator } from 'lib/helpers'
+import useUser from 'hooks/useUser'
 
 const drawerWidth = 250
 
@@ -22,6 +24,8 @@ const styles = makeStyles((theme) => ({
 
 const Drawers = ({ variant, open, onClose }) => {
   const classes = styles()
+  const { userRole } = useUser()
+
   return (
     <Drawer
       className={classes.drawer}
@@ -35,9 +39,9 @@ const Drawers = ({ variant, open, onClose }) => {
     >
       <div className={classes.toolbar} />
       <Divider />
-      <MenuAdmin />
-      <MenuManager />
-      <MenuOperator />
+      {isAdmin(userRole) && <MenuAdmin />}
+      {(isAdmin(userRole) || isManager(userRole)) && <MenuManager />}
+      {(isAdmin(userRole) || isManager(userRole) || isOperator(userRole)) && <MenuOperator />}
     </Drawer>
   )
 }

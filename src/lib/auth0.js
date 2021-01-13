@@ -40,8 +40,8 @@ export async function getCurrentUser (req) {
     const dbUser = await findByEmail(user.email)
 
     if (dbUser) {
-      const { userEmail, userName, userRol, userStatus, organizationId = null } = dbUser
-      return { userEmail, userName, userRol, userStatus, organizationId }
+      const { userEmail, userName, userRole, userStatus, organizationId = null } = dbUser
+      return { userEmail, userName, userRole, userStatus, organizationId }
     }
   }
 

@@ -78,9 +78,9 @@ const User = () => {
 
   const onSubmit = (data) => {
     const {
-      userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol
+      userName, userIdentification, userIdentificationType, userPhone, userEmail, userRole
     } = data
-    dispatch(createUser({ userName, userIdentification, userIdentificationType, userPhone, userEmail, userRol, userStatus }))
+    dispatch(createUser({ userName, userIdentification, userIdentificationType, userPhone, userEmail, userRole, userStatus }))
       .then(() => {
         router.push('/manager')
       })
@@ -264,7 +264,7 @@ const User = () => {
                   className={classes.formControl}
                   variant='outlined'
                 >
-                  <InputLabel ref={inputLabel} id='userRol'>
+                  <InputLabel ref={inputLabel} id='userRole'>
                     Rol
                   </InputLabel>
                   <Controller
@@ -280,15 +280,15 @@ const User = () => {
                           })}
                       </Select>
                     }
-                    id='userRol'
-                    name='userRol'
+                    id='userRole'
+                    name='userRole'
                     variant='outlined'
                     control={control}
                     rules={{ required: true }}
                     className={classes.selectInput}
                     defaultValue=''
                   />
-                  {errors.userRol && (
+                  {errors.userRole && (
                     <Typography>
                       <InfoIcon color='error' fontSize='small' />
                       Campo obligatorio

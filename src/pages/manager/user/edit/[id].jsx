@@ -268,7 +268,7 @@ const User = () => {
                   className={classes.formControl}
                   variant='outlined'
                 >
-                  <InputLabel ref={inputLabel} id='userRol'>
+                  <InputLabel ref={inputLabel} id='userRole'>
                     Rol
                   </InputLabel>
                   <Controller
@@ -284,15 +284,15 @@ const User = () => {
                           })}
                       </Select>
                     }
-                    id='userRol'
-                    name='userRol'
+                    id='userRole'
+                    name='userRole'
                     variant='outlined'
                     control={control}
                     rules={{ required: true }}
                     className={classes.selectInput}
-                    defaultValue={getRolesTypeById(user?.userRol)?.key}
+                    defaultValue={getRolesTypeById(user?.userRole)?.key}
                   />
-                  {errors.userRol && (
+                  {errors.userRole && (
                     <Typography>
                       <InfoIcon color='error' fontSize='small' />
                       Campo obligatorio

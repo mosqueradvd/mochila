@@ -23,6 +23,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-saver": "^2.0.5",
     "humps": "^2.0.1",
+    "iconv-lite": "^0.6.2",
     "mongodb": "^3.6.3",
     "next": "10.0.1",
     "next-transpile-modules": "^4.1.0",

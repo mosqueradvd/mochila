@@ -15,3 +15,15 @@ export const getProjectTypesById = (projectTypeId) => {
 export const getAttachmentTypeById = (attachmentType) => {
   return ATTACHMENT_TYPES.find(({ key }) => key === attachmentType)
 }
+
+export const isAdmin = (userRole) => {
+  return userRole === 'admin'
+}
+
+export const isManager = (userRole) => {
+  return userRole === 'manager'
+}
+
+export const isOperator = (userRole) => {
+  return userRole === 'operator'
+}
