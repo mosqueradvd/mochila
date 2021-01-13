@@ -15,13 +15,25 @@ import Skeleton from '@material-ui/lab/Skeleton'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   container: {
-    backgroundColor: '#cfe8fc',
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
   },
+  pos: {
+    marginBottom: 12
+  },
   box: {
     marginBottom: theme.spacing(5)
+  },
+  card: {
+    minWidth: 275,
+    maxWidth: 300,
+    marginLeft: theme.spacing(4)
   },
   skeleton: {
     marginTop: theme.spacing(3),
