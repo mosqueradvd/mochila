@@ -1,3 +1,4 @@
+import { auth0 } from 'lib/auth0'
 import { handleDefault } from 'lib/apiUtils'
 import * as organizationModel from 'models/organization'
 
@@ -30,7 +31,7 @@ async function handleDelete (req, res) {
 }
 
 // TODO: Add authorization using Auth0
-export default async function organizationsHandler (req, res) {
+export default auth0.requireAuthentication(async function organizationsHandler (req, res) {
   const { method } = req
 
   switch (method) {
@@ -43,4 +44,4 @@ export default async function organizationsHandler (req, res) {
     default:
       return handleDefault(req, res, ALLOWED_METHODS)
   }
-}
+})
