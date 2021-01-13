@@ -84,7 +84,7 @@ const ComponentUserInfo = () => {
           >
             Información del usuario
           </Typography>
-          <Link href={`/admin/user/edit/${id}`}>
+          <Link href={`/admin/user/edit/${id}`} shallow>
             <Button
               variant='contained'
               color='primary'

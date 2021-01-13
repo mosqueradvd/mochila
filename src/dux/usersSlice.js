@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import * as API from 'apiClient/users'
 
 const initialState = {
   data: [],
@@ -6,42 +7,20 @@ const initialState = {
   isLoading: false
 }
 
-export const fetchUsers = createAsyncThunk('users/fetchAll', async () => {
-  const response = await fetch('/api/users')
-  return await response.json()
-})
+export const fetchUsers = createAsyncThunk('users/all', () => API.getAll())
+export const fetchUserById = createAsyncThunk('users/id', (id) => API.getOne(id))
+export const createUser = createAsyncThunk('users/create', (data) => API.create(data))
+export const updateUser = createAsyncThunk('users/update', ({ id, data }) => API.update({ id, data }))
+export const updateUserStatus = createAsyncThunk('users/updateUserStatus', ({ id, data }) => API.updateUserStatus({ id, data }))
 
-export const fetchUserById = createAsyncThunk('users/fetchById', async (id) => {
-  const response = await fetch(`/api/users/${id}`)
-  return await response.json()
-})
+// export const updateUserStatus = createAsyncThunk('users/updateUserStatus', async ({ id, data }) => {
+//   const response = await fetch(`/api/users/status/${id}`, {
+//     method: 'POST',
+//     body: JSON.stringify(data)
+//   })
 
-export const createUser = createAsyncThunk('users/create', async (data) => {
-  const response = await fetch('/api/users', {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
-
-export const updateUser = createAsyncThunk('users/update', async ({ id, data }) => {
-  const response = await fetch(`/api/users/${id}`, {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
-
-export const updateUserStatus = createAsyncThunk('users/updateUserStatus', async ({ id, data }) => {
-  const response = await fetch(`/api/users/status/${id}`, {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
+//   return await response.json()
+// })
 
 const usersSlice = createSlice({
   name: 'usersSlice',

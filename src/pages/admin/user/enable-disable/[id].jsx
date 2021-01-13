@@ -66,7 +66,9 @@ const DisableEnableUser = () => {
   }, [user])
 
   const handleState = () => {
+    // console.log('ENTOROOROR')
     const data = !estado
+    // console.log('data', data)
     dispatch(
       updateUserStatus({
         id,
@@ -103,7 +105,7 @@ const DisableEnableUser = () => {
               gutterBottom
               className={classes.tipography}
             >
-              Habilitar o deshabilitar un usuario
+              Habilitar o deshabilitar un usuario xxx
             </Typography>
           </Box>
           <Grid container spacing={2}>

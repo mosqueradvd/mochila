@@ -12,8 +12,7 @@ async function handleGet (req, res) {
 }
 
 async function handlePost (req, res) {
-  const { query: { id }, body } = req
-  const attributes = JSON.parse(body)
+  const { query: { id }, body: attributes } = req
   await userModel.update(id, attributes)
   const user = await userModel.get(id)
 

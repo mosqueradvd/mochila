@@ -92,7 +92,7 @@ const User = () => {
       userStatus,
       userOrganization
     })).then(() => {
-      router.push('/manager')
+      router.push('/admin')
     })
   }
 
@@ -288,7 +288,7 @@ const User = () => {
                         {rolesTypes.filter((role) => role.key !== 'admin')
                           .map((role, index) => {
                             return (
-                              <MenuItem key={index} value={role.value}>
+                              <MenuItem key={index} value={role.key}>
                                 {role.value}
                               </MenuItem>
                             )

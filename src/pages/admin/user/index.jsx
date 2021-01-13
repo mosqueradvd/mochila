@@ -221,7 +221,7 @@ const ComponentListUsers = () => {
                 {stableSort(users, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row._id)
+                    const isItemSelected = isSelected(row.id)
                     const labelId = `enhanced-table-checkbox-${index}`
 
                     return (
@@ -230,7 +230,7 @@ const ComponentListUsers = () => {
                         role='checkbox'
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row._id}
+                        key={row.id}
                         selected={isItemSelected}
                       >
                         <TableCell padding='checkbox' />
@@ -244,7 +244,7 @@ const ComponentListUsers = () => {
                         <TableCell align='left'>{getRolesTypeById(row.userRol)?.value}</TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/admin/user/${row._id}`}
+                            href={`/admin/user/${row.id}`}
                           >
                             <Button>
                               <SearchIcon />
@@ -254,7 +254,7 @@ const ComponentListUsers = () => {
                         </TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/admin/user/edit/${row._id}`}
+                            href={`/admin/user/edit/${row.id}`}
                           >
                             <Button>
                               <EditIcon />
@@ -263,7 +263,7 @@ const ComponentListUsers = () => {
                         </TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/admin/user/enable-disable/${row._id}`}
+                            href={`/admin/user/enable-disable/${row.id}`}
                           >
                             <Button>
                               <HowToRegSharpIcon />

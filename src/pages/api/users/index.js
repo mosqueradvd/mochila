@@ -11,8 +11,7 @@ async function handleGet (req, res) {
 }
 
 async function handlePost (req, res) {
-  const { body } = req
-  const attributes = JSON.parse(body)
+  const { body: attributes } = req
   const { insertedId: id } = await userModel.create(attributes)
   const user = await userModel.get(id)
 
