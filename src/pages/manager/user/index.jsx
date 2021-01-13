@@ -222,7 +222,7 @@ const ListUsers = () => {
                 {stableSort(users, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row._id)
+                    const isItemSelected = isSelected(row.id)
                     const labelId = `enhanced-table-checkbox-${index}`
 
                     return (
@@ -231,7 +231,7 @@ const ListUsers = () => {
                         role='checkbox'
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row._id}
+                        key={row.id}
                         selected={isItemSelected}
                       >
                         <TableCell padding='checkbox' />
@@ -245,7 +245,7 @@ const ListUsers = () => {
                         <TableCell align='left'>{getRolesTypeById(row.userRol)?.value}</TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/manager/user/${row._id}`}
+                            href={`/manager/user/${row.id}`}
                           >
                             <Button>
                               <SearchIcon />
@@ -254,7 +254,7 @@ const ListUsers = () => {
                         </TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/manager/user/edit/${row._id}`}
+                            href={`/manager/user/edit/${row.id}`}
                           >
                             <Button>
                               <EditIcon />
@@ -263,7 +263,7 @@ const ListUsers = () => {
                         </TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/manager/user/enable-disable/${row._id}`}
+                            href={`/manager/user/enable-disable/${row.id}`}
                           >
                             <Button>
                               <HowToRegSharpIcon />

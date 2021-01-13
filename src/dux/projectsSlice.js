@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import * as API from 'apiClient/projects'
 
 const initialState = {
   data: [],
@@ -6,42 +7,12 @@ const initialState = {
   isLoading: false
 }
 
-export const fetchProjects = createAsyncThunk('projects/fetchAll', async () => {
-  const response = await fetch('/api/projects')
-  return await response.json()
-})
+export const fetchProjects = createAsyncThunk('projects/fetchAll', () => API.getAll())
+export const fetchProjectById = createAsyncThunk('projects/fetchById', (id) => API.getOne(id))
+export const createProject = createAsyncThunk('projects/create', (data) => API.create(data))
+export const updateProject = createAsyncThunk('projects/update', ({ id, data }) => API.update({ id, data }))
 
-export const fetchProjectById = createAsyncThunk('projects/fetchById', async (id) => {
-  const response = await fetch(`/api/projects/${id}`)
-  return await response.json()
-})
-
-export const createProject = createAsyncThunk('projects/create', async (data) => {
-  const response = await fetch('/api/projects', {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
-
-export const updateProject = createAsyncThunk('projects/update', async ({ id, data }) => {
-  const response = await fetch(`/api/projects/${id}`, {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
-
-export const updateProjectStatus = createAsyncThunk('projects/updateProjectStatus', async ({ id, data }) => {
-  const response = await fetch(`/api/projects/status/${id}`, {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  return await response.json()
-})
+export const updateProjectStatus = createAsyncThunk('projects/updateProjectStatus', ({ id, data }) => API.updateProjectStatus({ id, data }))
 
 const projectsSlice = createSlice({
   name: 'projectsSlice',

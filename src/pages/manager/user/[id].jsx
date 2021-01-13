@@ -83,7 +83,7 @@ const UserInfo = () => {
           >
             Información del usuario
           </Typography>
-          <Link href={`/manager/user/edit/${id}`}>
+          <Link href={`/manager/user/edit/${id}`} shallow>
             <Button
               variant='contained'
               color='primary'

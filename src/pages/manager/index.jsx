@@ -119,7 +119,7 @@ const Dashboard = () => {
                     </CardContent>
                     <CardActions>
                       <Link
-                        href={`/manager/project/${row._id}`}
+                        href={`/manager/project/${row.id}`}
                       >
                         <Button size='small'>Ver más</Button>
                       </Link>

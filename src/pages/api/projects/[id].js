@@ -12,8 +12,7 @@ async function handleGet (req, res) {
 }
 
 async function handlePost (req, res) {
-  const { query: { id }, body } = req
-  const attributes = JSON.parse(body)
+  const { query: { id }, body: attributes } = req
   await projectModel.update(id, attributes)
   const project = await projectModel.get(id)
 

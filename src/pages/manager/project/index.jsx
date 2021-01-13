@@ -225,7 +225,7 @@ export default function ListProjects () {
                 {stableSort(projects, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row._id)
+                    const isItemSelected = isSelected(row.id)
                     const labelId = `enhanced-table-checkbox-${index}`
 
                     return (
@@ -234,7 +234,7 @@ export default function ListProjects () {
                         role='checkbox'
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row._id}
+                        key={row.id}
                         selected={isItemSelected}
                       >
                         <TableCell padding='checkbox' />
@@ -249,7 +249,7 @@ export default function ListProjects () {
                         <TableCell align='left'>{row.structuringName}</TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/manager/project/${row._id}`}
+                            href={`/manager/project/${row.id}`}
                           >
                             <Button>
                               <SearchIcon />
@@ -258,7 +258,7 @@ export default function ListProjects () {
                         </TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/manager/project/edit/${row._id}`}
+                            href={`/manager/project/edit/${row.id}`}
                           >
                             <Button>
                               <MenuBookIcon />
@@ -267,7 +267,7 @@ export default function ListProjects () {
                         </TableCell>
                         <TableCell align='left'>
                           <Link
-                            href={`/manager/project/enable-disable/${row._id}`}
+                            href={`/manager/project/enable-disable/${row.id}`}
                           >
                             <Button>
                               <LibraryAddCheckIcon />

@@ -110,7 +110,7 @@ const UserInfo = () => {
           >
             Información del Proyecto
           </Typography>
-          <Link href={`/manager/project/edit/${id}`}>
+          <Link href={`/manager/project/edit/${id}`} shallow>
             <Button
               variant='contained'
               color='primary'
