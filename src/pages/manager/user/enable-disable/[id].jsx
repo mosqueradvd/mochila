@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { fetchUserById, updateUserStatus } from 'dux/usersSlice'
@@ -54,22 +54,17 @@ const DisableEnableUser = () => {
   const dispatch = useDispatch()
   const isLoading = useSelector(state => state.users.isLoading)
   const user = useSelector(state => state.users.current)
-  const [estado, setEstado] = useState('')
 
   useEffect(() => {
     dispatch(fetchUserById(id))
   }, [dispatch, id])
 
-  useEffect(() => {
-    setEstado(user?.userStatus)
-  }, [user])
-
   const handleState = () => {
-    const data = !estado
+    const userStatus = !(user?.userStatus || false)
     dispatch(
       updateUserStatus({
         id,
-        data
+        userStatus
       })
     )
     router.push('/manager')
