@@ -569,7 +569,7 @@ const Organization = () => {
                           {files.letterHead ? <DoneAllIcon className={classes.successColor} /> : <ErrorIcon color='error' />}
                         </TableCell>
                         <TableCell align='center'>
-                          {files.attachedSignature ? <DoneAllIcon /> : <ErrorIcon color='error' />}
+                          {files.attachedSignature ? <DoneAllIcon className={classes.successColor} /> : <ErrorIcon color='error' />}
                         </TableCell>
                         <TableCell align='center'>
                           <IconButton onClick={handleDeleteItem(index)}>
