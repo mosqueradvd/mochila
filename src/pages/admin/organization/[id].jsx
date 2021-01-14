@@ -14,7 +14,7 @@ import { fetchOrganizationById } from 'dux/organizationsSlice'
 import { makeStyles } from '@material-ui/core/styles'
 import Layout from 'components/Layout'
 import Skeleton from '@material-ui/lab/Skeleton'
-import { getIdentificationTypeById } from 'lib/helpers'
+import { getIdentificationTypeById, getDepartamentTypeById, getCityTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -194,7 +194,7 @@ const Info = () => {
                 Departamento
               </Typography>
               <Typography color='initial'>
-                {organization?.departament}
+                {getDepartamentTypeById(organization?.departament)?.value}
               </Typography>
             </Grid>
             <Grid item xs={6} sm={6} md={6}>
@@ -206,7 +206,7 @@ const Info = () => {
                 Municipio
               </Typography>
               <Typography color='initial'>
-                {organization?.city}
+                {getCityTypeById(organization?.city)?.value}
               </Typography>
             </Grid>
             <Grid item xs={6} sm={6} md={6}>

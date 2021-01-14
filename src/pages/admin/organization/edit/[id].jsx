@@ -21,7 +21,7 @@ import {
 import { Info as InfoIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
-import { getIdentificationTypeById } from 'lib/helpers'
+import { getIdentificationTypeById, getDepartamentTypeById, getCityTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -82,10 +82,10 @@ const Organization = () => {
 
   const departments = DEPARTMENTS
   const cities = CITIES
-  const [departamentId, setDepartamentId] = useState('')
+  const [departamentId, setDepartamentId] = useState(organization?.departament)
   function onDepartamentChanged () {
     const getvalueDep = getValues('departament')
-    setDepartamentId(getvalueDep.id_departamento)
+    setDepartamentId(getvalueDep)
   }
 
   useEffect(() => {
@@ -97,8 +97,7 @@ const Organization = () => {
   }, [dispatch, id])
 
   const onSubmit = data => {
-    const { nombre: departament } = data.departament
-    const { name, identificationNumber, legalRepresentative, identification, phone, email, city, community, identificationType } = data
+    const { name, identificationNumber, legalRepresentative, identification, phone, email, departament, city, community, identificationType } = data
     data = { name, identificationNumber, legalRepresentative, identificationType, identification, phone, email, departament, city, community }
     dispatch(updateOrganization({ id, data })).then(() => {
       router.push('/admin')
@@ -324,11 +323,11 @@ const Organization = () => {
                           departments
                             .filter(
                               (departament) =>
-                                departament.id_pais === '170'
-                            ).map((dept, index) => {
+                                departament.countryId === '170'
+                            ).map((country, index) => {
                               return (
-                                <MenuItem key={index} value={dept}>
-                                  {dept.nombre}
+                                <MenuItem key={index} value={country.key}>
+                                  {country.value}
                                 </MenuItem>
                               )
                             })
@@ -341,6 +340,7 @@ const Organization = () => {
                     className={classes.selectInput}
                     control={control}
                     rules={{ required: true }}
+                    defaultValue={getDepartamentTypeById(organization?.departament)?.key}
                     onClick={onDepartamentChanged}
                   />
                   {errors.departament && (
@@ -362,11 +362,11 @@ const Organization = () => {
                         {cities
                           .filter(
                             (city) =>
-                              city.id_departamento === departamentId
+                              city.departamentId === departamentId
                           ).map((ciudad, index) => {
                             return (
-                              <MenuItem key={index} value={ciudad.nombre}>
-                                {ciudad.nombre}
+                              <MenuItem key={index} value={ciudad.key}>
+                                {ciudad.value}
                               </MenuItem>
                             )
                           })}
@@ -377,6 +377,7 @@ const Organization = () => {
                     variant='outlined'
                     rules={{ required: true }}
                     className={classes.selectInput}
+                    defaultValue={getCityTypeById(organization?.city)?.key}
                     control={control}
                   />
                   {errors.city && (

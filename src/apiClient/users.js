@@ -20,7 +20,7 @@ export const update = async ({ id, data }) => {
   return response.data
 }
 
-export const updateUserStatus = async ({ id, data }) => {
-  const response = await apiClient.post(`/api/users/status/${id}`, data)
+export const updateUserStatus = async ({ id, userStatus }) => {
+  const response = await apiClient.post(`/api/users/status/${id}`, { userStatus })
   return response.data
 }

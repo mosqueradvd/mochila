@@ -11,16 +11,7 @@ export const fetchUsers = createAsyncThunk('users/all', () => API.getAll())
 export const fetchUserById = createAsyncThunk('users/id', (id) => API.getOne(id))
 export const createUser = createAsyncThunk('users/create', (data) => API.create(data))
 export const updateUser = createAsyncThunk('users/update', ({ id, data }) => API.update({ id, data }))
-export const updateUserStatus = createAsyncThunk('users/updateUserStatus', ({ id, data }) => API.updateUserStatus({ id, data }))
-
-// export const updateUserStatus = createAsyncThunk('users/updateUserStatus', async ({ id, data }) => {
-//   const response = await fetch(`/api/users/status/${id}`, {
-//     method: 'POST',
-//     body: JSON.stringify(data)
-//   })
-
-//   return await response.json()
-// })
+export const updateUserStatus = createAsyncThunk('users/updateUserStatus', ({ id, userStatus }) => API.updateUserStatus({ id, userStatus }))
 
 const usersSlice = createSlice({
   name: 'usersSlice',

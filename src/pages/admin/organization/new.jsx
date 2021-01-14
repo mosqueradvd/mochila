@@ -89,12 +89,11 @@ const Organization = () => {
   const [departamentId, setDepartamentId] = useState('')
   function onDepartamentChanged () {
     const getvalueDep = getValues('departament')
-    setDepartamentId(getvalueDep.id_departamento)
+    setDepartamentId(getvalueDep)
   }
 
   const onSubmit = data => {
-    const { nombre: departament } = data.departament
-    const { name, identificationNumber, identificationType, legalRepresentative, identification, phone, email, city, community } = data
+    const { name, identificationNumber, identificationType, legalRepresentative, identification, phone, email, departament, city, community } = data
     dispatch(createOrganization({
       name,
       identificationNumber,
@@ -321,20 +320,20 @@ const Organization = () => {
                       as={
                         <Select shrink='true' labelWidth={labelWidthDept}>
                           {
-                          departments
-                            .filter(
-                              (departament) =>
-                                departament.id_pais === '170'
-                            ).map((dept, index) => {
-                              return (
-                                <MenuItem key={index} value={dept}>
-                                  {dept.nombre}
-                                </MenuItem>
-                              )
-                            })
+                            departments
+                              .filter(
+                                (departament) =>
+                                  departament.countryId === '170'
+                              ).map((country, index) => {
+                                return (
+                                  <MenuItem key={index} value={country.key}>
+                                    {country.value}
+                                  </MenuItem>
+                                )
+                              })
                           }
                         </Select>
-                    }
+                      }
                       name='departament'
                       id='departament'
                       variant='outlined'
@@ -363,16 +362,16 @@ const Organization = () => {
                           {cities
                             .filter(
                               (city) =>
-                                city.id_departamento === departamentId
+                                city.departamentId === departamentId
                             ).map((ciudad, index) => {
                               return (
-                                <MenuItem key={index} value={ciudad.nombre}>
-                                  {ciudad.nombre}
+                                <MenuItem key={index} value={ciudad.key}>
+                                  {ciudad.value}
                                 </MenuItem>
                               )
                             })}
                         </Select>
-                    }
+                      }
                       name='city'
                       id='city'
                       variant='outlined'

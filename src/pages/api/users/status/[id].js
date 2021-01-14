@@ -12,8 +12,8 @@ async function handleGet (req, res) {
 }
 
 async function handlePost (req, res) {
-  const { query: { id }, body: attributes } = req
-  await userModel.updateUserStatus(id, attributes)
+  const { query: { id }, body: { userStatus } } = req
+  await userModel.updateUserStatus(id, userStatus)
   const user = await userModel.get(id)
 
   // TODO: Send the right status code according the operation result
