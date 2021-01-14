@@ -16,7 +16,7 @@ export async function findAll () {
 
 export async function create ({
   name, identificationNumber, legalRepresentative, identificationType, identification, phone, email,
-  departament, city, community
+  departament, city, community, attached
 }) {
   const collection = await getCollection()
   const document = {
@@ -29,7 +29,8 @@ export async function create ({
     email,
     departament,
     city,
-    community
+    community,
+    attached
   }
 
   return await collection.insertOne(document)

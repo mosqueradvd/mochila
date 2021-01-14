@@ -10,17 +10,35 @@ import {
   Button,
   Container,
   Box,
+  Paper,
   Card,
   Grid,
+  Table,
   Typography,
   Select,
   FormControl,
   InputLabel,
-  MenuItem
+  TableCell,
+  MenuItem,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  TableContainer,
+  TableBody,
+  DialogActions,
+  TableRow,
+  TableHead
 } from '@material-ui/core'
 import { Info as InfoIcon } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import DeleteIcon from '@material-ui/icons/Delete'
+import ErrorIcon from '@material-ui/icons/Error'
+import DoneAllIcon from '@material-ui/icons/DoneAll'
+import FileUploader from 'components/FileUploader'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -48,8 +66,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop: '2.5em',
-    display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: theme.spacing(3)
   },
   container: {
     marginBottom: theme.spacing(3),
@@ -63,6 +81,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
+  },
+  uploaderTitle: {
+    marginBottom: theme.spacing(2)
+  },
+  successColor: {
+    color: 'green'
   }
 }))
 
@@ -71,6 +95,49 @@ const Organization = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const router = useRouter()
+
+  const StyledTabletCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white
+    }
+  }))(TableCell)
+
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  const [attached, setAttached] = useState([])
+  const [itemLetterHead, setItemLetterHead] = useState('')
+  const [itemSignature, setItemSignature] = useState()
+
+  const addItem = (event) => {
+    event.preventDefault()
+
+    setAttached([
+      {
+        letterHead: itemLetterHead,
+        attachedSignature: itemSignature
+      }
+    ])
+
+    setItemLetterHead('')
+    setItemSignature('')
+    setOpen(false)
+  }
+
+  const handleDeleteItem = (index) => {
+    return () => {
+      attached.splice(index, 1)
+      setAttached([...attached])
+    }
+  }
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
@@ -104,7 +171,8 @@ const Organization = () => {
       email,
       departament,
       city,
-      community
+      community,
+      attached
     })).then(() => {
       router.push('/admin')
     })
@@ -406,6 +474,106 @@ const Organization = () => {
                   )}
                 </Grid>
               </Grid>
+              <div className={classes.titles}>
+                <Typography
+                  color='primary'
+                  component='h1'
+                  variant='h5'
+                  gutterBottom
+                >
+                  Archivos adjuntos del proyecto
+                </Typography>
+              </div>
+              <div className={classes.button}>
+                <Button
+                  variant='contained'
+                  color='primary'
+                  startIcon={<CloudUploadIcon />}
+                  onClick={handleClickOpen}
+                >
+                  adjuntar un documento
+                </Button>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby='form-dialog-title'
+                >
+                  <form onSubmit={addItem}>
+                    <DialogTitle id='form-dialog-title'>
+                      Adjuntar un archivo
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>
+                        Solo es permitido adjuntar archivos en formato PNG,
+                        JPG y JPEG. Tamaño máximo 100Mb
+                      </DialogContentText>
+                      <Typography className={classes.uploaderTitle} variant='h6' color='initial'>
+                        Subir Hoja Membrete
+                      </Typography>
+                      <FileUploader filePrefix='test' onChange={(file) => { setItemLetterHead(file) }} />
+                      <Typography className={classes.uploaderTitle} variant='h6' color='initial'>
+                        Subir firma del PDF (formato PNG)
+                      </Typography>
+                      <FileUploader filePrefix='test' onChange={(file) => { setItemSignature(file) }} />
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose} color='primary'>
+                        Cancelar
+                      </Button>
+                      <Button
+                        onClick={addItem}
+                        color='primary'
+                        variant='contained'
+                        type='submit'
+                      >
+                        Guardar
+                      </Button>
+                    </DialogActions>
+                  </form>
+                </Dialog>
+              </div>
+
+              <TableContainer
+                component={Paper}
+                elevation={1}
+                className={classes.tableContainer}
+              >
+                <Table className={classes.table} aria-label='docs'>
+                  <TableHead>
+                    <TableRow>
+                      <StyledTabletCell align='center'>No.</StyledTabletCell>
+                      <StyledTabletCell align='center'>
+                        Hoja Membrete
+                      </StyledTabletCell>
+                      <StyledTabletCell align='center'>
+                        Firma Digital
+                      </StyledTabletCell>
+                      <StyledTabletCell align='center'>
+                        Eliminar
+                      </StyledTabletCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {attached.map((files, index) => (
+                      <TableRow key={index}>
+                        <TableCell align='center'>{index + 1}</TableCell>
+                        <TableCell align='center'>
+                          {files.letterHead ? <DoneAllIcon className={classes.successColor} /> : <ErrorIcon color='error' />}
+                        </TableCell>
+                        <TableCell align='center'>
+                          {files.attachedSignature ? <DoneAllIcon /> : <ErrorIcon color='error' />}
+                        </TableCell>
+                        <TableCell align='center'>
+                          <IconButton onClick={handleDeleteItem(index)}>
+                            <DeleteIcon />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+
               <div className={classes.button}>
                 <Button
                   color='primary'
