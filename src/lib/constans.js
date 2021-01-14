@@ -5,4 +5,5 @@ export { default as ATTACHMENT_TYPES } from 'seeds/attachmentTypes.json'
 export { default as ROLES_TYPES } from 'seeds/rolesTypes.json'
 export { default as CITIES } from 'seeds/cities.json'
 
-export const UPLOAD_CONTENT_TYPES = ['application/msword', 'application/pdf']
+export const ATTACHMENT_CONTENT_TYPES = ['application/msword', 'application/pdf']
+export const IMAGE_CONTENT_TYPES = ['image/png', 'image/jpeg']

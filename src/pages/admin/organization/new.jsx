@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
 import { useDispatch, useSelector } from 'react-redux'
-import { IDENTIFICATION_TYPES, DEPARTMENTS, CITIES } from 'lib/constans'
+import { IDENTIFICATION_TYPES, DEPARTMENTS, CITIES, IMAGE_CONTENT_TYPES } from 'lib/constans'
 import { createOrganization } from 'dux/organizationsSlice'
 import {
   TextField,
@@ -510,11 +510,19 @@ const Organization = () => {
                       <Typography className={classes.uploaderTitle} variant='h6' color='initial'>
                         Subir Hoja Membrete
                       </Typography>
-                      <FileUploader filePrefix='test' onChange={(file) => { setItemLetterHead(file) }} />
+                      <FileUploader
+                        filePrefix='stamp'
+                        accept={IMAGE_CONTENT_TYPES}
+                        onChange={(file) => { setItemLetterHead(file) }}
+                      />
                       <Typography className={classes.uploaderTitle} variant='h6' color='initial'>
                         Subir firma del PDF (formato PNG)
                       </Typography>
-                      <FileUploader filePrefix='test' onChange={(file) => { setItemSignature(file) }} />
+                      <FileUploader
+                        filePrefix='signature'
+                        accept={IMAGE_CONTENT_TYPES}
+                        onChange={(file) => { setItemSignature(file) }}
+                      />
                     </DialogContent>
                     <DialogActions>
                       <Button onClick={handleClose} color='primary'>

@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
 import { useDispatch } from 'react-redux'
 import { createProject } from 'dux/projectsSlice'
-import { PROJECTS_TYPES, ATTACHMENT_TYPES } from 'lib/constans'
+import { PROJECTS_TYPES, ATTACHMENT_TYPES, ATTACHMENT_CONTENT_TYPES } from 'lib/constans'
 import {
   TextField,
   Card,
@@ -574,7 +574,11 @@ const Project = () => {
                           onClick={(e) => setItemType(e.target.value)}
                         />
                       </FormControl>
-                      <FileUploader filePrefix='test' onChange={(file) => { setItemAttachment(file) }} />
+                      <FileUploader
+                        filePrefix='project'
+                        accept={ATTACHMENT_CONTENT_TYPES}
+                        onChange={(file) => { setItemAttachment(file) }}
+                      />
                     </DialogContent>
                     <DialogActions>
                       <Button onClick={handleClose} color='primary'>

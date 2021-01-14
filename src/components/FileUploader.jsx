@@ -6,7 +6,6 @@ import { uploadFile } from 'apiClient/upload'
 import CircularProgressWithLabel from 'components/CircularProgressWithLabel'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
-import { UPLOAD_CONTENT_TYPES } from 'lib/constans'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const FileUploader = ({ error, filePrefix, onChange }) => {
+const FileUploader = ({ error, filePrefix, onChange, accept }) => {
   const classes = useStyles()
   const [progress, setProgress] = useState(0)
 
@@ -54,7 +53,7 @@ const FileUploader = ({ error, filePrefix, onChange }) => {
     <Dropzone
       maxFilesize={10}
       multiple={false}
-      accept={UPLOAD_CONTENT_TYPES}
+      accept={accept}
       onDrop={handleOnDrop}
     >
       {({ getRootProps, getInputProps }) => (
@@ -77,11 +76,13 @@ const FileUploader = ({ error, filePrefix, onChange }) => {
 FileUploader.propTypes = {
   filePrefix: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.bool
+  error: PropTypes.bool,
+  accept: PropTypes.array
 }
 
 FileUploader.defaultProps = {
-  error: false
+  error: false,
+  accept: []
 }
 
 export default FileUploader

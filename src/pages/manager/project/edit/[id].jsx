@@ -5,7 +5,7 @@ import Layout from 'components/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProject, fetchProjectById } from 'dux/projectsSlice'
 import { withStyles, makeStyles } from '@material-ui/core/styles'
-import { PROJECTS_TYPES, ATTACHMENT_TYPES } from 'lib/constans'
+import { PROJECTS_TYPES, ATTACHMENT_TYPES, ATTACHMENT_CONTENT_TYPES } from 'lib/constans'
 import {
   Typography,
   Container,
@@ -598,7 +598,11 @@ const Project = () => {
                             onClick={(e) => setItemType(e.target.value)}
                           />
                         </FormControl>
-                        <FileUploader filePrefix='test' onChange={(file) => { setItemAttachment(file) }} />
+                        <FileUploader
+                          filePrefix='project'
+                          accept={ATTACHMENT_CONTENT_TYPES}
+                          onChange={(file) => { setItemAttachment(file) }}
+                        />
                       </DialogContent>
                       <DialogActions>
                         <Button onClick={handleClose} color='primary'>
