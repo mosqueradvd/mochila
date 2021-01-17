@@ -221,6 +221,7 @@ const ListUsers = () => {
               <TableBody>
                 {stableSort(users, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .filter((user) => user.userRole !== 'admin')
                   .map((row, index) => {
                     const isItemSelected = isSelected(row.id)
                     const labelId = `enhanced-table-checkbox-${index}`
