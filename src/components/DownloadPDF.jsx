@@ -34,6 +34,7 @@ const year = new Date().getFullYear()
 
 function ReactPDF ({ projectName, projectLocation, projectValueInNumbers, projectValueInLetters, s3 }) {
   const awsURL = s3.attached[0].letterHead
+  const signature = s3.attached[0].attachedSignature
   return (
     <Document>
       <Page>
@@ -69,7 +70,7 @@ function ReactPDF ({ projectName, projectLocation, projectValueInNumbers, projec
           <Text style={{ marginTop: 440, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
             Firma Autorizada,
           </Text>
-          <Image source={awsURL} style={{ position: 'absolute', left: 65, marginTop: 470, width: 50, height: 50 }} />
+          <Image source={signature} style={{ position: 'absolute', left: 65, marginTop: 470, width: 50, height: 50 }} />
           <Text
             style={{ position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey' }}
             render={({ pageNumber, totalPages }) =>
