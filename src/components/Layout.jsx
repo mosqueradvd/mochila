@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/'
 import Hidden from '@material-ui/core/Hidden'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Header from './Header'
+import { esES } from '@material-ui/core/locale'
 import useUser from 'hooks/useUser'
 
 const theme = createMuiTheme({
@@ -27,7 +28,7 @@ const theme = createMuiTheme({
       main: '#287833'
     }
   }
-})
+}, esES)
 
 const styles = makeStyles((theme) => ({
   root: {
