@@ -45,14 +45,13 @@ function ReactPDF ({ projectName, projectLocation, projectValueInNumbers, projec
           </Text>
           <View>
             <Text style={{ marginTop: 200, marginLeft: 40, fontSize: 14, fontFamily: 'Times-Roman', position: 'absolute' }}>
-              El Gobernador del Cabildo {projectName}, del municipio de {' '}
-              {projectLocation}, CERTIFICA
+              El Gobernador del Cabildo indígena Quillasinga de Tangua Montaña de fuego, del
             </Text>
             <Text style={{ marginTop: 215, marginLeft: 40, fontSize: 14, fontFamily: 'Times-Roman', position: 'absolute' }}>
-              que en el Banco de Proyectos para la implementación del plan de vida de la Comunidad,
+              municipio de {' '} {projectLocation}, CERTIFICA que en el Banco de Proyectos para la implementación
             </Text>
             <Text style={{ marginTop: 230, marginLeft: 40, fontSize: 14, fontFamily: 'Times-Roman', position: 'absolute' }}>
-              se encuentra registrado el siguiente proyecto:
+              del plan de vida de la Comunidad, se encuentra registrado el siguiente proyecto:
             </Text>
           </View>
           <Text style={{ marginTop: 270, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
