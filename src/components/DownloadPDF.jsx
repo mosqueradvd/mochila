@@ -32,11 +32,12 @@ const currentMonth = month.toLocaleString('es-ES', { month: 'long' })
 
 const year = new Date().getFullYear()
 
-function ReactPDF ({ projectName, projectLocation, projectValueInNumbers, projectValueInLetters }) {
+function ReactPDF ({ projectName, projectLocation, projectValueInNumbers, projectValueInLetters, s3 }) {
+  const awsURL = s3.attached[0].letterHead
   return (
     <Document>
       <Page>
-        <Image source='/cover_img.png' style={{ position: 'relative' }} />
+        <Image source={awsURL} style={{ position: 'relative' }} />
         <View style={{ margin: 10, padding: 10, flexGrow: 1, position: 'absolute' }}>
           <Text style={{ fontSize: 24, marginLeft: 220, marginTop: 150, textAlign: 'center', fontFamily: 'Oswald', position: 'absolute' }}>
             CERTIFICACIÓN
@@ -68,6 +69,7 @@ function ReactPDF ({ projectName, projectLocation, projectValueInNumbers, projec
           <Text style={{ marginTop: 440, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
             Firma Autorizada,
           </Text>
+          <Image source={awsURL} style={{ position: 'absolute', left: 65, marginTop: 470, width: 50, height: 50 }} />
           <Text
             style={{ position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey' }}
             render={({ pageNumber, totalPages }) =>
@@ -80,10 +82,10 @@ function ReactPDF ({ projectName, projectLocation, projectValueInNumbers, projec
   )
 }
 
-const LazyDownloadPDFButton = ({ projectName, projectLocation, projectValueInNumbers, projectValueInLetters }) => (
+const LazyDownloadPDFButton = ({ projectName, projectLocation, projectValueInNumbers, projectValueInLetters, awsURL }) => (
   <CardMembershipIcon
     onClick={async () => {
-      const doc = <ReactPDF projectName={projectName} projectLocation={projectLocation} projectValueInNumbers={projectValueInNumbers} projectValueInLetters={projectValueInLetters} />
+      const doc = <ReactPDF projectName={projectName} projectLocation={projectLocation} projectValueInNumbers={projectValueInNumbers} projectValueInLetters={projectValueInLetters} s3={awsURL} />
       const asPdf = pdf([]) // [] is important, throws without an argument
       asPdf.updateContainer(doc)
       const blob = await asPdf.toBlob()
@@ -97,14 +99,16 @@ LazyDownloadPDFButton.propTypes = {
   projectLocation: PropTypes.string.isRequired,
   projectName: PropTypes.string.isRequired,
   projectValueInLetters: PropTypes.string.isRequired,
-  projectValueInNumbers: PropTypes.string.isRequired
+  projectValueInNumbers: PropTypes.string.isRequired,
+  awsURL: PropTypes.string.isRequired
 }
 
 ReactPDF.propTypes = {
   projectLocation: PropTypes.string.isRequired,
   projectName: PropTypes.string.isRequired,
   projectValueInLetters: PropTypes.string.isRequired,
-  projectValueInNumbers: PropTypes.string.isRequired
+  projectValueInNumbers: PropTypes.string.isRequired,
+  s3: PropTypes.string.isRequired
 }
 
 Font.register({

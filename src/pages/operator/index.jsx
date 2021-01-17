@@ -3,6 +3,7 @@ import Layout from 'components/Layout'
 import DownloadPDF from 'components/DownloadPDF'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects } from 'dux/projectsSlice'
+import { fetchOrganizations } from 'dux/organizationsSlice'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import {
@@ -145,6 +146,12 @@ export default function ListProjects () {
     dispatch(fetchProjects())
   }, [dispatch])
 
+  const organizations = useSelector(state => state.organizations.data)
+  useEffect(() => {
+    dispatch(fetchOrganizations())
+  }, [dispatch])
+  const aws = organizations[0]
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc'
     setOrder(isAsc ? 'desc' : 'asc')
@@ -235,6 +242,7 @@ export default function ListProjects () {
                         <TableCell align='left'>
                           <Button>
                             <DownloadPDF
+                              awsURL={aws}
                               projectName={row.projectName}
                               projectLocation={row.projectLocation}
                               projectValueInLetters={row.projectValueInLetters}

@@ -139,7 +139,6 @@ const ComponentListOrganizations = () => {
   useEffect(() => {
     dispatch(fetchOrganizations())
   }, [dispatch])
-
   const classes = useStyles()
   const [order, setOrder] = useState('asc')
   const [orderBy, setOrderBy] = useState('calories')

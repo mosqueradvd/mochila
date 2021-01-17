@@ -4,6 +4,7 @@ import Layout from 'components/Layout'
 import DownloadPDF from 'components/DownloadPDF'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects } from 'dux/projectsSlice'
+import { fetchOrganizations } from 'dux/organizationsSlice'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import {
@@ -148,7 +149,11 @@ export default function ListProjects () {
 
   const isLoading = useSelector((state) => state.projects.isLoading)
   const projects = useSelector((state) => state.projects.data)
-
+  const organizations = useSelector(state => state.organizations.data)
+  const aws = organizations[0]
+  useEffect(() => {
+    dispatch(fetchOrganizations())
+  }, [dispatch])
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
@@ -277,6 +282,7 @@ export default function ListProjects () {
                         <TableCell align='left'>
                           <Button>
                             <DownloadPDF
+                              awsURL={aws}
                               projectName={row.projectName}
                               projectLocation={row.projectLocation}
                               projectValueInLetters={row.projectValueInLetters}
