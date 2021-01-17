@@ -10,7 +10,6 @@ import HomeIcon from '@material-ui/icons/Home'
 
 import PeopleSharpIcon from '@material-ui/icons/PeopleSharp'
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered'
-import WallpaperIcon from '@material-ui/icons/Wallpaper'
 
 const MenuManager = () => {
   return (
@@ -39,12 +38,6 @@ const MenuManager = () => {
           <ListItemText>Proyectos</ListItemText>
         </ListItem>
       </Link>
-      <ListItem button>
-        <ListItemIcon>
-          <WallpaperIcon color='primary' />
-        </ListItemIcon>
-        <ListItemText>Subir hoja membrete</ListItemText>
-      </ListItem>
     </List>
   )
 }

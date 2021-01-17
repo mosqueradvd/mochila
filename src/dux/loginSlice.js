@@ -14,7 +14,7 @@ const loginSlice = createSlice({
   reducers: {
     setCurrentUser (state, { payload: { userName, userEmail, organizationId, userRole } }) {
       state.userName = userName
-      state.userEmail = userName
+      state.userEmail = userEmail
       state.organizationId = organizationId
       state.userRole = userRole
       state.isAuthenticated = true

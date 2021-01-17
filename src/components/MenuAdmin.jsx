@@ -4,8 +4,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Divider
+  ListItemText
 } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
 import PeopleSharpIcon from '@material-ui/icons/PeopleSharp'
@@ -38,7 +37,6 @@ const MenuAdmin = () => {
           <ListItemText>Usuarios</ListItemText>
         </ListItem>
       </Link>
-      <Divider />
     </List>
   )
 }

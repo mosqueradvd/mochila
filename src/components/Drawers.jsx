@@ -8,6 +8,7 @@ import MenuManager from './MenuManager'
 import MenuOperator from './MenuOperator'
 import { isAdmin, isManager, isOperator } from 'lib/helpers'
 import useUser from 'hooks/useUser'
+import Logo from 'components/Logo'
 
 const drawerWidth = 250
 
@@ -19,7 +20,10 @@ const styles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth
   },
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
+  logo: {
+    flexGrow: 1
+  }
 }))
 
 const Drawers = ({ variant, open, onClose }) => {
@@ -39,8 +43,10 @@ const Drawers = ({ variant, open, onClose }) => {
       <div className={classes.toolbar} />
       <Divider />
       {isAdmin(userRole) && <MenuAdmin />}
-      {(isAdmin(userRole) || isManager(userRole)) && <MenuManager />}
-      {(isAdmin(userRole) || isOperator(userRole)) && <MenuOperator />}
+      {isManager(userRole) && <MenuManager />}
+      {isOperator(userRole) && <MenuOperator />}
+      <div className={classes.logo} />
+      <Logo />
     </Drawer>
   )
 }

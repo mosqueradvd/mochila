@@ -20,7 +20,6 @@ const MenuOperator = () => {
           <ListItemText>Generar certificado</ListItemText>
         </ListItem>
       </Link>
-
     </List>
   )
 }
