@@ -23,6 +23,7 @@ import {
   withStyles,
   makeStyles
 } from '@material-ui/core/styles'
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import Skeleton from '@material-ui/lab/Skeleton'
 import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
@@ -418,7 +419,7 @@ const UserInfo = () => {
                       Categoría del Archivo
                     </StyledTabletCell>
                     <StyledTabletCell align='center'>
-                      Descargar
+                      Ver archivo
                     </StyledTabletCell>
                   </TableRow>
                 </TableHead>
@@ -434,7 +435,11 @@ const UserInfo = () => {
                         align='center'
                         className={classes.downloadFile}
                       >
-                        boton para descargar
+                        <Button>
+                          <a href={files.attachedArchive} id='download' target='blank'>
+                            <CloudDownloadIcon color='primary' />
+                          </a>
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))}

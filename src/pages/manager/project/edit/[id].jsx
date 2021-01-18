@@ -36,6 +36,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
 import Skeleton from '@material-ui/lab/Skeleton'
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
 import FileUploader from 'components/FileUploader'
 export { getServerSideProps } from 'lib/ssr'
@@ -649,6 +650,9 @@ const Project = () => {
                           Categoría del Archivo
                         </StyledTabletCell>
                         <StyledTabletCell align='center'>
+                          Ver archivo
+                        </StyledTabletCell>
+                        <StyledTabletCell align='center'>
                           Eliminar
                         </StyledTabletCell>
                       </TableRow>
@@ -663,8 +667,18 @@ const Project = () => {
                           <TableCell align='center'>
                             {getAttachmentTypeById(files.attachedType)?.value}
                           </TableCell>
+                          <TableCell
+                            align='center'
+                            className={classes.downloadFile}
+                          >
+                            <Button>
+                              <a href={files.attachedArchive} id='download' target='blank'>
+                                <CloudDownloadIcon color='primary' />
+                              </a>
+                            </Button>
+                          </TableCell>
                           <TableCell align='center'>
-                            <IconButton onClick={handleDeleteItem(index)}>
+                            <IconButton onClick={handleDeleteItem(index)} color='primary'>
                               <DeleteIcon />
                             </IconButton>
                           </TableCell>
