@@ -4,6 +4,7 @@ import Layout from 'components/Layout'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchProjectById, updateProjectStatus } from 'dux/projectsSlice'
 import {
+  CssBaseline,
   Card,
   Container,
   Typography,
@@ -27,21 +28,31 @@ import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2)
-  },
   card: {
     textAlign: 'initial',
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1em'
+    }
   },
-  typography: {
-    marginBottom: theme.spacing(2)
+  container: {
+    marginBottom: theme.spacing(2),
+    padding: theme.spacing(2)
+  },
+  tipography: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1em'
+    },
+    display: 'flex',
+    justifyContent: 'left'
   },
   titles: {
     width: '100%',
     marginTop: theme.spacing(2),
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2em'
+    }
   },
   tableContainer: {
     marginTop: theme.spacing(2)
@@ -50,13 +61,10 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer'
   },
   box: {
-    marginBottom: theme.spacing(5),
-    textAlign: 'center'
+    marginBottom: theme.spacing(2)
   },
   button: {
-    marginTop: '2.5em',
-    display: 'flex',
-    justifyContent: 'center'
+    marginTop: '2.5em'
   },
   skeleton: {
     marginTop: theme.spacing(3),
@@ -120,19 +128,20 @@ const UserInfo = () => {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle='Editar proyecto'>
       <Container className={classes.container}>
+        <CssBaseline />
+        <Box className={classes.box}>
+          <Typography
+            variant='h4'
+            color='primary'
+            gutterBottom
+            className={classes.tipography}
+          >
+            Habilitar o deshabilitar un proyecto
+          </Typography>
+        </Box>
         <Card raised className={classes.card}>
-          <Box className={classes.box}>
-            <Typography
-              variant='h4'
-              color='primary'
-              component='h1'
-              className={classes.tipography}
-            >
-              Habilitar o deshabilitar un proyecto
-            </Typography>
-          </Box>
           <Typography variant='h5' color='primary' gutterBottom>
             Datos del Proyecto
           </Typography>

@@ -50,7 +50,9 @@ const useStyles = makeStyles((theme) => ({
   tipography: {
     [theme.breakpoints.down('sm')]: {
       fontSize: '2em'
-    }
+    },
+    display: 'flex',
+    justifyContent: 'left'
   },
   box: {
     marginBottom: theme.spacing(2)
@@ -109,7 +111,7 @@ const User = () => {
     <Layout pageTitle='Nuevo usuario'>
       <Container className={classes.container}>
         <CssBaseline />
-        <Box display='flex' justifyContent='center' className={classes.box}>
+        <Box className={classes.box}>
           <Typography
             variant='h4'
             color='primary'

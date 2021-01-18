@@ -24,11 +24,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3)
   },
   typography: {
-    marginBottom: theme.spacing(2)
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2em'
+    },
+    display: 'flex',
+    justifyContent: 'left'
   },
   box: {
-    marginBottom: theme.spacing(5),
-    textAlign: 'center'
+    marginBottom: theme.spacing(2)
   },
   container: {
     marginBottom: theme.spacing(3),
@@ -90,17 +93,17 @@ const DisableEnableUser = () => {
   return (
     <Layout pageTitle='habilitar - deshabilitar usuario'>
       <Container className={classes.container}>
+        <Box className={classes.box}>
+          <Typography
+            variant='h4'
+            color='primary'
+            gutterBottom
+            className={classes.typography}
+          >
+            Habilitar o deshabilitar un usuario
+          </Typography>
+        </Box>
         <Card raised className={classes.card}>
-          <Box className={classes.box}>
-            <Typography
-              variant='h4'
-              color='primary'
-              gutterBottom
-              className={classes.tipography}
-            >
-              Habilitar o deshabilitar un usuario xxx
-            </Typography>
-          </Box>
           <Grid container spacing={2}>
             <Grid item xs={6} sm={6} md={6}>
               <Typography

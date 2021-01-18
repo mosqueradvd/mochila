@@ -47,6 +47,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'initial'
   },
+  tipography: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2em'
+    },
+    display: 'flex',
+    justifyContent: 'left'
+  },
   formControl: {
     minWidth: '100%',
     marginTop: theme.spacing(1)
@@ -193,8 +200,13 @@ const Organization = () => {
     <Layout pageTitle={`Organización | ${organization?.name}`}>
       <Container className={classes.container}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Box display='flex' justifyContent='center' className={classes.box}>
-            <Typography variant='h4' color='primary'>
+          <Box className={classes.box}>
+            <Typography
+              variant='h4'
+              color='primary'
+              gutterBottom
+              className={classes.tipography}
+            >
               Modificar organización
             </Typography>
           </Box>

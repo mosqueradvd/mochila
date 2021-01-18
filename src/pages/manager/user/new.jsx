@@ -49,7 +49,9 @@ const useStyles = makeStyles((theme) => ({
   tipography: {
     [theme.breakpoints.down('sm')]: {
       fontSize: '2em'
-    }
+    },
+    display: 'flex',
+    justifyContent: 'left'
   },
   box: {
     marginBottom: theme.spacing(2)

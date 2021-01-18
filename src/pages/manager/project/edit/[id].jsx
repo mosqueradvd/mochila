@@ -45,6 +45,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(5),
     textAlign: 'initial'
   },
+  tipography: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2em'
+    },
+    display: 'flex',
+    justifyContent: 'left'
+  },
   form: {
     width: '100%'
   },
@@ -188,9 +195,14 @@ const Project = () => {
     <Layout pageTitle='Nuevo proyecto'>
       <Container className={classes.container}>
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-          <Box display='flex' justifyContent='center' className={classes.box}>
-            <Typography variant='h4' color='primary'>
-              Modificar un proyecto.
+          <Box className={classes.box}>
+            <Typography
+              variant='h4'
+              color='primary'
+              gutterBottom
+              className={classes.tipography}
+            >
+              Modificar un proyecto
             </Typography>
           </Box>
 
