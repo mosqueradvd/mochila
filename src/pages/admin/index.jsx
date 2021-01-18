@@ -85,7 +85,7 @@ const ComponentDashboard = () => {
                 <Grid item xs key={index}>
                   <Card className={classes.card}>
                     <CardContent>
-                      <Typography variant='h6' color='textSecondary' gutterBottom>
+                      <Typography variant='h6' color='primary' gutterBottom>
                         {row?.name}
                       </Typography>
                       <Typography variant='h6' component='h2'>

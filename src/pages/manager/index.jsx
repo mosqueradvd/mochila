@@ -104,17 +104,17 @@ const Dashboard = () => {
                 <Grid item xs key={index}>
                   <Card className={classes.card}>
                     <CardContent>
-                      <Typography variant='h6' color='textSecondary' gutterBottom>
+                      <Typography variant='h6' color='primary' gutterBottom>
                         {row?.projectName}
-                      </Typography>
-                      <Typography variant='h6' component='h2'>
-                        {row?.projectLocation}
                       </Typography>
                       <Typography variant='h6' component='h2'>
                         {getProjectTypesById(row?.projectType)?.value}
                       </Typography>
+                      <Typography variant='h6' component='h2'>
+                        {row?.projectLocation}
+                      </Typography>
                       <Typography className={classes.pos} color='textSecondary'>
-                        {row?.projectValueInNumbers}
+                        ${' '}{row?.projectValueInNumbers}
                       </Typography>
                     </CardContent>
                     <CardActions>

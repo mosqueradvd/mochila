@@ -249,7 +249,7 @@ export default function ListProjects () {
                         <TableCell align='left'>{row.projectName}</TableCell>
                         <TableCell align='left'>{getProjectTypesById(row.projectType)?.value}</TableCell>
                         <TableCell align='left'>
-                          {row.projectValueInNumbers}
+                          ${' '}{row.projectValueInNumbers}
                         </TableCell>
                         <TableCell align='left'>{row.structuringName}</TableCell>
                         <TableCell align='left'>
@@ -257,7 +257,7 @@ export default function ListProjects () {
                             href={`/manager/project/${row.id}`}
                           >
                             <Button>
-                              <SearchIcon />
+                              <SearchIcon color='primary' />
                             </Button>
                           </Link>
                         </TableCell>
@@ -266,7 +266,7 @@ export default function ListProjects () {
                             href={`/manager/project/edit/${row.id}`}
                           >
                             <Button>
-                              <MenuBookIcon />
+                              <MenuBookIcon color='primary' />
                             </Button>
                           </Link>
                         </TableCell>
@@ -275,12 +275,12 @@ export default function ListProjects () {
                             href={`/manager/project/enable-disable/${row.id}`}
                           >
                             <Button>
-                              <LibraryAddCheckIcon />
+                              <LibraryAddCheckIcon color='primary' />
                             </Button>
                           </Link>
                         </TableCell>
                         <TableCell align='left'>
-                          <Button>
+                          <Button color='primary'>
                             <DownloadPDF
                               awsURL={aws}
                               projectName={row.projectName}

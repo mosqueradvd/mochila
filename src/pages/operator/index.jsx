@@ -236,7 +236,7 @@ export default function ListProjects () {
                         <TableCell align='left'>{row.projectName}</TableCell>
                         <TableCell align='left'>{getProjectTypesById(row.projectType)?.value}</TableCell>
                         <TableCell align='left'>
-                          {row.projectValueInNumbers}
+                          ${' '}{row.projectValueInNumbers}
                         </TableCell>
                         <TableCell align='left'>{row.structuringName}</TableCell>
 

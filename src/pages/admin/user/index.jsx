@@ -247,7 +247,7 @@ const ComponentListUsers = () => {
                             href={`/admin/user/${row.id}`}
                           >
                             <Button>
-                              <SearchIcon />
+                              <SearchIcon color='primary' />
                             </Button>
 
                           </Link>
@@ -257,7 +257,7 @@ const ComponentListUsers = () => {
                             href={`/admin/user/edit/${row.id}`}
                           >
                             <Button>
-                              <EditIcon />
+                              <EditIcon color='primary' />
                             </Button>
                           </Link>
                         </TableCell>
@@ -266,7 +266,7 @@ const ComponentListUsers = () => {
                             href={`/admin/user/enable-disable/${row.id}`}
                           >
                             <Button>
-                              <HowToRegSharpIcon />
+                              <HowToRegSharpIcon color='primary' />
                             </Button>
                           </Link>
                         </TableCell>

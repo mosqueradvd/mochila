@@ -29,7 +29,7 @@ export default function OutlinedCard () {
   return (
     <Card className={classes.root} variant='outlined'>
       <CardContent>
-        <Typography variant='body2' component='p'>
+        <Typography variant='body2' color='primary'>
           {user.userEmail}
         </Typography>
       </CardContent>

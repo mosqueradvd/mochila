@@ -246,7 +246,7 @@ const ComponentListOrganizations = () => {
                               href={`/admin/organization/${row.id}`}
                               shallow
                             >
-                              <SearchIcon />
+                              <SearchIcon color='primary' />
                             </Link>
                           </Button>
 
@@ -257,7 +257,7 @@ const ComponentListOrganizations = () => {
                               href={`/admin/organization/edit/${row.id}`}
                               shallow
                             >
-                              <EditIcon />
+                              <EditIcon color='primary' />
                             </Link>
                           </Button>
 
