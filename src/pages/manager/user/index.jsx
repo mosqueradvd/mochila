@@ -55,7 +55,6 @@ function stableSort (array, comparator) {
 const headCells = [
   { id: 'id_usuario', numeric: true, label: 'Número' },
   { id: 'nombres_apellidos', numeric: false, label: 'Nombres y apellidos' },
-  { id: 'id_organizacion', numeric: true, label: 'Organización' },
   { id: 'id_tipo_usuario', numeric: true, label: 'Rol' },
   { id: 'ver', numeric: false, label: 'Ver' },
   { id: 'modificar', numeric: false, label: 'Modificar' },
@@ -242,7 +241,6 @@ const ListUsers = () => {
                         <TableCell align='left'>
                           {row.userName}
                         </TableCell>
-                        <TableCell align='left'>organizacion</TableCell>
                         <TableCell align='left'>{getRolesTypeById(row.userRole)?.value}</TableCell>
                         <TableCell align='left'>
                           <Link
