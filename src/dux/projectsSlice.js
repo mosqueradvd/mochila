@@ -12,7 +12,7 @@ export const fetchProjectById = createAsyncThunk('projects/fetchById', (id) => A
 export const createProject = createAsyncThunk('projects/create', (data) => API.create(data))
 export const updateProject = createAsyncThunk('projects/update', ({ id, data }) => API.update({ id, data }))
 
-export const updateProjectStatus = createAsyncThunk('projects/updateProjectStatus', ({ id, data }) => API.updateProjectStatus({ id, data }))
+export const updateProjectStatus = createAsyncThunk('projects/updateProjectStatus', ({ id, projectStatus }) => API.updateProjectStatus({ id, projectStatus }))
 
 const projectsSlice = createSlice({
   name: 'projectsSlice',

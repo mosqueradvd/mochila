@@ -13,9 +13,8 @@ async function handleGet (req, res) {
 }
 
 async function handlePost (req, res) {
-  const { query: { id }, body } = req
-  const attributes = JSON.parse(body)
-  await projectModel.updateProjectStatus(id, attributes)
+  const { query: { id }, body: { projectStatus } } = req
+  await projectModel.updateProjectStatus(id, projectStatus)
   const project = await projectModel.get(id)
 
   // TODO: Send the right status code according the operation result

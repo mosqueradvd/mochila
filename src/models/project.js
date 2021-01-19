@@ -67,10 +67,10 @@ export async function update (id, attributes) {
   return await collection.updateOne(filter, updateDocument)
 }
 
-export async function updateProjectStatus (id, attributes) {
+export async function updateProjectStatus (id, projectStatus) {
   const collection = await getCollection()
   const filter = { _id: ObjectId(id) }
-  const updateDocument = { $set: { projectStatus: attributes } }
+  const updateDocument = { $set: { projectStatus } }
 
   return await collection.updateOne(filter, updateDocument)
 }

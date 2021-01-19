@@ -93,22 +93,17 @@ const UserInfo = () => {
   const attached = project?.attached
   const [alert, setAlert] = useState(false)
   const [buttonsend, setButtonsend] = useState(false)
-  const [estado, setEstado] = useState('')
 
   useEffect(() => {
     dispatch(fetchProjectById(id))
   }, [dispatch, id])
 
-  useEffect(() => {
-    setEstado(project?.projectStatus)
-  }, [project])
-
   const handleState = () => {
-    const data = !estado
+    const projectStatus = !(project?.projectStatus || false)
     dispatch(
       updateProjectStatus({
         id,
-        data
+        projectStatus
       })
     )
       .then(() => {
@@ -158,7 +153,7 @@ const UserInfo = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -166,7 +161,7 @@ const UserInfo = () => {
                 Nombre del proyecto:
               </Typography>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='initial'
               >
                 {' '}{project?.projectName}
@@ -175,7 +170,7 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -183,7 +178,7 @@ const UserInfo = () => {
                 Tipo de Proyecto:
               </Typography>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='initial'
               >
                 {' '}{getProjectTypesById(project?.projectType)?.value}
@@ -192,7 +187,7 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -200,7 +195,7 @@ const UserInfo = () => {
                 Ubicación del Proyecto:
               </Typography>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='initial'
               >
                 {' '}{project?.projectLocation}
@@ -209,7 +204,7 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -217,7 +212,7 @@ const UserInfo = () => {
                 Valor en letras del Proyecto:
               </Typography>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='initial'
               >
                 {' '}{project?.projectValueInLetters}
@@ -226,7 +221,7 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
+                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -465,7 +460,7 @@ const UserInfo = () => {
               disabled={buttonsend}
               onClick={handleState}
             >
-              {estado === true ? 'Deshabilitar' : 'habilitar'}
+              {project?.projectStatus === true ? 'Deshabilitar' : 'habilitar'}
             </Button>
           </div>
         </Card>

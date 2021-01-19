@@ -22,8 +22,8 @@ export const update = async ({ id, data }) => {
   return response.data
 }
 
-export const updateProjectStatus = async ({ id, data }) => {
-  const response = await apiClient.post(`/api/projects/${id}`, data)
+export const updateProjectStatus = async ({ id, projectStatus }) => {
+  const response = await apiClient.post(`/api/projects/status/${id}`, { projectStatus })
 
   return response.data
 }
