@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import Layout from 'components/Layout'
+import Alert from '@material-ui/lab/Alert'
 import { IDENTIFICATION_TYPES, ROLES_TYPES } from 'lib/constans'
 import { useForm, Controller } from 'react-hook-form'
 import { createUser } from 'dux/usersSlice'
@@ -77,6 +78,8 @@ const User = () => {
   const labelWidthTypeProject = labelWidth + 120
   const dispatch = useDispatch()
   const userStatus = true
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
 
   const onSubmit = (data) => {
     const {
@@ -84,7 +87,11 @@ const User = () => {
     } = data
     dispatch(createUser({ userName, userIdentification, userIdentificationType, userPhone, userEmail, userRole, userStatus }))
       .then(() => {
-        router.push('/manager')
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/manager') }, 2000)
       })
   }
 
@@ -111,6 +118,7 @@ const User = () => {
     <Layout pageTitle='Nuevo usuario'>
       <Container className={classes.container}>
         <CssBaseline />
+        {alert === true ? <Alert severity='success'>Usuario guardado con éxito!</Alert> : null}
         <Box className={classes.box}>
           <Typography
             variant='h4'
@@ -305,6 +313,7 @@ const User = () => {
               color='primary'
               fullWidth
               type='submit'
+              disabled={buttonsend}
               className={classes.btnSubmit}
             >
               Guardar

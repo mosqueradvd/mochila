@@ -32,6 +32,7 @@ import {
   DialogTitle,
   IconButton
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
@@ -54,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'left'
   },
   form: {
-    width: '100%'
+    width: '100%',
+    paddingBottom: theme.spacing(1)
   },
   formControl: {
     minWidth: '100%',
@@ -115,6 +117,8 @@ const Project = () => {
   const [itemName, setItemName] = useState('')
   const [itemType, setItemType] = useState('')
   const [itemAttached, setItemAttachment] = useState('url-archivo')
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
@@ -174,7 +178,11 @@ const Project = () => {
     data = { ...data, attached }
     dispatch(updateProject({ id, data }))
       .then(() => {
-        router.push('/manager')
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/manager') }, 2000)
       })
   }
   if (isLoading) {
@@ -195,6 +203,7 @@ const Project = () => {
   return (
     <Layout pageTitle='Nuevo proyecto'>
       <Container className={classes.container}>
+        {alert === true ? <Alert severity='success'>Proyecto modificado con éxito!</Alert> : null}
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Box className={classes.box}>
             <Typography
@@ -694,6 +703,7 @@ const Project = () => {
                       color='primary'
                       variant='contained'
                       fullWidth
+                      disabled={buttonsend}
                       type='submit'
                     >
                       Guardar

@@ -31,6 +31,7 @@ import {
   DialogTitle,
   IconButton
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 import { withStyles, makeStyles } from '@material-ui/core/styles'
 import InfoIcon from '@material-ui/icons/Info'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
@@ -45,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'initial'
   },
   form: {
-    width: '100%'
+    width: '100%',
+    paddingBottom: theme.spacing(1)
   },
   formControl: {
     minWidth: '100%',
@@ -89,6 +91,8 @@ const Project = () => {
   const labelWidthTypeProject = labelWidth + 140
   const classes = useStyles()
   const projectStatus = true
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
 
   const StyledTabletCell = withStyles((theme) => ({
     head: {
@@ -173,9 +177,14 @@ const Project = () => {
           attached
         }
       )
-    ).then(() => {
-      router.push('/manager')
-    })
+    )
+      .then(() => {
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/manager') }, 2000)
+      })
   }
   return (
     <Layout pageTitle='Nuevo proyecto'>
@@ -644,6 +653,7 @@ const Project = () => {
                     variant='contained'
                     fullWidth
                     type='submit'
+                    disabled={buttonsend}
                   >
                     Guardar
                   </Button>
@@ -652,6 +662,7 @@ const Project = () => {
             </Grid>
           </Card>
         </form>
+        {alert === true ? <Alert severity='success'>Proyecto guardado con éxito!</Alert> : null}
       </Container>
     </Layout>
   )

@@ -23,6 +23,7 @@ import {
   withStyles,
   makeStyles
 } from '@material-ui/core/styles'
+import Alert from '@material-ui/lab/Alert'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import Skeleton from '@material-ui/lab/Skeleton'
 import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
@@ -90,7 +91,8 @@ const UserInfo = () => {
   const isLoading = useSelector(state => state.projects.isLoading)
   const project = useSelector(state => state.projects.current)
   const attached = project?.attached
-
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
   const [estado, setEstado] = useState('')
 
   useEffect(() => {
@@ -109,7 +111,13 @@ const UserInfo = () => {
         data
       })
     )
-    router.push('/admin')
+      .then(() => {
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/manager') }, 2000)
+      })
   }
 
   if (isLoading) {
@@ -132,6 +140,7 @@ const UserInfo = () => {
     <Layout pageTitle='Editar proyecto'>
       <Container className={classes.container}>
         <CssBaseline />
+        {alert === true ? <Alert severity='success'>Proyecto modificado con éxito!</Alert> : null}
         <Box className={classes.box}>
           <Typography
             variant='h4'
@@ -453,6 +462,7 @@ const UserInfo = () => {
               variant='contained'
               fullWidth
               type='submit'
+              disabled={buttonsend}
               onClick={handleState}
             >
               {estado === true ? 'Deshabilitar' : 'habilitar'}
