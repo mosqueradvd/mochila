@@ -153,7 +153,6 @@ const UserInfo = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -161,7 +160,6 @@ const UserInfo = () => {
                 Nombre del proyecto:
               </Typography>
               <Typography
-                variant='h6'
                 color='initial'
               >
                 {' '}{project?.projectName}
@@ -170,7 +168,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -178,7 +175,6 @@ const UserInfo = () => {
                 Tipo de Proyecto:
               </Typography>
               <Typography
-                variant='h6'
                 color='initial'
               >
                 {' '}{getProjectTypesById(project?.projectType)?.value}
@@ -187,7 +183,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -195,7 +190,6 @@ const UserInfo = () => {
                 Ubicación del Proyecto:
               </Typography>
               <Typography
-                variant='h6'
                 color='initial'
               >
                 {' '}{project?.projectLocation}
@@ -204,7 +198,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -212,7 +205,6 @@ const UserInfo = () => {
                 Valor en letras del Proyecto:
               </Typography>
               <Typography
-                variant='h6'
                 color='initial'
               >
                 {' '}{project?.projectValueInLetters}
@@ -221,7 +213,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h6'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -229,7 +220,6 @@ const UserInfo = () => {
                 Valor en Números del Proyecto:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}$ {' '}{project?.projectValueInNumbers}
@@ -238,7 +228,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -246,7 +235,6 @@ const UserInfo = () => {
                 Estado:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{' '}{project?.projectStatus === true ? 'Activo' : 'Inactivo'}
@@ -261,7 +249,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -269,7 +256,6 @@ const UserInfo = () => {
                 Nombre del estructurador:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.structuringName}
@@ -278,7 +264,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -286,7 +271,6 @@ const UserInfo = () => {
                 Teléfono del estructurador:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.structuringPhone}
@@ -295,7 +279,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -303,7 +286,6 @@ const UserInfo = () => {
                 Dirección del estructurador:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.structuringAddress}
@@ -312,7 +294,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -320,7 +301,6 @@ const UserInfo = () => {
                 Email del estructurador:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.structuringEmail}
@@ -335,7 +315,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -343,7 +322,6 @@ const UserInfo = () => {
                 Nombre de quien registra el proyecto:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.registerName}
@@ -352,7 +330,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -360,7 +337,6 @@ const UserInfo = () => {
                 Teléfono de quien registra:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.registerPhone}
@@ -369,7 +345,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -377,7 +352,6 @@ const UserInfo = () => {
                 Dirección de quien registra:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.registerAddress}
@@ -386,7 +360,6 @@ const UserInfo = () => {
 
             <Grid item xs={12} sm={6} md={6}>
               <Typography
-                variant='h7'
                 color='primary'
                 gutterBottom
                 className={classes.typography}
@@ -394,7 +367,6 @@ const UserInfo = () => {
                 Email de quien registra:
               </Typography>
               <Typography
-                variant='h7'
                 color='initial'
               >
                 {' '}{project?.registerEmail}

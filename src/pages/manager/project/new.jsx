@@ -93,19 +93,12 @@ const Project = () => {
   const projectStatus = true
   const projects = useSelector(state => state.projects.data)
 
-  let projectId = 0
-  let counter = 1
-  let prjtLength = Object.keys(projects).length
+  const projectLength = Object.keys(projects).length + 1
   const d = new Date()
   const month = d.getMonth() + 1
   const idBody = month + '-' + d.getFullYear()
+  const projectId = `${projectLength}` + '-' + `${idBody}`
 
-  if (prjtLength === 0) {
-    counter = prjtLength + 1
-    projectId = `${counter}` + '-' + `${idBody}`
-  } else if (prjtLength > 0) {
-    projectId = `${prjtLength++}` + '-' + `${idBody}`
-  }
   const [alert, setAlert] = useState(false)
   const [buttonsend, setButtonsend] = useState(false)
 
