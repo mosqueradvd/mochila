@@ -15,6 +15,7 @@ import {
   Button,
   ListItemText
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 import ImageIcon from '@material-ui/icons/Image'
 import WorkIcon from '@material-ui/icons/Work'
 import CardMembershipIcon from '@material-ui/icons/CardMembership'
@@ -31,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   container: {
-
     marginBottom: theme.spacing(1),
     padding: theme.spacing(2)
   },
@@ -43,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     maxWidth: 700,
     marginTop: theme.spacing(2)
-
+  },
+  butoon: {
+    marginTop: theme.spacing(1)
   }
 }))
 
@@ -67,7 +69,7 @@ const Home = () => {
             <Typography gutterBottom variant='h5' component='h2' className={classes.typography}>
               Control total de la infomación
             </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
+            <Typography variant='body2' component='p'>
               La plataforma le permite administrar la información de los proyectos formulados por la institucion
               u organización, dandole acceso a esta información desde cualquier parte en que se encuentre solo con
               una conexión a internet usted esta en la capacidad de buscar, ingresar o generar un certifdicado
@@ -109,16 +111,10 @@ const Home = () => {
               </List>
             </div>
             <div>
-              {/* {!isAuthenticated && (
-                <Link href='/api/login'>
-                  <Button variant='outlined' color='primary' href='#outlined-buttons'>
-                    Ingresar
-                  </Button>
-                </Link>
-              )} */}
-              {!isAuthenticated && !userStatus ? (<Link href='/api/login'><Button variant='outlined' color='primary' href='#outlined-buttons'>Ingresar</Button></Link>) : null}
-
-              {userStatus === false ? (<Link href='/api/login'><Button variant='outlined' color='primary' href='#outlined-buttons'>Ingresar</Button></Link>) : null}
+              {!isAuthenticated && !userStatus ? (<Link href='/api/login'><Button variant='outlined' color='primary' href='#outlined-buttons' className={classes.butoon}>Ingresar</Button></Link>) : null}
+              {isAuthenticated && userStatus ? <Alert severity='success'>Bienvenido!</Alert> : null}
+              {isAuthenticated && userStatus === false ? <Alert severity='warning'>Su cuenta esta suspendida, por favor comunicarse con el administrador</Alert> : null}
+              {userStatus === false ? (<Link href='/api/login'><Button variant='outlined' color='primary' href='#outlined-buttons' className={classes.butoon}>Ingresar</Button></Link>) : null}
 
             </div>
           </Grid>
