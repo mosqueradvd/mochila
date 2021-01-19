@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { fetchUserById, updateUserStatus } from 'dux/usersSlice'
@@ -14,6 +14,7 @@ import {
 import {
   makeStyles
 } from '@material-ui/core/styles'
+import Alert from '@material-ui/lab/Alert'
 import Skeleton from '@material-ui/lab/Skeleton'
 import { getIdentificationTypeById, getRolesTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
@@ -58,6 +59,8 @@ const DisableEnableUser = () => {
   const dispatch = useDispatch()
   const isLoading = useSelector(state => state.users.isLoading)
   const user = useSelector(state => state.users.current)
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
 
   useEffect(() => {
     dispatch(fetchUserById(id))
@@ -70,9 +73,14 @@ const DisableEnableUser = () => {
         id,
         userStatus
       })
-    ).then(() => {
-      router.push('/admin')
-    })
+    )
+      .then(() => {
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/admin') }, 2000)
+      })
   }
 
   if (isLoading) {
@@ -93,6 +101,7 @@ const DisableEnableUser = () => {
   return (
     <Layout pageTitle='habilitar - deshabilitar usuario'>
       <Container className={classes.container}>
+        {alert === true ? <Alert severity='success'>Usuario modificado con éxito!</Alert> : null}
         <Box className={classes.box}>
           <Typography
             variant='h4'
@@ -215,6 +224,7 @@ const DisableEnableUser = () => {
               variant='contained'
               fullWidth
               type='submit'
+              disabled={buttonsend}
               onClick={handleState}
             >
               {user?.userStatus === true ? 'Deshabilitar' : 'habilitar'}

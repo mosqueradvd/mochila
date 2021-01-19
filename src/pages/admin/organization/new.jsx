@@ -31,6 +31,7 @@ import {
   TableRow,
   TableHead
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 import { Info as InfoIcon } from '@material-ui/icons'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
@@ -95,6 +96,8 @@ const Organization = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const router = useRouter()
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
 
   const StyledTabletCell = withStyles((theme) => ({
     head: {
@@ -173,9 +176,14 @@ const Organization = () => {
       city,
       community,
       attached
-    })).then(() => {
-      router.push('/admin')
-    })
+    }))
+      .then(() => {
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/admin') }, 2000)
+      })
   }
 
   if (isLoading) {
@@ -197,6 +205,7 @@ const Organization = () => {
   return (
     <Layout pageTitle='Nueva Organizacion'>
       <Container className={classes.container}>
+        {alert === true ? <Alert severity='success'>Organización guardada con éxito!</Alert> : null}
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box display='flex' justifyContent='center' className={classes.box}>
             <Typography variant='h4' color='primary'>
@@ -587,6 +596,7 @@ const Organization = () => {
                   color='primary'
                   variant='contained'
                   fullWidth
+                  disabled={buttonsend}
                   type='submit'
                 >
                   Guardar

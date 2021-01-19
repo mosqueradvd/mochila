@@ -31,6 +31,7 @@ import {
   TableRow,
   TableHead
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 import { Info as InfoIcon } from '@material-ui/icons'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
@@ -115,6 +116,8 @@ const Organization = () => {
   const [attached, setAttached] = useState([])
   const [itemLetterHead, setItemLetterHead] = useState('')
   const [itemSignature, setItemSignature] = useState()
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
 
   function onDepartamentChanged () {
     const getvalueDep = getValues('departament')
@@ -175,8 +178,14 @@ const Organization = () => {
     const { name, identificationNumber, legalRepresentative, identification, phone, email, departament, city, community, identificationType } = data
     data = { name, identificationNumber, legalRepresentative, identificationType, identification, phone, email, departament, city, community, attached }
     dispatch(updateOrganization({ id, data })).then(() => {
-      router.push('/admin')
     })
+      .then(() => {
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/admin') }, 2000)
+      })
   }
 
   if (isLoading) {
@@ -199,6 +208,7 @@ const Organization = () => {
   return (
     <Layout pageTitle={`Organización | ${organization?.name}`}>
       <Container className={classes.container}>
+        {alert === true ? <Alert severity='success'>Organización modificada con éxito!</Alert> : null}
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box className={classes.box}>
             <Typography
@@ -599,6 +609,7 @@ const Organization = () => {
                 color='primary'
                 variant='contained'
                 fullWidth
+                disabled={buttonsend}
                 type='submit'
               >
                 Guardar

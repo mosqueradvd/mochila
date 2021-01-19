@@ -20,6 +20,7 @@ import {
   CssBaseline,
   Box
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
 import InfoIcon from '@material-ui/icons/Info'
 import { makeStyles } from '@material-ui/core/styles'
 import Skeleton from '@material-ui/lab/Skeleton'
@@ -75,6 +76,8 @@ const User = () => {
   const isLoading = useSelector(state => state.organizations.isLoading)
   const organizations = useSelector(state => state.organizations.data)
   const labelWidthTypeProject = labelWidth + 120
+  const [alert, setAlert] = useState(false)
+  const [buttonsend, setButtonsend] = useState(false)
   const dispatch = useDispatch()
   const userStatus = true
 
@@ -91,9 +94,14 @@ const User = () => {
       userRole,
       userStatus,
       userOrganization
-    })).then(() => {
-      router.push('/admin')
-    })
+    }))
+      .then(() => {
+        setButtonsend(true)
+        setAlert(!alert)
+      })
+      .then(() => {
+        setTimeout(function () { router.push('/admin') }, 2000)
+      })
   }
 
   useEffect(() => {
@@ -123,6 +131,7 @@ const User = () => {
     <Layout pageTitle='Nuevo usuario'>
       <Container className={classes.container}>
         <CssBaseline />
+        {alert === true ? <Alert severity='success'>Usuario guardado con éxito!</Alert> : null}
         <Box className={classes.box}>
           <Typography
             variant='h4'
@@ -356,6 +365,7 @@ const User = () => {
               color='primary'
               fullWidth
               type='submit'
+              disabled={buttonsend}
               className={classes.btnSubmit}
             >
               Guardar
