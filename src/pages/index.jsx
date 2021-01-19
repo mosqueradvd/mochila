@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles()
-  const { isAuthenticated } = useUser()
+  const { isAuthenticated, userStatus } = useUser()
 
   return (
     <Layout>
@@ -109,13 +109,17 @@ const Home = () => {
               </List>
             </div>
             <div>
-              {!isAuthenticated && (
+              {/* {!isAuthenticated && (
                 <Link href='/api/login'>
                   <Button variant='outlined' color='primary' href='#outlined-buttons'>
                     Ingresar
                   </Button>
                 </Link>
-              )}
+              )} */}
+              {!isAuthenticated && !userStatus ? (<Link href='/api/login'><Button variant='outlined' color='primary' href='#outlined-buttons'>Ingresar</Button></Link>) : null}
+
+              {userStatus === false ? (<Link href='/api/login'><Button variant='outlined' color='primary' href='#outlined-buttons'>Ingresar</Button></Link>) : null}
+
             </div>
           </Grid>
         </Grid>

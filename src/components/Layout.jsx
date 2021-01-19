@@ -52,16 +52,17 @@ const Layout = ({ pageTitle, children }) => {
     setOpen(!open)
   }
 
-  return (
+  if (user.isAuthenticated && user.userStatus) {
+    return (
 
-    <div className={classes.root}>
-      <Head>
-        <title>{pageTitle || DEFAULT_TITLE}</title>
-        <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
-      </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {user.isAuthenticated && (
+      <div className={classes.root}>
+        <Head>
+          <title>{pageTitle || DEFAULT_TITLE}</title>
+          <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
+        </Head>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+
           <>
             <Header user={user} actionOpen={actionOpen} />
             <Hidden xsDown>
@@ -71,14 +72,33 @@ const Layout = ({ pageTitle, children }) => {
               <Drawers variant='temporary' open={open} onClose={actionOpen} />
             </Hidden>
           </>
-        )}
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <div className='container'>{children}</div>
-        </main>
-      </ThemeProvider>
-    </div>
-  )
+
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            <div className='container'>{children}</div>
+          </main>
+        </ThemeProvider>
+      </div>
+    )
+  } else {
+    return (
+
+      <div className={classes.root}>
+        <Head>
+          <title>{pageTitle || DEFAULT_TITLE}</title>
+          <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
+        </Head>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            <div className='container'>{children}</div>
+          </main>
+        </ThemeProvider>
+      </div>
+    )
+  }
 }
 
 Layout.propTypes = {
