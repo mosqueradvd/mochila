@@ -232,7 +232,6 @@ export default function ListProjects () {
                   .map((row, index) => {
                     const isItemSelected = isSelected(row.id)
                     const labelId = `enhanced-table-checkbox-${index}`
-
                     return (
                       <TableRow
                         hover
@@ -282,6 +281,7 @@ export default function ListProjects () {
                         <TableCell align='left'>
                           <Button color='primary'>
                             <DownloadPDF
+                              id={row.projectId}
                               awsURL={aws}
                               projectName={row.projectName}
                               projectLocation={row.projectLocation}

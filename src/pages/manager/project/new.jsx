@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useForm, Controller } from 'react-hook-form'
 import Layout from 'components/Layout'
-import { useDispatch } from 'react-redux'
-import { createProject } from 'dux/projectsSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { createProject, fetchProjects } from 'dux/projectsSlice'
 import { PROJECTS_TYPES, ATTACHMENT_TYPES, ATTACHMENT_CONTENT_TYPES } from 'lib/constans'
 import {
   TextField,
@@ -91,6 +91,21 @@ const Project = () => {
   const labelWidthTypeProject = labelWidth + 140
   const classes = useStyles()
   const projectStatus = true
+  const projects = useSelector(state => state.projects.data)
+
+  let projectId = 0
+  let counter = 1
+  let prjtLength = Object.keys(projects).length
+  const d = new Date()
+  const month = d.getMonth() + 1
+  const idBody = month + '-' + d.getFullYear()
+
+  if (prjtLength === 0) {
+    counter = prjtLength + 1
+    projectId = `${counter}` + '-' + `${idBody}`
+  } else if (prjtLength > 0) {
+    projectId = `${prjtLength++}` + '-' + `${idBody}`
+  }
   const [alert, setAlert] = useState(false)
   const [buttonsend, setButtonsend] = useState(false)
 
@@ -140,6 +155,9 @@ const Project = () => {
   }
 
   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchProjects())
+  }, [dispatch])
   const onSubmit = (data) => {
     const {
       projectName,
@@ -160,6 +178,7 @@ const Project = () => {
     dispatch(
       createProject(
         {
+          projectId,
           projectName,
           projectType,
           projectLocation,
@@ -186,6 +205,7 @@ const Project = () => {
         setTimeout(function () { router.push('/manager') }, 2000)
       })
   }
+
   return (
     <Layout pageTitle='Nuevo proyecto'>
       <Container className={classes.container}>

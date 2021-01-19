@@ -15,6 +15,7 @@ export async function findAll () {
 }
 
 export async function create ({
+  projectId,
   projectName,
   projectType,
   projectLocation,
@@ -33,6 +34,7 @@ export async function create ({
 }) {
   const collection = await getCollection()
   const document = {
+    projectId,
     projectName,
     projectType,
     projectLocation,
