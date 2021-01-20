@@ -14,22 +14,9 @@ import CardMembershipIcon from '@material-ui/icons/CardMembership'
 
 const today = new Date()
 const time = today.getHours() + ':' + today.getMinutes()
-
-const weekdays = [
-  'Domingo',
-  'Lunes',
-  'Martes',
-  'Miércoles',
-  'Jueves',
-  'Viernes',
-  'Sábado'
-]
 const weekdayNumber = new Date().getDay()
-const weekdayName = weekdays[weekdayNumber]
-
 const month = new Date()
 const currentMonth = month.toLocaleString('es-ES', { month: 'long' })
-
 const year = new Date().getFullYear()
 
 function ReactPDF ({ projectId, projectName, projectLocation, projectValueInNumbers, projectValueInLetters, s3 }) {
@@ -51,28 +38,37 @@ function ReactPDF ({ projectId, projectName, projectLocation, projectValueInNumb
               El Gobernador del Cabildo indígena Quillasinga de Tangua Montaña de fuego, del
             </Text>
             <Text style={{ marginTop: 215, marginLeft: 40, fontSize: 14, fontFamily: 'Times-Roman', position: 'absolute' }}>
-              municipio de {' '} {projectLocation}, CERTIFICA que en el Banco de Proyectos para la implementación
+              municipio de {' '} {projectLocation}, CERTIFICA que en el Banco de Proyectos para la
             </Text>
             <Text style={{ marginTop: 230, marginLeft: 40, fontSize: 14, fontFamily: 'Times-Roman', position: 'absolute' }}>
-              del plan de vida de la Comunidad, se encuentra registrado el siguiente proyecto:
+              implementación del Plan de Vida de la Comunidad, se encuentra registrado el siguiente
+            </Text>
+            <Text style={{ marginTop: 245, marginLeft: 40, fontSize: 14, fontFamily: 'Times-Roman', position: 'absolute' }}>
+              proyecto:
             </Text>
           </View>
-          <Text style={{ marginTop: 270, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
+          <Text style={{ marginTop: 280, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
             Nombre del proyecto: {projectName}
           </Text>
-          <Text style={{ marginTop: 290, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
+          <Text style={{ marginTop: 300, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
             Ubicación: {projectLocation}
           </Text>
-          <Text style={{ marginTop: 310, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
+          <Text style={{ marginTop: 320, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
             Valor: {projectValueInNumbers} ({projectValueInLetters})
           </Text>
           <Text style={{ marginTop: 370, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
-            Esta certificación se genera el día {weekdayName} del mes {currentMonth} del año {year} siendo las {time}
+            Esta certificación se genera el {weekdayNumber} de {currentMonth} de {year} siendo las {time} horas
           </Text>
           <Text style={{ marginTop: 440, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
             Firma Autorizada,
           </Text>
           <Image source={signature} style={{ position: 'absolute', left: 65, marginTop: 470, width: 50, height: 50 }} />
+          <Text style={{ marginTop: 510, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
+            MELLER ALBEIRO MERCHANCANO,
+          </Text>
+          <Text style={{ marginTop: 525, marginLeft: 50, fontSize: 14, textAlign: 'justify', fontFamily: 'Times-Roman', position: 'absolute' }}>
+            Gobernador
+          </Text>
           <Text
             style={{ position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey' }}
             render={({ pageNumber, totalPages }) =>
