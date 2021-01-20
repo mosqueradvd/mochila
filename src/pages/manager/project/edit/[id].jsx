@@ -116,7 +116,7 @@ const Project = () => {
   const [attached, setAttached] = useState([])
   const [itemName, setItemName] = useState('')
   const [itemType, setItemType] = useState('')
-  const [itemAttached, setItemAttachment] = useState('url-archivo')
+  const [itemAttached, setItemAttachment] = useState()
   const [alert, setAlert] = useState(false)
   const [buttonsend, setButtonsend] = useState(false)
 
@@ -579,7 +579,7 @@ const Project = () => {
                       <DialogContent>
                         <DialogContentText>
                           Solo es permitido adjuntar archivos en formato PDF,
-                          Word, Excel, tamaño máximo 100Mb
+                          Excel, tamaño máximo 10Mb
                         </DialogContentText>
                         <TextField
                           name='attachedName'

@@ -555,7 +555,7 @@ const Project = () => {
                     <DialogContent>
                       <DialogContentText>
                         Solo es permitido adjuntar archivos en formato PDF,
-                        Word, Excel, tamaño máximo 100Mb
+                        Excel, tamaño máximo 10Mb
                       </DialogContentText>
                       <TextField
                         name='attachedName'
