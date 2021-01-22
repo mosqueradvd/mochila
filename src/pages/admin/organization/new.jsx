@@ -88,6 +88,9 @@ const useStyles = makeStyles((theme) => ({
   },
   successColor: {
     color: 'green'
+  },
+  titleImportant: {
+    color: 'red'
   }
 }))
 
@@ -511,8 +514,8 @@ const Organization = () => {
                     <DialogTitle id='form-dialog-title'>
                       Adjuntar un archivo
                     </DialogTitle>
-                    <DialogContent>
-                      <DialogContentText>
+                    <DialogContent className={classes.titleImportant}>
+                      <DialogContentText className={classes.titleImportant}>
                         Solo es permitido adjuntar archivos en formato PNG,
                         JPG y JPEG. Tamaño máximo 100Mb
                       </DialogContentText>

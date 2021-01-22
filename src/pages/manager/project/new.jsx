@@ -78,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     marginTop: theme.spacing(2)
+  },
+  titleImportant: {
+    color: 'red'
   }
 }))
 
@@ -552,8 +555,8 @@ const Project = () => {
                     <DialogTitle id='form-dialog-title'>
                       Adjuntar un archivo
                     </DialogTitle>
-                    <DialogContent>
-                      <DialogContentText>
+                    <DialogContent className={classes.titleImportant}>
+                      <DialogContentText className={classes.titleImportant}>
                         Solo es permitido adjuntar archivos en formato PDF,
                         Excel, tamaño máximo 10Mb
                       </DialogContentText>

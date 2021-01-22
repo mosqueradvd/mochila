@@ -37,13 +37,15 @@ const FileUploader = ({ error, filePrefix, onChange, accept }) => {
 
   const handleOnDrop = useCallback(
     async ([file]) => {
-      setProgress(0)
-      const fileUrl = await uploadFile({
-        filePrefix,
-        file,
-        onProgress: setProgress
-      })
-      onChange(fileUrl)
+      try {
+        setProgress(0)
+        const fileUrl = await uploadFile({
+          filePrefix,
+          file,
+          onProgress: setProgress
+        })
+        onChange(fileUrl)
+      } catch (error) { }
     },
 
     [filePrefix, onChange]
