@@ -57,19 +57,8 @@ const Home = () => {
     <Layout>
       <Container className={classes.container}>
         <Typography variant='h4' color='primary'>
-          Mochila SW
+          Mochila de proyectos
         </Typography>
-        {isAuthorized === false && unAuthorizedUser && (
-          <>
-            <Typography variant='h5' component='h5'>
-              {`Inicio de sesión no permitido para ${unAuthorizedUser}`}
-            </Typography>
-            <Typography variant='h5' component='h5'>
-              Es probable que aun no haya validado su email, por favor revisar su bandeja de entrada,
-              Si después de validar su email aun sigue sin acceso favor contacte al patrón para que le solucione la mkda.
-            </Typography>
-          </>
-        )}
         <Grid container spacing={2} className={classes.margintop}>
           <Grid item xs={12} sm={6} md={6}>
             <Card className={classes.root}>
@@ -126,7 +115,11 @@ const Home = () => {
               {isAuthenticated && userStatus ? <Alert severity='success'>Bienvenido!</Alert> : null}
               {isAuthenticated && userStatus === false ? <Alert severity='warning'>Su cuenta esta suspendida, por favor comunicarse con el administrador</Alert> : null}
               {userStatus === false ? (<Link href='/api/login'><Button variant='outlined' color='primary' href='#outlined-buttons' className={classes.butoon}>Ingresar</Button></Link>) : null}
-
+              {isAuthorized === false && unAuthorizedUser && (
+                <Alert severity='warning'> {`Inicio de sesión no permitido para ${unAuthorizedUser}`}. Es probable que aún no haya validado su email, por favor revisar la bandeja de entrada o spam de su correo electrónico.
+                  Si después de validar su email aún sigue sin acceso favor contacte al administrador de la platafoma.
+                </Alert>
+              )}
             </div>
           </Grid>
         </Grid>
