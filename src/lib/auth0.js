@@ -36,14 +36,16 @@ export async function getCurrentUser (req) {
   const session = await getSession(req)
   const user = session?.user
 
-  if (user) {
+  if (user?.email_verified) {
     const dbUser = await findByEmail(user.email)
 
     if (dbUser) {
-      const { userEmail, userName, userRole, userStatus, organizationId = null } = dbUser
-      return { userEmail, userName, userRole, userStatus, organizationId }
+      const { userName, userRole, userStatus, organizationId = null } = dbUser
+      return { userEmail: user.email, userName, userRole, userStatus, organizationId, unAuthorizedUser: null }
     }
+
+    return { unAuthorizedUser: user?.email }
   }
 
-  return null
+  return { unAuthorizedUser: user?.email || null }
 }

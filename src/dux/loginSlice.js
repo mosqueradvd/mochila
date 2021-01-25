@@ -5,8 +5,10 @@ const initialState = {
   userEmail: null,
   organizationId: null,
   userRole: null,
-  isAuthenticated: false,
-  userStatus: null
+  isAuthenticated: null,
+  userStatus: null,
+  isAuthorized: null,
+  unAuthorizedUser: null
 }
 
 const loginSlice = createSlice({
@@ -19,13 +21,19 @@ const loginSlice = createSlice({
       state.organizationId = organizationId
       state.userRole = userRole
       state.isAuthenticated = true
+      state.isAuthorized = true
       state.userStatus = userStatus
+    },
+    setUnauthorizedUser: (state, { payload: { unAuthorizedUser } }) => {
+      state.isAuthorized = false
+      state.unAuthorizedUser = unAuthorizedUser
     }
   }
 })
 
 export const {
-  setCurrentUser
+  setCurrentUser,
+  setUnauthorizedUser
 } = loginSlice.actions
 
 export const getCurrentUser = (state) => state.login
