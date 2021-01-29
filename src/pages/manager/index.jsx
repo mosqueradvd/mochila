@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from 'components/Layout'
@@ -11,6 +11,7 @@ import {
   CardActions,
   Button
 } from '@material-ui/core'
+import Search from '../../hooks/useSearch'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { fetchProjects } from 'dux/projectsSlice'
@@ -56,10 +57,22 @@ const Dashboard = () => {
   const dispatch = useDispatch()
   const isLoading = useSelector(state => state.projects.isLoading)
   const projects = useSelector(state => state.projects.data)
+  const searchInput = useRef(null)
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
+
+  const handleSearch = useCallback(() => {
+    setSearch(searchInput.current.value)
+  }, []
+  )
+
+  const filteredProject = useMemo(() =>
+    projects.filter((project) => {
+      return project.projectName.toLowerCase().includes(search?.toLowerCase())
+    }), [projects, search])
 
   if (isLoading) {
     return (
@@ -97,9 +110,10 @@ const Dashboard = () => {
             Proyectos registrados
           </Typography>
         </Box>
+        <Search search={search} searchInput={searchInput} handleSearch={handleSearch} />
         <div className={classes.root}>
           <Grid container spacing={3}>
-            {projects.map((row, index) => {
+            {filteredProject.map((row, index) => {
               return (
                 <Grid item xs key={index}>
                   <Card className={classes.card}>
