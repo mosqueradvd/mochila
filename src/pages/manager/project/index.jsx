@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Layout from 'components/Layout'
 import DownloadPDF from 'components/DownloadPDF'
@@ -22,6 +22,7 @@ import {
   Container,
   Button
 } from '@material-ui/core'
+import Search from 'components/Search'
 import SearchIcon from '@material-ui/icons/Search'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
 import LibraryAddCheckIcon from '@material-ui/icons/LibraryAddCheck'
@@ -146,6 +147,8 @@ export default function ListProjects () {
   const [selected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
+  const searchInput = useRef(null)
+  const [search, setSearch] = useState('')
 
   const isLoading = useSelector((state) => state.projects.isLoading)
   const projects = useSelector((state) => state.projects.data)
@@ -157,6 +160,16 @@ export default function ListProjects () {
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
+
+  const handleSearch = useCallback(() => {
+    setSearch(searchInput.current.value)
+  }, []
+  )
+
+  const filteredProject = useMemo(() =>
+    projects.filter((project) => {
+      return project.projectName.toLowerCase().includes(search?.toLowerCase())
+    }), [projects, search])
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc'
@@ -210,7 +223,7 @@ export default function ListProjects () {
             </Button>
           </Link>
         </Box>
-
+        <Search search={search} searchInput={searchInput} handleSearch={handleSearch} />
         <Paper className={classes.paper}>
           <TableContainer>
             <Table
@@ -227,7 +240,7 @@ export default function ListProjects () {
                 rowCount={projects.length}
               />
               <TableBody>
-                {stableSort(projects, getComparator(order, orderBy))
+                {stableSort(filteredProject, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
                     const isItemSelected = isSelected(row.id)
