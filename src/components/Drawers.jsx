@@ -40,7 +40,7 @@ const Drawers = ({ variant, open, onClose }) => {
       open={open}
       onClose={onClose || null}
     >
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar} style={{ background: '#372B59' }} />
       <Divider />
       {isAdmin(userRole) && <MenuAdmin />}
       {isManager(userRole) && <MenuManager />}
