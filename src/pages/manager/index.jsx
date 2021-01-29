@@ -11,7 +11,9 @@ import {
   CardActions,
   Button
 } from '@material-ui/core'
-import Search from '../../hooks/useSearch'
+
+import Search from 'components/Search'
+
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { fetchProjects } from 'dux/projectsSlice'
