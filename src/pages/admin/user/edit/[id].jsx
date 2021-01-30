@@ -24,7 +24,7 @@ import {
 import Alert from '@material-ui/lab/Alert'
 import InfoIcon from '@material-ui/icons/Info'
 import { makeStyles } from '@material-ui/core/styles'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -58,12 +58,6 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(2)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -109,17 +103,7 @@ const User = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
   return (

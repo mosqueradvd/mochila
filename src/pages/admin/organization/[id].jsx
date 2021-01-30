@@ -13,7 +13,7 @@ import {
 import { fetchOrganizationById } from 'dux/organizationsSlice'
 import { makeStyles } from '@material-ui/core/styles'
 import Layout from 'components/Layout'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 import { getIdentificationTypeById, getDepartamentTypeById, getCityTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
@@ -36,12 +36,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -57,17 +51,7 @@ const Info = () => {
   }, [dispatch, id])
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
   return (

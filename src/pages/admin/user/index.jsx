@@ -22,7 +22,7 @@ import {
 } from '@material-ui/core'
 import { Search as SearchIcon, Edit as EditIcon } from '@material-ui/icons'
 import HowToRegSharpIcon from '@material-ui/icons/HowToRegSharp'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 import { getRolesTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
@@ -124,12 +124,6 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(1)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -171,17 +165,7 @@ const ComponentListUsers = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
 

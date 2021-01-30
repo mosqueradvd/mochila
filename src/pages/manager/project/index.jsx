@@ -26,7 +26,7 @@ import Search from 'components/Search'
 import SearchIcon from '@material-ui/icons/Search'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
 import LibraryAddCheckIcon from '@material-ui/icons/LibraryAddCheck'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
@@ -130,12 +130,6 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(1)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -193,17 +187,7 @@ export default function ListProjects () {
 
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
 

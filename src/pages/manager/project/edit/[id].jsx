@@ -36,7 +36,7 @@ import Alert from '@material-ui/lab/Alert'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import InfoIcon from '@material-ui/icons/Info'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
 import FileUploader from 'components/FileUploader'
@@ -87,12 +87,6 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     marginTop: theme.spacing(2)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   },
   titleImportant: {
     color: 'red'
@@ -190,17 +184,7 @@ const Project = () => {
   }
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
   return (

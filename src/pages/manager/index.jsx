@@ -13,11 +13,10 @@ import {
 } from '@material-ui/core'
 
 import Search from 'components/Search'
-
+import Animations from 'components/Animations'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { fetchProjects } from 'dux/projectsSlice'
-import Skeleton from '@material-ui/lab/Skeleton'
 import { getProjectTypesById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
@@ -45,12 +44,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -78,17 +71,7 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
   if (Object.keys(projects).length === 0) {
@@ -139,7 +122,6 @@ const Dashboard = () => {
                       >
                         <Button size='small'>Ver más</Button>
                       </Link>
-
                     </CardActions>
                   </Card>
                 </Grid>

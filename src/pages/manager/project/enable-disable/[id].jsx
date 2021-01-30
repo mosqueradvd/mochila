@@ -25,7 +25,7 @@ import {
 } from '@material-ui/core/styles'
 import Alert from '@material-ui/lab/Alert'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 import { getProjectTypesById, getAttachmentTypeById } from 'lib/helpers'
 export { getServerSideProps } from 'lib/ssr'
 
@@ -67,12 +67,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop: '2.5em'
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -117,17 +111,7 @@ const UserInfo = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
 

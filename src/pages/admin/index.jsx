@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Layout from 'components/Layout'
 import { fetchOrganizations } from 'dux/organizationsSlice'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 export { getServerSideProps } from 'lib/ssr'
 
 const useStyles = makeStyles((theme) => ({
@@ -34,12 +34,6 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 275,
     maxWidth: 300,
     marginLeft: theme.spacing(4)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   }
 }))
 
@@ -56,17 +50,7 @@ const ComponentDashboard = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
+      <Animations />
     )
   }
 

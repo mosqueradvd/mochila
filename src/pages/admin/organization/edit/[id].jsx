@@ -34,7 +34,7 @@ import {
 import Alert from '@material-ui/lab/Alert'
 import { Info as InfoIcon } from '@material-ui/icons'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Skeleton from '@material-ui/lab/Skeleton'
+import Animations from 'components/Animations'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import DeleteIcon from '@material-ui/icons/Delete'
 import ErrorIcon from '@material-ui/icons/Error'
@@ -81,12 +81,6 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     marginBottom: theme.spacing(2)
-  },
-  skeleton: {
-    marginTop: theme.spacing(3),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
   },
   successColor: {
     color: 'green'
@@ -193,18 +187,7 @@ const Organization = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.skeleton}>
-        <Skeleton animation={false} width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='pulse' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' width={350} height={30} />
-        <Skeleton animation='wave' variant='rect' width={350} height={200} />
-      </div>
-
+      <Animations />
     )
   }
 
