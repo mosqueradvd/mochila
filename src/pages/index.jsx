@@ -72,7 +72,7 @@ const Home = () => {
             <Typography variant='body2' component='p'>
               La plataforma le permite administrar la información de los proyectos formulados por la institucion
               u organización, dandole acceso a esta información desde cualquier parte en que se encuentre solo con
-              una conexión a internet usted esta en la capacidad de buscar, ingresar o generar un certifdicado
+              una conexión a internet usted esta en la capacidad de buscar, ingresar o generar un certificado
             </Typography>
             <div>
               <List className={classes.list}>
