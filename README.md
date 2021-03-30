@@ -1,8 +1,10 @@
+# Mochila de Proyectos
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-### Environment  variables
+### Environment variables
 
 ```
 # Auth0 settings
@@ -37,11 +39,11 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy in Digital Ocean
-Guia 
+
+Guia
+
 - https://www.youtube.com/watch?v=6qR_EpxadMo&ab_channel=FaztCode
 - https://jarriagadeveloper.wordpress.com/2016/01/19/mongodb-comandos-basicos/
 - https://classic.yarnpkg.com/en/docs/cli/install/
 - https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04?utm_source=local&utm_medium=Email_Internal&utm_campaign=Email_UbuntuDistroNginxWelcome&mkt_tok=eyJpIjoiWWpobE5qUmtOREZpT0RjdyIsInQiOiJSbUxmMzkwVXRnUnp0TEJMbkJoNXE2MHVEQjkrTk1XWXBNekhDaUVhSVZuMXNQM0Y0WFVqaWE2RE1RUUFqTkFPK1p0VWVrRFJXbTZCc0Q4aUpnQUNVRUcrUGJ4VnZXZjk2aGQ1UWJaSkM4cmxcL21palREM2dNeDdCdFhqWXVNdEEifQ%3D%3D
 - https://www.willandskill.se/en/setup-a-next-js-project-with-pm2-nginx-and-yarn-on-ubuntu-18-04/
-
-
